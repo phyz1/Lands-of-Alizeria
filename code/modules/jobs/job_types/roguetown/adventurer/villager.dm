@@ -1,0 +1,67 @@
+/datum/job/roguetown/villager
+	title = "Towner"
+	flag = VILLAGER
+	department_flag = PEASANTS
+	faction = "Station"
+	total_positions = 10
+	spawn_positions = 10
+	allowed_races = RACES_ALL_KINDS
+	disallowed_races = /datum/species/ogre
+	tutorial = "Ты - обычный житель земель Ализерии. Тебя неособо волнуют нависающая над тобой власть господ, ведь иначе бы ты примкнул к их армии. Торгуй, живи и общайся, более от тебя ничего не ждут. Пока что..."
+	advclass_cat_rolls = list(CTAG_TOWNER = 20)
+	outfit = null
+	outfit_female = null
+	bypass_lastclass = TRUE
+	bypass_jobban = FALSE
+	display_order = JDO_VILLAGER
+	give_bank_account = TRUE
+	min_pq = -15
+	max_pq = null
+	round_contrib_points = 2
+	wanderer_examine = FALSE
+	advjob_examine = TRUE
+	always_show_on_latechoices = TRUE
+	same_job_respawn_delay = 0
+	class_setup_examine = TRUE
+	cmode_music = 'sound/music/combat_towner.ogg'
+	social_rank = SOCIAL_RANK_PEASANT
+
+	job_subclasses = list(
+		/datum/advclass/blacksmith,
+		/datum/advclass/carpenter,
+		/datum/advclass/cheesemaker,
+		/datum/advclass/drunkard,
+		/datum/advclass/fisher,
+		/datum/advclass/hunter,
+		/datum/advclass/miner,
+		/datum/advclass/minstrel,
+		/datum/advclass/peasant,
+		/datum/advclass/potter,
+		/datum/advclass/seamstress,
+		/datum/advclass/butcher,
+		/datum/advclass/thug/goon,
+		/datum/advclass/thug/wiseguy,
+		/datum/advclass/thug/bigman,
+		/datum/advclass/towndoctor,
+		/datum/advclass/witch,
+		/datum/advclass/woodcutter,
+		/datum/advclass/masterchef,
+		/datum/advclass/masterblacksmith,
+		/datum/advclass/minermaster,
+		/datum/advclass/fishermaster,
+		/datum/advclass/farmermaster
+	) //Master carpenter and mason aren't rolling for some reasons, so they are not present at the time of writing.
+/*
+/datum/job/roguetown/adventurer/villager/New()
+	. = ..()
+	for(var/X in GLOB.peasant_positions)
+		peopleiknow += X
+		peopleknowme += X
+	for(var/X in GLOB.yeoman_positions)
+		peopleiknow += X
+	for(var/X in GLOB.church_positions)
+		peopleiknow += X
+	for(var/X in GLOB.garrison_positions)
+		peopleiknow += X
+	for(var/X in GLOB.noble_positions)
+		peopleiknow += X*/

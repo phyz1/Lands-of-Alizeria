@@ -1,0 +1,72 @@
+/datum/job/roguetown/clerk
+	title = "Clerk"
+	flag = CLERK
+	department_flag = GARRISON
+	faction = "Station"
+	total_positions = 1
+	spawn_positions = 1
+	allowed_races = ALIZ_ALL_RACES
+	allowed_sexes = list(MALE, FEMALE)
+
+	tutorial = "Верный помощник городского мастера над монетой. Сбор налогов, нелёгкие разговоры с недовольными гражданами и постоянные побегушки по мелким поручениям - вся твоя жизнь. Когда-нибудь ты наберёшься опыта и сам станешь мастером, но этот момент настанет нескоро."
+
+	outfit = /datum/outfit/job/clerk
+	display_order = JDO_CLERK
+	give_bank_account = TRUE
+	min_pq = -10
+	max_pq = null
+	round_contrib_points = 2
+	social_rank = SOCIAL_RANK_YEOMAN
+
+	advclass_cat_rolls = list(CTAG_CLERK = 2)
+
+	job_traits = list(TRAIT_SEEPRICES_SHITTY)
+	job_subclasses = list(
+		/datum/advclass/clerk
+	)
+
+
+/datum/advclass/clerk
+	name = "Clerk"
+	tutorial = "Верный помощник городского мастера над монетой. Сбор налогов, нелёгкие разговоры с недовольными гражданами и постоянные побегушки по мелким поручениям - вся твоя жизнь. Когда-нибудь ты наберёшься опыта и сам станешь мастером, но этот момент настанет нескоро."
+	outfit = /datum/outfit/job/clerk/basic
+	category_tags = list(CTAG_CLERK)
+
+	subclass_stats = list(
+		STATKEY_LCK = 2,
+		STATKEY_INT = 2,
+		STATKEY_STR = -1
+	)
+
+	subclass_skills = list(
+		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/knives = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
+		/datum/skill/craft/cooking = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/sewing = SKILL_LEVEL_NOVICE,
+		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
+		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/craft/cooking = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/craft/crafting = SKILL_LEVEL_NOVICE,
+	)
+
+/datum/outfit/job/clerk/basic/pre_equip(mob/living/carbon/human/H)
+	..()
+
+	if(H.mind)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/appraise/secular)
+
+	if(should_wear_femme_clothes(H))
+		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green
+	else if(should_wear_masc_clothes(H))
+		armor = /obj/item/clothing/cloak/tabard/knight
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+
+	pants = /obj/item/clothing/under/roguetown/tights
+	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+	belt = /obj/item/storage/belt/rogue/leather
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+	beltl = /obj/item/storage/keyring/alizeria/clerk //serously doubt this is gonna be an issue, but if it is, i'll change it
+	backr = /obj/item/storage/backpack/rogue/satchel
+	id = /obj/item/scomstone/bad

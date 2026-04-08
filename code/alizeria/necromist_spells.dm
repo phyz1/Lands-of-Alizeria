@@ -1,0 +1,40 @@
+/obj/effect/proc_holder/spell/invoked/necromist/ignition
+	name = "Witch Hunt"
+	desc = "Ignite a flammable object at range."
+	overlay_state = "sacredflame"
+	releasedrain = 30
+	chargedrain = 0
+	chargetime = 0
+	range = 15
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	chargedloop = null
+	sound = 'sound/magic/heal.ogg'
+	invocation = null
+	invocation_type = null
+	associated_skill = /datum/skill/magic/holy
+	antimagic_allowed = TRUE
+	recharge_time = 5 SECONDS
+	miracle = TRUE
+	devotion_cost = 0
+
+/obj/effect/proc_holder/spell/invoked/necromist/raise_lesser_undead
+	name = "Raise Lesser Undead"
+	desc = ""
+	clothes_req = FALSE
+	overlay_state = "animate"
+	range = 7
+	sound = list('sound/magic/magnet.ogg')
+	releasedrain = 40
+	chargetime = 60
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	charging_slowdown = 1
+	chargedloop = /datum/looping_sound/invokegen
+	gesture_required = TRUE // Summon spell
+	associated_skill = /datum/skill/magic/arcane
+	recharge_time = 30 SECONDS
+	var/cabal_affine = FALSE
+	var/is_summoned = FALSE
+	hide_charge_effect = TRUE
+	cost = 5

@@ -1,0 +1,516 @@
+/datum/job/roguetown/sergeant
+	title = "Sergeant"
+	flag = SERGEANT
+	department_flag = GARRISON
+	faction = "Station"
+	total_positions = 0
+	spawn_positions = 0
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_FEARED_UP//Identical to MAA.
+	disallowed_races = list(
+		/datum/species/lamia,
+		/datum/species/harpy,
+	)
+	allowed_patrons = NON_PSYDON_PATRONS
+	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	tutorial = "You are the most experienced of the Crown's Soldiery, leading the men-at-arms in maintaining order and attending to threats and crimes below the court's attention. \
+				See to those under your command and fill in the gaps knights leave in their wake. Obey the orders of your Marshal and the Crown."
+	display_order = JDO_SERGEANT
+	whitelist_req = TRUE
+	round_contrib_points = 3
+	social_rank = SOCIAL_RANK_YEOMAN
+
+	virtue_restrictions = list(
+		/datum/virtue/utility/blacksmith, // we don't want you repairing your stuff in combat, sorry...
+	)
+	outfit = /datum/outfit/job/sergeant
+	advclass_cat_rolls = list(CTAG_SERGEANT = 20)
+
+	give_bank_account = 50
+	min_pq = 10
+	max_pq = null
+	cmode_music = 'sound/music/combat_ManAtArms.ogg'
+
+	job_traits = list(TRAIT_GUARDSMAN, TRAIT_STEELHEARTED, TRAIT_MEDIUMARMOR)
+	job_subclasses = list(
+		/datum/advclass/sergeant/sergeant
+	)
+
+/datum/outfit/job/sergeant
+	job_bitflag = BITFLAG_GARRISON
+
+/datum/job/roguetown/sergeant/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	. = ..()
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		if(ishuman(L))
+			if(istype(H.cloak, /obj/item/clothing/cloak/stabard/surcoat/guard))
+				var/obj/item/clothing/S = H.cloak
+				var/index = findtext(H.real_name, " ")
+				if(index)
+					index = copytext(H.real_name, 1,index)
+				if(!index)
+					index = H.real_name
+				S.name = "sergeant jupon ([index])"
+
+//All skills/traits are on the loadouts. All are identical. Welcome to the stupid way we have to make sub-classes...
+/datum/outfit/job/sergeant
+	pants = /obj/item/clothing/under/roguetown/chainlegs
+	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
+	neck = /obj/item/clothing/neck/roguetown/gorget
+	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
+	belt = /obj/item/storage/belt/rogue/leather/black
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
+	head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
+	id = /obj/item/scomstone/garrison
+	beltl = /obj/item/quiver/bolts
+	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+	beltr = /obj/item/rogueweapon/sword/sabre
+
+//Rare-ish anti-armor two hander sword. Kinda alternative of a bastard sword type. Could be cool.
+/datum/advclass/sergeant/sergeant
+	name = "Sergeant-at-Arms"
+	tutorial = "You are a not just anybody but the Sergeant-at-Arms of the Duchy's garrison. While you may have started as some peasant or mercenary, you have advanced through the ranks to that of someone who commands respect and wields it. Take up arms, sergeant!"
+	outfit = /datum/outfit/job/sergeant/sergeant
+
+	category_tags = list(CTAG_SERGEANT)
+
+	subclass_stats = list(
+		STATKEY_STR = 2,
+		STATKEY_INT = 1,
+		STATKEY_CON = 1,
+		STATKEY_PER = 1, //Gets bow-skills, so give a SMALL tad of perception to aid in bow draw.
+		STATKEY_END = 1,
+	)
+
+	subclass_skills = list(
+		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/axes = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/whipsflails = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/maces = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/crossbows = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/bows = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/unarmed = SKILL_LEVEL_EXPERT,
+		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
+		/datum/skill/misc/sneaking = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/athletics = SKILL_LEVEL_MASTER,	// We are basically identical to a regular MAA, except having better athletics to help us manage our order usage better
+		/datum/skill/misc/riding = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/tracking = SKILL_LEVEL_APPRENTICE,	//Decent tracking akin to Skirmisher.
+	)
+
+/datum/outfit/job/sergeant/sergeant/pre_equip(mob/living/carbon/human/H)
+	..()
+
+	if(H.mind)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/movemovemove)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/takeaim)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/onfeet)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/hold)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/focustarget)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/guard) // We'll just use Watchmen as sorta conscripts yeag?
+	H.verbs |= list(/mob/living/carbon/human/proc/request_outlaw, /mob/proc/haltyell, /mob/living/carbon/human/mind/proc/setorders)
+	backpack_contents = list(
+		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,
+		/obj/item/rope/chain = 1,
+		/obj/item/storage/keyring/guardsergeant = 1,
+		/obj/item/rogueweapon/scabbard/sheath = 1,
+		/obj/item/signal_horn = 1,
+	)
+	H.adjust_blindness(-3)
+	var/weapons = list("Rhomphaia","Flail & Shield","Halberd","Sabre & Crossbow")	//Bit more unique than footsman, you are a jack-of-all-trades + slightly more 'elite'.
+	var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+	H.set_blindness(0)
+	switch(weapon_choice)
+		if("Rhomphaia")			//Rare-ish anti-armor two hander sword. Kinda alternative of a bastard sword type. Could be cool.
+			l_hand = /obj/item/rogueweapon/sword/long/rhomphaia
+			backl = /obj/item/rogueweapon/scabbard/sword
+			beltr = /obj/item/rogueweapon/mace/cudgel
+		if("Flail & Shield")	//Tower-shield, higher durability wood shield w/ more coverage. Plus a steel flail; maybe.. less broken that a steel mace?
+			beltr = /obj/item/rogueweapon/flail/sflail
+			backl = /obj/item/rogueweapon/shield/tower
+		if("Halberd")			//Halberd - basically exact same as MAA. It's a really valid build. Spear thrust + sword chop + bash.
+			r_hand = /obj/item/rogueweapon/halberd
+			beltr = /obj/item/rogueweapon/mace/cudgel
+		if("Sabre & Crossbow")	//Versetile skirmisher class. Considered other swords but sabre felt best without being too strong. (This one gets no cudgel, no space.)
+			beltr = /obj/item/quiver/bolts
+			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+			r_hand = /obj/item/rogueweapon/sword/sabre
+			l_hand = /obj/item/rogueweapon/scabbard/sword
+
+/obj/effect/proc_holder/spell/invoked/order
+	name = ""
+	range = 1
+	associated_skill = /datum/skill/misc/athletics
+	devotion_cost = 0
+	chargedrain = 1
+	chargetime = 15
+	releasedrain = 80 // This is quite costy. Shouldn't be able to really spam them right off the cuff, combined with having to type out an order. Should prevent VERY occupied officers from ALSO ordering
+	recharge_time = 2 MINUTES
+	miracle = FALSE
+	sound = 'sound/magic/inspire_02.ogg'
+
+
+/obj/effect/proc_holder/spell/invoked/order/movemovemove
+	name = "Move! Move! Move!"
+	overlay_state = "movemovemove"
+
+/obj/effect/proc_holder/spell/invoked/order/movemovemove/cast(list/targets, mob/living/user)
+	. = ..()
+	if(isliving(targets[1]))
+		var/mob/living/target = targets[1]
+		var/msg = user.mind.movemovemovetext
+		if(!msg)
+			to_chat(user, span_alert("I must say something to give an order!"))
+			return
+		if(user.job == "Sergeant")
+			if(!target.job == "Man at Arms")
+				to_chat(user, span_alert("I cannot order one not of my ranks!"))
+				return
+		if(target == user)
+			to_chat(user, span_alert("I cannot order myself!"))
+			return
+		user.say("[msg]")
+		target.apply_status_effect(/datum/status_effect/buff/order/movemovemove)
+		return TRUE
+	revert_cast()
+	return FALSE
+
+/datum/status_effect/buff/order/movemovemove/nextmove_modifier()
+	return 0.85
+
+/datum/status_effect/buff/order/movemovemove
+	id = "movemovemove"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/order/movemovemove
+	effectedstats = list("speed" = 5)
+	duration = 1 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/order/movemovemove
+	name = "Move! Move! Move!"
+	desc = "My officer has ordered me to move quickly!"
+	icon_state = "buff"
+
+/datum/status_effect/buff/order/movemovemove/on_apply()
+	. = ..()
+	to_chat(owner, span_blue("My officer orders me to move!"))
+
+/obj/effect/proc_holder/spell/invoked/order/takeaim
+	name = "Take aim!"
+	overlay_state = "takeaim"
+
+/datum/status_effect/buff/order/takeaim
+	id = "takeaim"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/order/takeaim
+	effectedstats = list("perception" = 5)
+	duration = 1 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/order/takeaim
+	name = "Take aim!"
+	desc = "My officer has ordered me to take aim!"
+	icon_state = "buff"
+
+/datum/status_effect/buff/order/takeaim/on_apply()
+	. = ..()
+	to_chat(owner, span_blue("My officer orders me to take aim!"))
+
+/obj/effect/proc_holder/spell/invoked/order/takeaim/cast(list/targets, mob/living/user)
+	. = ..()
+	if(isliving(targets[1]))
+		var/mob/living/target = targets[1]
+		var/msg = user.mind.takeaimtext
+		if(!msg)
+			to_chat(user, span_alert("I must say something to give an order!"))
+			return
+		if(user.job == "Sergeant")
+			if(!target.job == "Man at Arms")
+				to_chat(user, span_alert("I cannot order one not of my ranks!"))
+				return
+		if(target == user)
+			to_chat(user, span_alert("I cannot order myself!"))
+			return
+		user.say("[msg]")
+		target.apply_status_effect(/datum/status_effect/buff/order/takeaim)
+		return TRUE
+	revert_cast()
+	return FALSE
+
+
+
+/obj/effect/proc_holder/spell/invoked/order/onfeet
+	name = "On your feet!"
+	overlay_state = "onfeet"
+
+/obj/effect/proc_holder/spell/invoked/order/onfeet/cast(list/targets, mob/living/user)
+	. = ..()
+	if(isliving(targets[1]))
+		var/mob/living/target = targets[1]
+		var/msg = user.mind.onfeettext
+		if(!msg)
+			to_chat(user, span_alert("I must say something to give an order!"))
+			return
+		if(user.job == "Sergeant")
+			if(!target.job == "Man at Arms")
+				to_chat(user, span_alert("I cannot order one not of my ranks!"))
+				return
+		if(target == user)
+			to_chat(user, span_alert("I cannot order myself!"))
+			return
+		user.say("[msg]")
+		target.apply_status_effect(/datum/status_effect/buff/order/onfeet)
+		if(!(target.mobility_flags & MOBILITY_STAND))
+			target.SetUnconscious(0)
+			target.SetSleeping(0)
+			target.SetParalyzed(0)
+			target.SetImmobilized(0)
+			target.SetStun(0)
+			target.SetKnockdown(0)
+			target.set_resting(FALSE)
+		return TRUE
+	revert_cast()
+	return FALSE
+
+/datum/status_effect/buff/order/onfeet
+	id = "onfeet"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/order/onfeet
+	duration = 30 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/order/onfeet
+	name = "On your feet!"
+	desc = "My officer has ordered me to my feet!"
+	icon_state = "buff"
+
+/datum/status_effect/buff/order/onfeet/on_apply()
+	. = ..()
+	to_chat(owner, span_blue("My officer orders me to my feet!"))
+	ADD_TRAIT(owner, TRAIT_NOPAIN, TRAIT_GENERIC)
+
+/datum/status_effect/buff/order/onfeet/on_remove()
+	REMOVE_TRAIT(owner, TRAIT_NOPAIN, TRAIT_GENERIC)
+	. = ..()
+
+
+/obj/effect/proc_holder/spell/invoked/order/hold
+	name = "Hold!"
+	overlay_state = "hold"
+
+
+/obj/effect/proc_holder/spell/invoked/order/hold/cast(list/targets, mob/living/user)
+	. = ..()
+	if(isliving(targets[1]))
+		var/mob/living/target = targets[1]
+		var/msg = user.mind.holdtext
+		if(!msg)
+			to_chat(user, span_alert("I must say something to give an order!"))
+			return
+		if(user.job == "Sergeant")
+			if(!target.job == "Man at Arms")
+				to_chat(user, span_alert("I cannot order one not of my ranks!"))
+				return
+		if(target == user)
+			to_chat(user, span_alert("I cannot order myself!"))
+			return
+		user.say("[msg]")
+		target.apply_status_effect(/datum/status_effect/buff/order/hold)
+		return TRUE
+	revert_cast()
+	return FALSE
+
+
+/datum/status_effect/buff/order/hold
+	id = "hold"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/order/hold
+	effectedstats = list("endurance" = 2, "constitution" = 2)
+	duration = 1 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/order/hold
+	name = "Hold!"
+	desc = "My officer has ordered me to hold!"
+	icon_state = "buff"
+
+/datum/status_effect/buff/order/hold/on_apply()
+	. = ..()
+	to_chat(owner, span_blue("My officer orders me to hold!"))
+
+#define TARGET_FILTER "target_marked"
+
+/obj/effect/proc_holder/spell/invoked/order/focustarget
+	name = "Focus target!"
+	overlay_state = "focustarget"
+
+/obj/effect/proc_holder/spell/invoked/order/focustarget/cast(list/targets, mob/living/user)
+	. = ..()
+	if(isliving(targets[1]))
+		var/mob/living/target = targets[1]
+		var/msg = user.mind.focustargettext
+		if(!msg)
+			to_chat(user, span_alert("I must say something to give an order!"))
+			return
+		if(target == user)
+			to_chat(user, span_alert("I cannot order myself to be killed!"))
+			return
+		if(HAS_TRAIT(target, TRAIT_CRITICAL_WEAKNESS))
+			to_chat(user, span_alert("They are already vulnerable!"))
+			return
+		user.say("[msg]")
+		target.apply_status_effect(/datum/status_effect/debuff/order/focustarget)
+		return TRUE
+	revert_cast()
+	return FALSE
+
+/datum/status_effect/debuff/order/focustarget
+	id = "focustarget"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/order/focustarget
+	effectedstats = list("fortune" = -2)
+	duration = 1 MINUTES
+	var/outline_colour = "#69050a"
+
+/atom/movable/screen/alert/status_effect/debuff/order/focustarget
+	name = "Targetted"
+	desc = "A officer has marked me for death!"
+	icon_state = "targetted"
+
+/datum/status_effect/debuff/order/focustarget/on_apply()
+	. = ..()
+	var/filter = owner.get_filter(TARGET_FILTER)
+	to_chat(owner, span_alert("I have been marked for death by a officer!"))
+	ADD_TRAIT(owner, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
+	if (!filter)
+		owner.add_filter(TARGET_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 200, "size" = 1))
+	return TRUE
+
+/datum/status_effect/debuff/order/focustarget/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
+	owner.remove_filter(TARGET_FILTER)
+
+
+/obj/effect/proc_holder/spell/invoked/order/focustarget
+	name = "Focus target!"
+	overlay_state = "focustarget"
+
+
+#undef TARGET_FILTER
+
+
+/mob/living/carbon/human/mind/proc/setorders()
+	set name = "Rehearse Orders"
+	set category = "Voice of Command"
+	mind.movemovemovetext = input("Send a message.", "Move! Move! Move!") as text|null
+	if(!mind.movemovemovetext)
+		to_chat(src, "I must rehearse something for this order...")
+		return
+	mind.holdtext = input("Send a message.", "Hold!") as text|null
+	if(!mind.holdtext)
+		to_chat(src, "I must rehearse something for this order...")
+		return
+	mind.takeaimtext = input("Send a message.", "Take aim!") as text|null
+	if(!mind.takeaimtext)
+		to_chat(src, "I must rehearse something for this order...")
+		return
+	mind.onfeettext = input("Send a message.", "On your feet!") as text|null
+	if(!mind.onfeettext)
+		to_chat(src, "I must rehearse something for this order...")
+		return
+	mind.focustargettext = input("Send a message.", "Focus Target!") as text|null
+	if(!mind.focustargettext)
+		to_chat(src, "I must rehearse something for this order...")
+		return
+
+/obj/effect/proc_holder/spell/self/convertrole
+	name = "Recruit Beggar"
+	desc = "Recruit someone to your cause."
+	overlay_state = "recruit_bog"
+	antimagic_allowed = TRUE
+	recharge_time = 100
+	/// Role given if recruitment is accepted
+	var/new_role = "Beggar"
+	/// Faction shown to the user in the recruitment prompt
+	var/recruitment_faction = "Beggars"
+	/// Message the recruiter gives
+	var/recruitment_message = "Serve the beggars, %RECRUIT!"
+	/// Range to search for potential recruits
+	var/recruitment_range = 3
+	/// Say message when the recruit accepts
+	var/accept_message = "I will serve!"
+	/// Say message when the recruit refuses
+	var/refuse_message = "I refuse."
+
+/obj/effect/proc_holder/spell/self/convertrole/cast(list/targets,mob/user = usr)
+	. = ..()
+	var/list/recruitment = list()
+	for(var/mob/living/carbon/human/recruit in (get_hearers_in_view(recruitment_range, user) - user))
+		//not allowed
+		if(!can_convert(recruit))
+			continue
+		recruitment[recruit.name] = recruit
+	if(!length(recruitment))
+		to_chat(user, span_warning("There are no potential recruits in range."))
+		return
+	var/inputty = input(user, "Select a potential recruit!", "[name]") as anything in recruitment
+	if(inputty)
+		var/mob/living/carbon/human/recruit = recruitment[inputty]
+		if(!QDELETED(recruit) && (recruit in get_hearers_in_view(recruitment_range, user)))
+			INVOKE_ASYNC(src, PROC_REF(convert), recruit, user)
+		else
+			to_chat(user, span_warning("Recruitment failed!"))
+	else
+		to_chat(user, span_warning("Recruitment cancelled."))
+
+/obj/effect/proc_holder/spell/self/convertrole/proc/can_convert(mob/living/carbon/human/recruit)
+	//wtf
+	if(QDELETED(recruit))
+		return FALSE
+	//need a mind
+	if(!recruit.mind)
+		return FALSE
+	//only migrants and peasants
+	if(!(recruit.job in GLOB.peasant_positions) && \
+		!(recruit.job in GLOB.yeoman_positions) && \
+		!(recruit.job in GLOB.allmig_positions) && \
+		!(recruit.job in GLOB.mercenary_positions))
+		return FALSE
+	//need to see their damn face
+	if(!recruit.get_face_name(null))
+		return FALSE
+	return TRUE
+
+/obj/effect/proc_holder/spell/self/convertrole/proc/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
+	if(QDELETED(recruit) || QDELETED(recruiter))
+		return FALSE
+	recruiter.say(replacetext(recruitment_message, "%RECRUIT", "[recruit]"), forced = "[name]")
+	var/prompt = alert(recruit, "Do you wish to become a [new_role]?", "[recruitment_faction] Recruitment", "Yes", "No")
+	if(QDELETED(recruit) || QDELETED(recruiter) || !(recruiter in get_hearers_in_view(recruitment_range, recruit)))
+		return FALSE
+	if(prompt != "Yes")
+		if(refuse_message)
+			recruit.say(refuse_message, forced = "[name]")
+		return FALSE
+	if(accept_message)
+		recruit.say(accept_message, forced = "[name]")
+	if(new_role)
+		recruit.job = new_role
+		SEND_SIGNAL(SSdcs, COMSIG_GLOB_ROLE_CONVERTED, recruiter, recruit, new_role)
+	return TRUE
+
+/obj/effect/proc_holder/spell/self/convertrole/guard
+	name = "Recruit Guardsmen"
+	new_role = "Watchman"
+	overlay_state = "recruit_guard"
+	recruitment_faction = "Watchman"
+	recruitment_message = "Serve the town guard, %RECRUIT!"
+	accept_message = "FOR THE CROWN!"
+	refuse_message = "I refuse."
+
+/obj/effect/proc_holder/spell/self/convertrole/guard/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
+	. = ..()
+	if(!.)
+		return
+	recruit.verbs |= /mob/proc/haltyell
