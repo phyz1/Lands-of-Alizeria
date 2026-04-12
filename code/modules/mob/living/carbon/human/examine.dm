@@ -13,7 +13,7 @@
 		// Apply Xylix buff when examining someone with the beautiful trait
 		if(HAS_TRAIT(user, TRAIT_XYLIX) && !user.has_status_effect(/datum/status_effect/buff/xylix_joy))
 			user.apply_status_effect(/datum/status_effect/buff/xylix_joy)
-			to_chat(user, span_info("Their beauty brings a smile to my face, and fortune to my steps!"))
+			to_chat(user, span_info("Эта красота вызывает у меня улыбку и приносит удачу!"))
 	if(HAS_TRAIT(src, TRAIT_UNSEEMLY) && user != src)
 		if(!HAS_TRAIT(user, TRAIT_UNSEEMLY))
 			user.add_stress(/datum/stressevent/unseemly)
@@ -39,9 +39,9 @@
 	var/m2 = "[t_his]"
 	var/m3 = "[t_He] [t_has]"
 	if(user == src)
-		m1 = "I am"
-		m2 = "my"
-		m3 = "I have"
+		m1 = "Я"
+		m2 = "Мой"
+		m3 = "У меня"
 
 	if(isliving(user))
 		var/mob/living/L = user
@@ -49,9 +49,9 @@
 			obscure_name = TRUE
 
 	var/static/list/unknown_names = list(
-		"Unknown",
-		"Unknown Man",
-		"Unknown Woman",
+		"Неизвестный",
+		"Неизвестный мужчина",
+		"Неизвестная женщина",
 	)
 	if(get_face_name() != real_name)
 		obscure_name = TRUE
@@ -60,9 +60,9 @@
 		obscure_name = FALSE
 
 	if(name in unknown_names)
-		. = list(span_info("ø ------------ ø\nThis is <EM>[name]</EM>."))
+		. = list(span_info("ø ------------ ø\nЭто <EM>[name]</EM>."))
 	else if(obscure_name)
-		. = list(span_info("ø ------------ ø\nThis is an unknown <EM>[name]</EM>."))
+		. = list(span_info("ø ------------ ø\nЭто неизвестный <EM>[name]</EM>."))
 	else
 		on_examine_face(user)
 		var/used_name = name
@@ -102,26 +102,26 @@
 		var/display1
 		var/display2 = "[!HAS_TRAIT(usr, TRAIT_OUTLANDER) ? "[social_strata]" : " "]"
 		if(display_as_wanderer)
-			display1 = span_info("ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name].")
+			display1 = span_info("ø ------------ ø\nЭто <EM>[used_name]</EM>, странствующий [race_name].")
 		else if(used_title)
-			display1 = span_info("ø ------------ ø\nThis is <EM>[used_name]</EM>, the [is_returning ? "returning " : ""][race_name] [used_title].")
+			display1 = span_info("ø ------------ ø\nЭто <EM>[used_name]</EM>, [is_returning ? "returning " : ""][race_name] [used_title].")
 		else
-			display1 = span_info("ø ------------ ø\nThis is the <EM>[used_name]</EM>, the [race_name].")
+			display1 = span_info("ø ------------ ø\nЭто <EM>[used_name]</EM>, [race_name].")
 		. = list("[display1] [display2]")
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.dna.species.origin == dna.species.origin && dna.species.region)
-				. += span_info("[capitalize(m2)] [dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "skin tone"] originates in [dna.species.region] of [dna.species.origin].")
+				. += span_info("[capitalize(m2)] [dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "оттенок кожи"] происходит из [dna.species.region] в [dna.species.origin].")
 			else
-				. += span_info("[capitalize(m2)] [dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "skin tone"] originates in [dna.species.origin].")
+				. += span_info("[capitalize(m2)] [dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "оттенок кожи"] происходит из [dna.species.origin].")
 
 		if(HAS_TRAIT(src, TRAIT_WITCH))
 			if(HAS_TRAIT(user, TRAIT_NOBLE) || HAS_TRAIT(user, TRAIT_INQUISITION) || HAS_TRAIT(user, TRAIT_WITCH))
-				. += span_warning("A witch! Their presence brings an unsettling aura.")
+				. += span_warning("Ведьма! Ее присутствие создает тревожную ауру.")
 			else if(HAS_TRAIT(user, TRAIT_COMMIE) || HAS_TRAIT(user, TRAIT_CABAL) || HAS_TRAIT(user, TRAIT_HORDE) || HAS_TRAIT(user, TRAIT_DEPRAVED))
-				. += span_notice("A practitioner of the old ways.")
+				. += span_notice("Сторонник старых традиций.")
 			else
-				. += span_notice("Something about them seems... different.")
+				. += span_notice("Что-то в этом кажется... Другим...")
 
 		if (HAS_TRAIT(src, TRAIT_AVATAR_GRAGGAR))
 			. += "<span class='big' style='color: #8B4513;'>A MARAUDING OGRE!</span>"
@@ -130,20 +130,20 @@
 			. += "<span class='big' style='color: #8B4513;'>DISGRACED KNIGHT!</span>"
 
 		if(GLOB.lord_titles[name])
-			. += span_notice("[m3] been granted the title of \"[GLOB.lord_titles[name]]\".")
+			. += span_notice("[m3] получил титул \"[GLOB.lord_titles[name]]\".")
 
 		if(HAS_TRAIT(src, TRAIT_NOBLE))
 			if(HAS_TRAIT(user, TRAIT_NOBLE))
-				. += span_notice("A fellow noble.")
+				. += span_notice("Ещё один дворянин")
 			else
-				. += span_notice("A noble!")
+				. += span_notice("Дворянин")
 
 		if(HAS_TRAIT(src, TRAIT_CHOSEN))
-			. += span_notice("The ordained voice of the Ten!")
+			. += span_notice("Голос кодекса!")
 
 		// Leashed pet status effect message
 		if(has_status_effect(/datum/status_effect/leash_pet))
-			. += span_warning("A leash is hooked to [p_their()] collar. [m1] being led like a pet.")
+			. += span_warning("Поводок пристегнут к ошейнику [p_their()]. [m1] теперь, как домашний питомец.")
 
 		// Knotted effect message
 		if(has_status_effect(/datum/status_effect/knot_tied))
@@ -155,23 +155,23 @@
 		if(observer_privilege || get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
 			creampie = has_status_effect(/datum/status_effect/facial/internal)
 		if(facial && creampie)
-			var/facial_wet_or_dry = !facial?.has_dried_up ? "glazed" : "plastered"
-			var/creampie_wet_or_dry = !creampie?.has_dried_up ? "dripping out" : "stained with"
-			var/we_wet_or_dry = facial?.has_dried_up && creampie?.has_dried_up ? "dried cum" : "cum" // only show dried if both status are set to dry
+			var/facial_wet_or_dry = !facial?.has_dried_up ? "покрыто" : "покрыто"
+			var/creampie_wet_or_dry = !creampie?.has_dried_up ? "капает" : "источает"
+			var/we_wet_or_dry = facial?.has_dried_up && creampie?.has_dried_up ? "засохшая сперма" : "сперма" // only show dried if both status are set to dry
 			if(user != src && isliving(user))
 				var/mob/living/L = user
-				. += (L.STAPER >= 8 && L.STAINT >= 5) ? span_aiprivradio("[m1] [facial_wet_or_dry] and [creampie_wet_or_dry] [we_wet_or_dry]!") : span_warning("[m1] covered in something glossy!")
+				. += (L.STAPER >= 8 && L.STAINT >= 5) ? span_aiprivradio("[m1] [facial_wet_or_dry] и [creampie_wet_or_dry] [we_wet_or_dry]!") : span_warning("[m1] покрыто чем-то блестящим!")
 			else
-				. += span_aiprivradio("[m1] [facial_wet_or_dry] and [creampie_wet_or_dry] [we_wet_or_dry]!")
+				. += span_aiprivradio("[m1] [facial_wet_or_dry] и [creampie_wet_or_dry] [we_wet_or_dry]!")
 		else if(facial)
-			var/wet_or_dry = !facial?.has_dried_up ? "glazed with cum" : "plastered with dried cum"
+			var/wet_or_dry = !facial?.has_dried_up ? "покрыто спермой" : "покрыто засохшей спермой"
 			if(user != src && isliving(user))
 				var/mob/living/L = user
 				. += (L.STAPER >= 8 && L.STAINT >= 5) ? span_aiprivradio("[m1] [wet_or_dry]!") : span_warning("[m1] smeared with something glossy!")
 			else
 				. += span_aiprivradio("[m1] [wet_or_dry]!")
 		else if(creampie)
-			var/wet_or_dry = !creampie?.has_dried_up ? "dripping out cum" : "stained with dried cum"
+			var/wet_or_dry = !creampie?.has_dried_up ? "источает сперму" : "испачканна засохшей спермой"
 			if(user != src && isliving(user))
 				var/mob/living/L = user
 				. += (L.STAPER >= 8 && L.STAINT >= 5) ? span_aiprivradio("[m1] [wet_or_dry]!") : span_warning("[m1] letting out some glossy stuff!")
@@ -179,15 +179,15 @@
 				. += span_aiprivradio("[m1] [wet_or_dry]!")
 
 		if (HAS_TRAIT(src, TRAIT_OUTLANDER) && !HAS_TRAIT(user, TRAIT_OUTLANDER))
-			. += span_phobia("A foreigner...")
+			. += span_phobia("Мигрант...")
 
 		if(HAS_TRAIT(src, TRAIT_DISGRACED_NOBLE))
 			if(HAS_TRAIT(user, TRAIT_NOBLE))
-				. += span_phobia("A disgraced member of the nobility...")
+				. += span_phobia("Упавший и опозоренный представитель дворянства......")
 			else
-				. += span_notice("A disgraced noble.")
+				. += span_notice("Опозоренный дворянин")
 		if(HAS_TRAIT(src, TRAIT_DEADITE))
-			. += span_userdanger("DEADITE!")
+			. += span_userdanger("ХОДЯЧИЙ МЕРТВЕЦ!")
 
 		//For tennite schism god-event
 		if(length(GLOB.tennite_schisms))
@@ -201,48 +201,48 @@
 					. += (user_side == mob_side) ? span_notice("Fellow [their_god.name] supporter!") : span_userdanger("Vile [their_god.name] supporter!")
 
 		if(name in GLOB.excommunicated_players)
-			. += span_userdanger("HERETIC! SHAME!")
+			. += span_userdanger("ЕРЕТИК! ПОЗОР!")
 
 		if(name in GLOB.outlawed_players)
-			. += span_userdanger("OUTLAW!")
+			. += span_userdanger("В РОЗЫСКЕ!")
 
 		if(HAS_TRAIT(user, TRAIT_JUSTICARSIGHT) && !HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
 			for(var/datum/bounty/b in GLOB.head_bounties) //I hate this.
 				if(b.target == real_name)
-					. += span_syndradio("[m3] a bounty on [m2] head of [b.amount] mammon for [b.reason], issued by [b.employer].")
+					. += span_syndradio("[m3] награда за [m2] голову [b.amount] медяков, за [b.reason], выданно [b.employer].")
 					break
 
 		if(name in GLOB.court_agents)
 			var/datum/job/J = SSjob.GetJob(user.mind?.assigned_role)
 			if(J?.department_flag & GARRISON || J?.department_flag & NOBLEMEN)
-				. += span_greentext("<b>[m1] an agent of the court!</b>")
+				. += span_greentext("<b>[m1] агент дворца!</b>")
 
 		if(user != src && !HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
 			if(has_flaw(/datum/charflaw/addiction/lovefiend) && user.has_flaw(/datum/charflaw/addiction/lovefiend))
-				. += span_aiprivradio("[m1] as lovesick as I.")
+				. += span_aiprivradio("[m1] такой же любвеобильный, как и я..")
 
 			if(has_flaw(/datum/charflaw/addiction/junkie) && user.has_flaw(/datum/charflaw/addiction/junkie))
-				. += span_deadsay("[m1] carrying the same dust marks on their nose as I.")
+				. += span_deadsay("На носу [m1] такие же следы пыли, как и у меня.")
 
 			if(has_flaw(/datum/charflaw/addiction/smoker) && user.has_flaw(/datum/charflaw/addiction/smoker))
-				. += span_suppradio("[m1] enveloped by the familiar, faint stench of smoke. I know it well.")
+				. += span_suppradio("[m1] окутан знакомым, едва уловимым запахом дыма. Я его хорошо знаю.")
 
 			if(has_flaw(/datum/charflaw/addiction/alcoholic) && user.has_flaw(/datum/charflaw/addiction/alcoholic))
-				. += span_syndradio("[m1] struggling to hide the hangover, and the stench of spirits. We're alike.")
+				. += span_syndradio("[m1] изо всех сил пытается скрыть похмелье и запах алкоголя. Мы похожи.")
 
 			if(has_flaw(/datum/charflaw/paranoid) && user.has_flaw(/datum/charflaw/paranoid))
 				if(ishuman(user))
 					var/mob/living/carbon/human/H = user
 					if(dna.species.name == H.dna.species.name)
-						. += span_nicegreen("[m1] privy to the dangers of all these strangers around us. [m1] just as afraid as I am.")
+						. += span_nicegreen("[m1] осведомлены об опасностях, исходящих от всех этих незнакомцев вокруг нас. [m1] боится также как и я.")
 					else
-						. += span_nicegreen("[m1] one of the good ones. [m1] just as afraid as I am.")
+						. += span_nicegreen("[m1] один из хороших. [m1] боится также как и я!")
 			if(has_flaw(/datum/charflaw/masochist) && user.has_flaw(/datum/charflaw/addiction/sadist))
-				. += span_secradio("[m1] marked by scars inflicted for pleasure. A delectable target for my urges.")
+				. += span_secradio("[m1] отмечен шрамами, нанесенными ради удовольствия. Восхитительная мишень для моих желаний.")
 			if(has_flaw(/datum/charflaw/addiction/sadist) && user.has_flaw(/datum/charflaw/masochist))
-				. += span_secradio("[m1] looking with eyes filled with a desire to inflict pain. So exciting.")
+				. += span_secradio("[m1] смотрит глазами, полными желания причинить боль. Так волнующе.")
 			if(HAS_TRAIT(user, TRAIT_EMPATH) && HAS_TRAIT(src, TRAIT_PERMAMUTE))
-				. += span_notice("[m1] lacks a voice. [m1] is a mute!")
+				. += span_notice("[m1] не имеет голоса. [m1] немой!")
 
 		var/villain_text = get_villain_text(user)
 		if(villain_text)
@@ -255,7 +255,7 @@
 			. +=span_notice(inquisition_text)
 
 		if(leprosy == 1)
-			. += span_necrosis("A LEPER...")
+			. += span_necrosis("ПРОКАЖЁННЫЙ...")
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -267,20 +267,20 @@
 		if (HAS_TRAIT(src, TRAIT_BEAUTIFUL))
 			switch (pronouns)
 				if (HE_HIM, SHE_HER_M)
-					. += span_beautiful_masc("[m1] handsome!")
+					. += span_beautiful_masc("[m1] прекрасен!")
 				if (SHE_HER, HE_HIM_F)
-					. += span_beautiful_fem("[m1] beautiful!")
+					. += span_beautiful_fem("[m1] очень красива!")
 				if (THEY_THEM, THEY_THEM_F, IT_ITS)
-					. += span_beautiful_nb("[m1] good-looking!")
+					. += span_beautiful_nb("[m1] хорошо выглядит!")
 
 		if (HAS_TRAIT(src, TRAIT_UNSEEMLY))
 			switch (pronouns)
 				if (HE_HIM, SHE_HER_M)
-					. += span_redtext("[m1] revolting!")
+					. += span_redtext("[m1] ужасен!")
 				if (SHE_HER, HE_HIM_F)
-					. += span_redtext("[m1] repugnant!")
+					. += span_redtext("[m1] отвратительна!")
 				if (THEY_THEM, THEY_THEM_F, IT_ITS)
-					. += span_redtext("[m1] repulsive!")
+					. += span_redtext("[m1] отвратительно!")
 
 		// Shouldn't be able to tell they are unrevivable through a mask as a Necran
 		if(HAS_TRAIT(src, TRAIT_DNR) && src != user)
@@ -581,24 +581,24 @@
 		// Damage
 		switch(temp)
 			if(5 to 25)
-				msg += "[m1] a little wounded."
+				msg += "[m1] слегка ранен."
 			if(25 to 50)
-				msg += "[m1] wounded."
+				msg += "[m1] ранен."
 			if(50 to 100)
-				msg += "<B>[m1] severely wounded.</B>"
+				msg += "<B>[m1] серьёзно ранен.</B>"
 			if(100 to INFINITY)
-				msg += span_danger("[m1] gravely wounded.")
+				msg += span_danger("[m1] очень сильно ранен.")
 
 	// Blood volume
 	switch(blood_volume)
 		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
-			msg += span_artery("<B>[m1] extremely pale and sickly.</B>")
+			msg += span_artery("<B>[m1] крайне бледный и болезненный</B>")
 		if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-			msg += span_artery("<B>[m1] very pale.</B>")
+			msg += span_artery("<B>[m1] крайне бледный.</B>")
 		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
-			msg += span_artery("[m1] pale.")
+			msg += span_artery("[m1] бледный.")
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
-			msg += span_artery("[m1] a little pale.")
+			msg += span_artery("[m1] чуть бледный.")
 
 	// Bleeding
 	var/bleed_rate = get_bleed_rate()
@@ -607,13 +607,13 @@
 			var/bleed_wording = "bleeding"
 			switch(bleed_rate)
 				if(0 to 1)
-					bleed_wording = "bleeding slightly"
+					bleed_wording = "чуть кровоточит"
 				if(1 to 5)
-					bleed_wording = "bleeding"
+					bleed_wording = "кровоточит"
 				if(5 to 10)
-					bleed_wording = "bleeding a lot"
+					bleed_wording = "сильно кровоточит"
 				if(10 to INFINITY)
-					bleed_wording = "bleeding profusely"
+					bleed_wording = "очень сильно кровоточит"
 			var/list/bleeding_limbs = list()
 			var/list/bleed_zones = list( //static removed, bad?
 				BODY_ZONE_HEAD,
@@ -667,11 +667,11 @@
 
 	//Grabbing
 	if(pulledby && pulledby.grab_state)
-		msg += "[m1] being grabbed by [pulledby]."
+		msg += "[m1] захвачен [pulledby]."
 
 	//Nutrition and Thirst
 	if(nutrition < (NUTRITION_LEVEL_STARVING - 50))
-		msg += "[m1] looking emaciated."
+		msg += "[m1] выгляжу истощённым."
 //	else if(nutrition >= NUTRITION_LEVEL_FAT)
 //		if(user.nutrition < NUTRITION_LEVEL_STARVING - 50)
 //			msg += "[t_He] [t_is] plump and delicious looking - Like a fat little piggy. A tasty piggy."
@@ -681,24 +681,24 @@
 	if(HAS_TRAIT(user, TRAIT_EXTEROCEPTION))
 		switch(nutrition)
 			if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
-				msg += "[m1] looking peckish."
+				msg += "[m1] выглядит чуть голодным"
 			if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
-				msg += "[m1] looking hungry."
+				msg += "[m1] выглядит голодным"
 			if(NUTRITION_LEVEL_STARVING-50 to NUTRITION_LEVEL_STARVING)
-				msg += "[m1] looking starved."
+				msg += "[m1] выглядит голодающим"
 		switch(hydration)
 			if(HYDRATION_LEVEL_THIRSTY to HYDRATION_LEVEL_SMALLTHIRST)
-				msg += "[m1] looking like [m2] mouth is dry."
+				msg += "[m1] похоже что [m2] рот сухой"
 			if(HYDRATION_LEVEL_DEHYDRATED to HYDRATION_LEVEL_THIRSTY)
-				msg += "[m1] looking thirsty for a drink."
+				msg += "[m1] выглядит будто хочет пить"
 			if(0 to HYDRATION_LEVEL_DEHYDRATED)
-				msg += "[m1] looking parched."
+				msg += "[m1] выглядит обезвоженным"
 
 	//Fire/water stacks
 	if(has_status_effect(/datum/status_effect/fire_handler))
-		msg += "[m1] covered in something flammable."
+		msg += "[m1] покрыт чем то воспламиняющимся!."
 	if(has_status_effect(/datum/status_effect/fire_handler/wet_stacks))
-		msg += "[m1] soaked."
+		msg += "[m1] мокрый."
 
 	//Status effects
 	var/list/status_examines = status_effect_examines()
@@ -727,40 +727,40 @@
 			//Drunkenness
 			switch(drunkenness)
 				if(11 to 21)
-					msg += "[m1] slightly flushed."
+					msg += "[m1] чуть красен."
 				if(21.01 to 41) //.01s are used in case drunkenness ends up to be a small decimal
-					msg += "[m1] flushed."
+					msg += "[m1] красен."
 				if(41.01 to 51)
-					msg += "[m1] quite flushed and [m2] breath smells of alcohol."
+					msg += "[m1] довольно сильно покрасневший и [m2] рот источает запах алкоголя"
 				if(51.01 to 61)
-					msg += "[m1] very flushed, with breath reeking of alcohol."
+					msg += "[m1] очень сильно покрасневший, и сильно пахнет алкоголем."
 				if(61.01 to 91)
-					msg += "[m1] looking like a drunken mess."
+					msg += "[m1] выглядит как пьяная развалина."
 				if(91.01 to INFINITY)
-					msg += "[m1] a shitfaced, slobbering wreck."
+					msg += "[m1] пьяная, слюнёвая, бухая развалина."
 
 			//Stress
 			var/stress = get_stress_amount()
 			if(HAS_TRAIT(user, TRAIT_EMPATH))
 				switch(stress)
 					if(20 to INFINITY)
-						msg += "[m1] extremely stressed."
+						msg += "[m1] под сильнейшим стрессом"
 					if(10 to 19)
-						msg += "[m1] very stressed."
+						msg += "[m1] под сильным стрессом"
 					if(1 to 9)
-						msg += "[m1] a little stressed."
+						msg += "[m1] чуть напрёжен"
 					if(-9 to 0)
-						msg += "[m1] not stressed."
+						msg += "[m1] нормальный."
 					if(-19 to -10)
-						msg += "[m1] somewhat at peace."
+						msg += "[m1] пребываю в некотором спокойствии."
 						if(user != src)
 							user.add_stress(/datum/stressevent/empath_happy)
 					if(-20 to INFINITY)
-						msg += "[m1] at peace inside."
+						msg += "[m1] покой внутри."
 						if(user != src)
 							user.add_stress(/datum/stressevent/empath_superhappy)
 			else if(stress > 10)
-				msg += "[m3] stress all over [m2] face."
+				msg += "[m3] стресс проявляется на лице"
 
 		//Jitters
 		switch(jitteriness)
@@ -776,15 +776,15 @@
 		else
 			if(stat >= UNCONSCIOUS)
 				if(!(mob_biotypes & MOB_UNDEAD))
-					msg += "[m1] [IsSleeping() ? "sleeping" : "unconscious"]."
+					msg += "[m1] [IsSleeping() ? "спит" : "без сознания"]."
 				else
-					msg += "[m1] in torpor."
+					msg += "[m1] в торпоре."
 			else if(eyesclosed)
-				msg += "[capitalize(m2)] eyes are closed."
+				msg += "[capitalize(m2)] глаза закрыты."
 			else if(has_status_effect(/datum/status_effect/debuff/sleepytime))
-				msg += "[m1] looking a little tired."
+				msg += "[m1] выгляжу немного уставшим"
 	else
-		msg += "[m1] unconscious."
+		msg += "[m1] без сознания."
 //		else
 //			if(HAS_TRAIT(src, TRAIT_DUMB))
 //				msg += "[m3] a stupid expression on [m2] face."
@@ -822,15 +822,15 @@
 		var/strength_diff = final_str - L.STASTR
 		switch(strength_diff)
 			if(5 to INFINITY)
-				. += span_warning("<B>[t_He] look[p_s()] much stronger than I.</B>")
+				. += span_warning("<B>Он выглядит намного сильнее чем я.</B>")
 			if(1 to 5)
-				. += span_warning("[t_He] look[p_s()] stronger than I.")
+				. += span_warning("Он выглядит сильнее чем я.")
 			if(0)
-				. += "[t_He] look[p_s()] about as strong as I."
+				. += "Он выглядит таким же сильным как я"
 			if(-5 to -1)
-				. += span_warning("[t_He] look[p_s()] weaker than I.")
+				. += span_warning("Он выглядит слабее меня")
 			if(-INFINITY to -5)
-				. += span_warning("<B>[t_He] look[p_s()] much weaker than I.</B>")
+				. += span_warning("<B>Он выглядит намного слабее меня.</B>")
 
 	if((HAS_TRAIT(user,TRAIT_INTELLECTUAL)))
 		var/mob/living/L = user
@@ -840,20 +840,20 @@
 		var/int_diff = final_int - L.STAINT
 		switch(int_diff)
 			if(5 to INFINITY)
-				. += span_revenwarning("[t_He] look[p_s()] far more intelligent than I.")
+				. += span_revenwarning("Он выглядит намного умнее меня.")
 			if(2 to 5)
-				. += span_revenminor("[t_He] look[p_s()] smarter than I.")
+				. += span_revenminor("Он выглядит умнее меня.")
 			if(-1 to 1)
-				. += "[t_He] look[p_s()] about as intelligent as I."
+				. += "Оне выглядит[p_s()] таким же умным как я."
 			if(-5 to -2)
-				. += span_revennotice("[t_He] look[p_s()] dumber than I.")
+				. += span_revennotice("Он выглядит тупее меня.")
 			if(-INFINITY to -5)
-				. += span_revennotice("[t_He] look[p_s()] as blunt-minded as a rock.")
+				. += span_revennotice("Он выглядит как тупой камен по сравнению со мной.")
 
 	if(maniac)
 		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
 		if(heart?.inscryption && (heart.inscryption_key in maniac.key_nums))
-			. += span_danger("[t_He] know[p_s()] [heart.inscryption_key], I AM SURE OF IT!")
+			. += span_danger("ОН знает[p_s()] [heart.inscryption_key], Я УВЕРЕН В ЭТОМ!")
 
 /* includes nsfw preview
 	if(!obscure_name || client?.prefs.masked_examine)
@@ -883,12 +883,12 @@
 				if(!bodypart)
 					continue
 				. += "<a href='?src=[REF(src)];inspect_limb=[zone]'>Inspect [parse_zone(zone)]</a>"
-			. += "<a href='?src=[REF(src)];check_hb=1'>Check Heartbeat</a>"
+			. += "<a href='?src=[REF(src)];check_hb=1'>Проверить сердцебиение</a>"
 		else
 			var/checked_zone = check_zone(user.zone_selected)
 			var/heartbeat
 			if(!(mobility_flags & MOBILITY_STAND) && user != src && (user.zone_selected == BODY_ZONE_CHEST))
-				heartbeat = "<a href='?src=[REF(src)];check_hb=1'>Listen to Heartbeat</a>"
+				heartbeat = "<a href='?src=[REF(src)];check_hb=1'>Слушает сердцебиение</a>"
 			medical_text = "[heartbeat ? "[heartbeat] | " : ""]<a href='?src=[REF(src)];inspect_limb=[checked_zone]'>Inspect [parse_zone(checked_zone)]</a>"
 	if(medical_text)
 		. += medical_text
@@ -913,7 +913,7 @@
 						if(I.associated_skill)
 							src_skill = I.associated_skill
 					var/skilldiff = user.get_skill_level(user_skill) - get_skill_level(src_skill)
-					. += "<font size = 3><i>[skilldiff_report(skilldiff)] in my wielded skill than they are in theirs.</i></font>"
+					. += "<font size = 3><i>[skilldiff_report(skilldiff)] Я обладаю большим мастерством, чем оно.</i></font>"
 
 	var/showassess = FALSE
 	if(ishuman(user))
@@ -924,17 +924,17 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(get_dist(src, H) <= ((2 + clamp(floor(((H.STAPER - 10))),-1, 4)) + HAS_TRAIT(user, TRAIT_INTELLECTUAL)))
-			. += "<a href='?src=[REF(src)];task=assess;'>Assess</a>"
+			. += "<a href='?src=[REF(src)];task=assess;'>Оценить</a>"
 
 	var/flavorcheck = FALSE // to avoid duplicating the below checks a little later
 	if((!obscure_name || client?.prefs.masked_examine) && (flavortext || headshot_link || ooc_notes))
 		flavorcheck = TRUE
 	if(flavorcheck)
-		. += "<a href='?src=[REF(src)];task=view_headshot;'>Examine closer</a> [showassess ? " | <a href='?src=[REF(src)];task=assess;'>Assess</a>" : ""]"
+		. += "<a href='?src=[REF(src)];task=view_headshot;'>Приглядеться</a> [showassess ? " | <a href='?src=[REF(src)];task=assess;'>Assess</a>" : ""]"
 		//tiny picture when you are not examining closer, shouldnt take too much space.
 	/// Rumours & Gossip
 	if((!obscure_name) && (length(rumour)) || ((HAS_TRAIT(user, TRAIT_NOBLE) || HAS_TRAIT(user, TRAIT_ROYALSERVANT)) || observer_privilege && length(gossip)))
-		. += "<a href='?src=[REF(src)];task=view_rumours_gossip;'>Recall Rumours & Gossip</a>"
+		. += "<a href='?src=[REF(src)];task=view_rumours_gossip;'>Вспомнить сплетни и слухи</a>"
 
 	var/list/lines
 	if((get_face_name() != real_name) && !observer_privilege)
@@ -1055,15 +1055,15 @@
 	if(mind)
 		if(mind.special_role == "Bandit")
 			if(HAS_TRAIT(examiner, TRAIT_COMMIE))
-				villain_text = span_notice("Free man!")
+				villain_text = span_notice("Свободный человек!")
 			if(HAS_TRAIT(src,TRAIT_KNOWNCRIMINAL))
-				villain_text = span_userdanger("BANDIT!")
+				villain_text = span_userdanger("БАНДИТ!")
 		if(mind.special_role == "Vampire Lord")
 			var/datum/antagonist/vampire/VD = mind.has_antag_datum(/datum/antagonist/vampire)
 			if(!SEND_SIGNAL(VD.owner, COMSIG_DISGUISE_STATUS))
-				villain_text += span_userdanger("A MONSTER!")
+				villain_text += span_userdanger("МОНСТР!")
 		if(mind.assigned_role == "Lunatic")
-			villain_text += span_userdanger("LUNATIC!")
+			villain_text += span_userdanger("ЛУНАТИК!")
 
 	return villain_text
 

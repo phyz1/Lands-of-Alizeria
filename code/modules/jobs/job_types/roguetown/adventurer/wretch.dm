@@ -8,7 +8,7 @@
 	spawn_positions = 0
 	allowed_races = RACES_ALL_KINDS
 	disallowed_races = /datum/species/ogre
-	tutorial = "Somewhere in your lyfe, you fell to the wrong side of civilization. Hounded by the consequences of your actions, you now threaten the peace of those who still heed the authority that condemned you."
+	tutorial = "Где-то в своей жизни ты оказался не на той стороне цивилизации. Преследуемый последствиями своих поступков, ты теперь угрожаешь покою тех, кто всё ещё подчиняется власти, что осудила тебя."
 	outfit = null
 	outfit_female = null
 	display_order = JDO_WRETCH

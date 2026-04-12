@@ -1,7 +1,6 @@
 /datum/advclass/woodcutter
 	name = "Woodcutter"
-	tutorial = "You are a strong Lumberjack, armed with an axe, you can gather wood \
-	either for yourself, or for others. You are a novice carpenter too, so you can bend wood into some items you need, and chop it efficiently"
+	tutorial = "Ты опытный лесоруб. Вооружённый топором, ты можешь добывать древесину — для себя или для других. Ты также начинающий плотник, так что умеешь гнуть дерево, чтобы сделать некоторые нужные вещи."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/woodcutter

@@ -1,6 +1,6 @@
 /datum/advclass/fisher
 	name = "Fisher"
-	tutorial = "You are a fisherman, with your bag of bait and your fishing rod, you are one of few who can reliably get a stable source of meat around here"
+	tutorial = "Ты рыбак. С мешком наживки и удочкой ты один из немногих, кто может надежно добывать стабильный источник еды в этих краях."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/fisher

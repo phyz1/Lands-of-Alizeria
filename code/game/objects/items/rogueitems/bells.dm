@@ -26,7 +26,7 @@
 
 	for(var/mob/M in view(10, src.loc))
 		if(M.client)
-			to_chat(M, span_notice("The handheld bell rings sharply through the area."))
+			to_chat(M, span_notice("Звон разносится по всей округе."))
 
 	user.visible_message(span_notice("[user] rings [src]."))
 	ringing = TRUE
@@ -105,14 +105,14 @@
 
 		var/distance = get_dist(player, origin_turf)
 		if(distance <= 7)
-			to_chat(player, span_notice("The church bell rings, echoing solemnly through the area."))
+			to_chat(player, span_notice("Церковный колокол звонит, и его звон разносится по округе."))
 			continue
 		if(distance <= 150)
 			to_chat(player, span_notice("The church bell rings, echoing solemnly through the area."))
 			player.playsound_local(get_turf(player), 'sound/misc/bell.ogg', 35, FALSE, pressure_affected = FALSE)
 			continue
 
-		to_chat(player, span_notice("The church bell rings, echoing distantly from afar."))
+		to_chat(player, span_notice("Звон церковного колокола, эхом разносившийся издалека."))
 		player.playsound_local(get_turf(player), 'sound/misc/bell.ogg', 35, FALSE, pressure_affected = FALSE)
 
 

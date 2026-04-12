@@ -1,6 +1,6 @@
 /datum/advclass/wretch/lunacyembracer
 	name = "Lunacy Embracer"
-	tutorial = "You have rejected and terrorized civilization in the name of nature. You run wild under the moon, a terror to the townsfolk and a champion of Dendor's wild domain."
+	tutorial = "Ты отверг цивилизацию и терроризировал её во имя природы. Ты бежишь на свободе под луной, ужас для горожан и поборник дикого владения Дендора."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_GOLEM
 	min_pq = 30 //less dogshit cryptids please 

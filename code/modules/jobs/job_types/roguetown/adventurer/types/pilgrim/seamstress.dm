@@ -1,6 +1,6 @@
 /datum/advclass/seamstress
 	name = "Seamster"
-	tutorial = "You know your trade by the passage of a needle through cloth and leather alike. Mend and sew garments for the townsfolk - Coats, pants, hats, hoods, and so much more. So what if you overcharge? You're the reason everyone looks good in the first place."
+	tutorial = "Ты знаешь своё ремесло так, как игла проходит через ткань и кожу. Шей и чини одежду для горожан: пальто, штаны, шляпы, капюшоны и многое другое. Ну и что, если ты завышаешь цену? Это ведь ты причина того, что все вообще хорошо выглядят."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/seamstress

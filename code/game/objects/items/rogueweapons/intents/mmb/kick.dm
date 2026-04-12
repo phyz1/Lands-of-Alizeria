@@ -44,7 +44,7 @@
 		sleep(mmb_intent.swingdelay)
 		if(M.has_status_effect(/datum/status_effect/buff/clash) && ishuman(M))
 			var/mob/living/carbon/human/HT = M
-			HT.bad_guard(span_warning("The kick throws my stance off!"))
+			HT.bad_guard(span_warning("Пинок нарушает моё равновесие!"))
 		if(QDELETED(src) || QDELETED(M))
 			return FALSE
 		if(!M.Adjacent(src))
@@ -76,7 +76,7 @@
 		return FALSE
 	if(IsOffBalanced())
 		if(do_message)
-			to_chat(src, span_warning("I haven't regained my balance yet."))
+			to_chat(src, span_warning("Я ещё не восстановил равновесие"))
 		return FALSE
 	if(QDELETED(src) || QDELETED(A))
 		return FALSE

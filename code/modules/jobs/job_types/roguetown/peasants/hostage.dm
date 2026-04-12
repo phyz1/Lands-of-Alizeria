@@ -8,7 +8,7 @@
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	tutorial = "You're too valuable to outright kill yet not a free person. You either messed up really bad or got very unlucky. Either way, the bandits have held you hostage until your ransom is paid, as if that would ever happen. Might as well start praying to whatever god you find solace in."
+	tutorial = "Ты слишком ценен, чтобы тебя просто убить, но ты не свободный человек. Ты либо сильно облажался, либо тебе сильно не повезло. Так или иначе, бандиты держат тебя в заложниках, пока не будет выплачен выкуп — как будто это вообще когда-нибудь случится. Можешь начинать молиться любому богу, в котором находишь утешение."
 
 	outfit = /datum/outfit/job/roguetown/hostage
 	bypass_jobban = TRUE

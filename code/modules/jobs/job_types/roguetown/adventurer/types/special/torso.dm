@@ -1,6 +1,6 @@
 /datum/advclass/torso
 	name = "Torso"
-	tutorial = "Some horrible accident in the forest away all of your limbs!\nSurvival will be a true TRIUMPH."
+	tutorial = "Какая-то ужасная случайность в лесу лишила тебя всех конечностей! Выживание станет настоящим ТРИУМФОМ."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/torso

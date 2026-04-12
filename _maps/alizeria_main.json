@@ -3,11 +3,15 @@
     "map_path": "map_files/alizeria",
     "map_file": [
     "alizeria_main.dmm",
+    "iceisland.dmm",
+    "zport.dmm",
     "yshel.dmm",
     "most2.dmm"
     ],
 	"traits": [
 	{"Name": "Alizeria","Up": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Down": true},
+	{"Name": "Iceland","Up": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Down": true},
+	{"Name": "Zport","Up": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Down": true},
 	{"Name": "Yshel","Up": true}, {"Up": true, "Down": true}, {"Down": true},
 	{"Name": "Most", "Up": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Up": true, "Down": true}, {"Down": true}
 	],

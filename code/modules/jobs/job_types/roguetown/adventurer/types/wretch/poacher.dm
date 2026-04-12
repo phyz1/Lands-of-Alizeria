@@ -1,6 +1,6 @@
 /datum/advclass/wretch/poacher
 	name = "Poacher"
-	tutorial = "You have rejected society and its laws, choosing life in the wilderness instead. Simple thieving highwayman or freedom fighter, you take from those who have and give to the have-nots. Fancy, how the latter includes yourself!"
+	tutorial = "Ты отверг общество и его законы, выбрав жизнь в дикой глуши. Простой разбойник с большой дороги или борец за свободу — ты забираешь у тех, кто имеет, и отдаёшь неимущим. Забавно, что к последним относишься и ты сам!"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/wretch/poacher

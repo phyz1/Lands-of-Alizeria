@@ -3,7 +3,7 @@
 /datum/intent/sword/cut
 	name = "cut"
 	icon_state = "incut"
-	attack_verb = list("cuts", "slashes")
+	attack_verb = list("режет", "секёт")
 	animname = "cut"
 	blade_class = BCLASS_CUT
 	chargetime = 0
@@ -26,7 +26,7 @@
 /datum/intent/sword/thrust
 	name = "stab"
 	icon_state = "instab"
-	attack_verb = list("stabs")
+	attack_verb = list("тычет")
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
@@ -41,7 +41,7 @@
 /datum/intent/sword/strike
 	name = "pommel strike"
 	icon_state = "instrike"
-	attack_verb = list("pommel strikes", "hilt strikes")
+	attack_verb = list("бьёт рукояткой", "ударяет рукояткой")
 	animname = "strike"
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
@@ -73,7 +73,7 @@
 /datum/intent/sword/chop
 	name = "chop"
 	icon_state = "inchop"
-	attack_verb = list("chops", "hacks")
+	attack_verb = list("рубит", "разрубает")
 	animname = "chop"
 	blade_class = BCLASS_CHOP
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')

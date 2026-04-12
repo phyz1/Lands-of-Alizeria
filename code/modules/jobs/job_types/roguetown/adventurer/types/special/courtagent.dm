@@ -5,7 +5,7 @@
 	total_positions = 0
 	spawn_positions = 0
 	round_contrib_points = 2
-	tutorial = "Whether acquired by merit, shrewd negotiation or fulfilled bounties, you have found yourself under the underhanded employ of the Hand. Fulfill desires and whims of the court that they would rather not be publicly known. Your position is anything but secure, and any mistake can leave you disowned and charged like the petty criminal are. Garrison and Court members know who you are."
+	tutorial = "Будь то заслугами, хитрыми переговорами или выполненными заказами, ты оказался в тайном подчинении у десницы. Исполняй желания и прихоти двора, которые они предпочли бы не разглашать. Твоё положение далеко не надёжное, и любая ошибка может привести к тому, что от тебя отрекутся и обвинят, как обычного преступника. Члены гарнизона и двора знают, кто ты."
 	min_pq = 5
 	job_reopens_slots_on_death = FALSE
 	always_show_on_latechoices = FALSE

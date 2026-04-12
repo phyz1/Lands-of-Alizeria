@@ -10,6 +10,7 @@
 #define THREAT_REGION_SCARLET_COAST "Scarlet Coast"
 #define THREAT_REGION_MOUNT_DECAP "Mount Decapitation"
 #define THREAT_REGION_TERRORBOG "Terrorbog"
+#define THREAT_REGION_ICELAND "Iceland"
 
 #define LOWPOP_THRESHOLD 30 // When do we give highpop tick?
 // Subsystem meant to handle regional threat level
@@ -22,10 +23,10 @@ SUBSYSTEM_DEF(regionthreat)
 	// The first four regions are meant to be "tameable" for towner purposes
 	var/list/threat_regions = list(
 		new /datum/threat_region(
-			_region_name = THREAT_REGION_BLACK_BASIN, 
+			_region_name = THREAT_REGION_BLACK_BASIN,
 			_latent_ambush = DANGER_LOW_FLOOR,
 			_min_ambush = DANGER_SAFE_FLOOR,
-			_max_ambush = DANGER_DANGEROUS_LIMIT, // Let's not go DIRE no matter what, in the future 
+			_max_ambush = DANGER_DANGEROUS_LIMIT, // Let's not go DIRE no matter what, in the future
 			_fixed_ambush = FALSE,
 			_lowpop_tick = 1,
 			_highpop_tick = 1,
@@ -41,6 +42,15 @@ SUBSYSTEM_DEF(regionthreat)
 		),
 		new /datum/threat_region(
 			_region_name = THREAT_REGION_TERRORBOG,
+			_latent_ambush = DANGER_BLEAK_LIMIT,
+			_min_ambush = DANGER_SAFE_FLOOR, // This is intended. A warden can engage in a long war to tame the terrorbog.
+			_max_ambush = DANGER_BLEAK_LIMIT,
+			_fixed_ambush = FALSE,
+			_lowpop_tick = 1,
+			_highpop_tick = 1
+		),
+		new /datum/threat_region(
+			_region_name = THREAT_REGION_ICELAND,
 			_latent_ambush = DANGER_BLEAK_LIMIT,
 			_min_ambush = DANGER_SAFE_FLOOR, // This is intended. A warden can engage in a long war to tame the terrorbog.
 			_max_ambush = DANGER_BLEAK_LIMIT,

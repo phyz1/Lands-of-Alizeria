@@ -3,7 +3,7 @@
 /datum/intent/spear/thrust
 	name = "thrust"
 	blade_class = BCLASS_STAB
-	attack_verb = list("thrusts")
+	attack_verb = list("тычет")
 	animname = "stab"
 	icon_state = "instab"
 	reach = 2
@@ -34,7 +34,7 @@
 	blade_class = BCLASS_BLUNT
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	icon_state = "inbash"
-	attack_verb = list("bashes", "strikes")
+	attack_verb = list("бьёт", "ударяет")
 	penfactor = 10
 	damfactor = 0.8
 	item_d_type = "blunt"
@@ -45,7 +45,7 @@
 /datum/intent/spear/cut
 	name = "cut"
 	blade_class = BCLASS_CUT
-	attack_verb = list("cuts", "slashes")
+	attack_verb = list("режет", "секёт")
 	icon_state = "incut"
 	damfactor = 1
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
@@ -109,7 +109,7 @@
 /datum/intent/sword/lunge
 	name = "lunge"
 	icon_state = "inimpale"
-	attack_verb = list("lunges")
+	attack_verb = list("делает выпад")
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
@@ -122,7 +122,7 @@
 	name = "pommel bash"
 	blade_class = BCLASS_BLUNT
 	icon_state = "inbash"
-	attack_verb = list("bashes", "strikes")
+	attack_verb = list("бьёт", "ударяет")
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	damfactor = 1.3
 	item_d_type = "blunt"
@@ -131,7 +131,7 @@
 /datum/intent/rend
 	name = "rend"
 	icon_state = "inrend"
-	attack_verb = list("rends")
+	attack_verb = list("рубит")
 	animname = "cut"
 	blade_class = BCLASS_CHOP
 	reach = 1
@@ -169,7 +169,7 @@
 /datum/intent/partizan/peel
 	name = "armor peel"
 	icon_state = "inpeel"
-	attack_verb = list("snags")
+	attack_verb = list("поддевает")
 	animname = "cut"
 	blade_class = BCLASS_PEEL
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
@@ -199,7 +199,7 @@
 /datum/intent/lance/
 	name = "lance"
 	icon_state = "inlance"
-	attack_verb = list("lances", "runs through", "skewers")
+	attack_verb = list("пронзает", "протыкает")
 	animname = "stab"
 	item_d_type = "stab"
 	penfactor = BLUNT_DEFAULT_PENFACTOR // Not a mistake, to prevent it from nuking through armor.

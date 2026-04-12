@@ -34,7 +34,7 @@
 /datum/intent/whip/lash
 	name = "lash"
 	blade_class = BCLASS_PUNISH
-	attack_verb = list("lashes", "cracks")
+	attack_verb = list("рассекает", "секёт")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 7
@@ -47,7 +47,7 @@
 /datum/intent/whip/crack
 	name = "crack"
 	blade_class = BCLASS_CUT				//Lets you dismember
-	attack_verb = list("cracks", "strikes") //something something dwarf fotresss
+	attack_verb = list("секёт", "ударяет") //something something dwarf fotresss
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 10
@@ -61,7 +61,7 @@
 /datum/intent/whip/punish
 	name = "punish"
 	blade_class = BCLASS_LASHING
-	attack_verb = list("lashes", "cracks")
+	attack_verb = list("рассекает", "секёт")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 5

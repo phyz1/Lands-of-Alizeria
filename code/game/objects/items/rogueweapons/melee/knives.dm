@@ -6,7 +6,7 @@
 /datum/intent/dagger/cut
 	name = "cut"
 	icon_state = "incut"
-	attack_verb = list("cuts", "slashes")
+	attack_verb = list("режет", "секёт")
 	animname = "cut"
 	blade_class = BCLASS_CUT
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
@@ -19,7 +19,7 @@
 /datum/intent/dagger/thrust
 	name = "thrust"
 	icon_state = "instab"
-	attack_verb = list("thrusts")
+	attack_verb = list("тычет")
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
@@ -31,7 +31,7 @@
 /datum/intent/dagger/thrust/pick
 	name = "icepick stab"
 	icon_state = "inpick"
-	attack_verb = list("stabs", "impales")
+	attack_verb = list("колит", "прокалывает")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	penfactor = 75
 	clickcd = 14
@@ -42,7 +42,7 @@
 /datum/intent/dagger/sucker_punch
 	name = "sucker punch"
 	icon_state = "inpunch"
-	attack_verb = list("punches", "jabs",)
+	attack_verb = list("ударяет")
 	animname = "strike"
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg', 'sound/combat/hits/kick/kick.ogg')
@@ -57,7 +57,7 @@
 /datum/intent/dagger/chop
 	name = "chop"
 	icon_state = "inchop"
-	attack_verb = list("chops")
+	attack_verb = list("рубит")
 	animname = "chop"
 	blade_class = BCLASS_CHOP
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
@@ -155,8 +155,8 @@
 	COOLDOWN_START(src, flip_cooldown, 3 SECONDS)
 	if((user.get_skill_level(/datum/skill/combat/knives) < 3) && prob(40))
 		user.visible_message(
-			span_danger("While trying to flip [src] [user] drops it instead!"),
-			span_userdanger("While trying to flip [src] you drop it instead!"),
+			span_danger("Пытаясь прокрутить [src] [user] роняет его наземь!"),
+			span_userdanger("Пытаясь прокрутить [src] ты роняешь его наземь!"),
 		)
 		var/mob/living/carbon/human/unfortunate_idiot = user
 		var/dropped_knife_target = pick(
@@ -167,8 +167,8 @@
 		user.dropItemToGround(src, TRUE)
 	else
 		user.visible_message(
-			span_notice("[user] spins [src] around [user.p_their()] finger"),
-			span_notice("You spin [src] around your finger"),
+			span_notice("[user] крутит [src] вокруг [user.p_their()] пальца"),
+			span_notice("Ты крутишь [src] вокруг твоего пальца"),
 		)
 		playsound(src, 'sound/foley/equip/swordsmall1.ogg', 20, FALSE)
 

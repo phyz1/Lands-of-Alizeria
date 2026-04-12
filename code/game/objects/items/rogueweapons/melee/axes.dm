@@ -4,7 +4,7 @@
 	name = "cut"
 	icon_state = "incut"
 	blade_class = BCLASS_CUT
-	attack_verb = list("cuts", "slashes")
+	attack_verb = list("режет", "секёт")
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	animname = "cut"
 	penfactor = 20
@@ -15,7 +15,7 @@
 	name = "chop"
 	icon_state = "inchop"
 	blade_class = BCLASS_CHOP
-	attack_verb = list("chops", "hacks")
+	attack_verb = list("рубит", "разрубает")
 	animname = "chop"
 	hitsound = list('sound/combat/hits/bladed/wpn_impact_blunt2hand_flesh_01.ogg', 'sound/combat/hits/bladed/wpn_impact_blunt2hand_flesh_02.ogg', 'sound/combat/hits/bladed/wpn_impact_blunt2hand_flesh_03.ogg')
 	penfactor = 35
@@ -44,7 +44,7 @@
 /datum/intent/axe/bash
 	name = "bash"
 	icon_state = "inbash"
-	attack_verb = list("bashes", "clubs")
+	attack_verb = list("бьёт", "ударяет")
 	animname = "strike"
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')

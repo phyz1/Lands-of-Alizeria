@@ -84,8 +84,8 @@
 		return
 
 	I.visible_message(
-		span_warning("[user] begins to prepare [src].."),
-		span_notice("I begin to set-up [src] with [I].")
+		span_warning("[user] начинает подготавливать [src].."),
+		span_notice("Я начинаю подготавливать [src] with [I].")
 	)
 
 	qdel(I)
@@ -115,8 +115,8 @@
 	qdel(src)
 
 	I.visible_message(
-		span_warning("[user] finishes setting up [trip]."),
-		span_notice("I finish setting up [trip]. I can extend it by one step longer.")
+		span_warning("[user] завершает подготовку [trip]."),
+		span_notice("Я закончил подготавливать [trip].")
 	)
 	return
 

@@ -111,3 +111,10 @@
 				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 30)
 	first_time_text = "”Ÿ≈À‹≈"
 	converted_type = /area/rogue/indoors/shelter/woods
+
+/area/rogue/indoors/shelter/alizeria/iceland
+	icon = 'icons/roguetown/alizeria/areas.dmi'
+	icon_state = "ice_in"
+	droning_sound = 'sound/music/area/forest.ogg'
+	droning_sound_dusk = 'sound/alizeria/areas/iceland.ogg'
+	droning_sound_night = 'sound/music/area/forestnight.ogg'

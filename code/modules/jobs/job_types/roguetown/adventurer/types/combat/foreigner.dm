@@ -1,6 +1,6 @@
 /datum/advclass/foreigner
 	name = "Roughneck"
-	tutorial = "You are a foreign swordsman, carrying nothing but your sword and your skill."
+	tutorial = "Ты — заморский фехтоватальщик, несущий с собой лишь свой меч и своё мастерство."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = NON_DWARVEN_RACE_TYPES //roughneck & custodian sprites dont have dwarf variants - adjust if/when a second update comes out with dwarf sprites
 	outfit = /datum/outfit/job/adventurer/foreigner
@@ -30,7 +30,7 @@
 
 /datum/outfit/job/adventurer/foreigner/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are a foreign swordsman, carrying nothing but your sword and your skill."))
+	to_chat(H, span_warning("Ты — заморский фехтоватальщик, несущий с собой лишь свой меч и своё мастерство."))
 	head = /obj/item/clothing/head/roguetown/mentorhat
 	gloves = /obj/item/clothing/gloves/roguetown/eastgloves1
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants1
@@ -52,7 +52,7 @@
 
 /datum/advclass/foreigner/custodian
 	name = "Custodian"
-	tutorial = "You are an ex-guardian, whenever that be for a petty noble, or a small shrine. You excel in defense with quarterstaffs, or have taken up the Naginata's offensive martial capabilities."
+	tutorial = "Ты — бывший страж, будь то страж мелкого дворянина или небольшого святилища. Ты превосходно владеешь обороной с помощью посохов или освоили наступательные боевые навыки с нагинатой."
 	allowed_races = NON_DWARVEN_RACE_TYPES //roughneck & custodian sprites dont have dwarf variants - adjust if/when a second update comes out with dwarf sprites
 	outfit = /datum/outfit/job/adventurer/custodian
 	cmode_music = 'sound/music/combat_kazengite.ogg'
@@ -78,7 +78,7 @@
 
 /datum/outfit/job/adventurer/custodian/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are an ex-guardian, whenever that be for a petty noble, or a small shrine. You excel in defense with quarterstaffs, or have taken up the Naginata's offensive martial capabilities."))
+	to_chat(H, span_warning("Ты — бывший страж, будь то страж мелкого дворянина или небольшого святилища. Ты превосходно владеешь обороной с помощью посохов или освоили наступательные боевые навыки с нагинатой."))
 	head = /obj/item/clothing/head/roguetown/mentorhat
 	gloves = /obj/item/clothing/gloves/roguetown/eastgloves1
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants1
@@ -103,8 +103,7 @@
 
 /datum/advclass/foreigner/yoruku
 	name = "Yoruku"
-	tutorial = "You are a Kazengunese agent trained in assassination, sabotage, and irregular combat. You are armed with daggers or a short sword, perfect \
-	for combat in the tight confines of castles and back alleys."
+	tutorial = "Ты — агент Казенгуна, обученный убийствам, саботажу и неординарным боевыми действиям. Ты вооружён кинжалом или коротким мечом, идеально подходящими для боя в тесных помещениях замков или переулков."
 	allowed_races = NON_DWARVEN_RACE_TYPES //Clothing has no dwarf sprites.
 	outfit = /datum/outfit/job/adventurer/yoruku
 	subclass_languages = list(/datum/language/kazengunese)
@@ -132,8 +131,7 @@
 
 /datum/outfit/job/adventurer/yoruku/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are a Kazengunese agent trained in assassination, sabotage, and irregular combat. You are armed with daggers or a short sword, perfect \
-	for combat in the tight confines of castles and back alleys."))
+	to_chat(H, span_warning("Ты — агент Казенгуна, обученный убийствам, саботажу и неординарным боевыми действиям. Ты вооружён кинжалом или коротким мечом, идеально подходящими для боя в тесных помещениях замков или переулков"))
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal/hijab/yoruku
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(

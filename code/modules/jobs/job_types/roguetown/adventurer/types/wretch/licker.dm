@@ -1,6 +1,6 @@
 /datum/advclass/wretch/licker
 	name = "Licker"
-	tutorial = "You have recently been embraced as a vampire. You do not know whom your sire is, strange urges, unnatural strength, a thirst you can barely control. You were outed as a monster and are now on the run."
+	tutorial = "Тебя недавно обратили в вампира. Ты не знаешь, кто твой сир. Странные порывы, неестественная сила, жажда, которую ты едва контролируешь. Тебя разоблачили как монстра, и теперь ты в бегах."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_GOLEM
 	outfit = /datum/outfit/job/wretch/licker

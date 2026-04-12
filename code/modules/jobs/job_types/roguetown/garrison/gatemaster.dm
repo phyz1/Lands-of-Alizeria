@@ -11,7 +11,7 @@
 		/datum/species/lamia,
 	)
 	allowed_patrons = ALL_DIVINE_PATRONS
-	tutorial = "Tales speak of the Gatemaster's legendary ability to stand still at a gate and ask people questions."
+	tutorial = "Легенды гласят о легендарной способности вратничего стоять неподвижно у ворот и задавать людям вопросы."
 	display_order = JDO_GATEMASTER
 
 	outfit = /datum/outfit/job/gatemaster

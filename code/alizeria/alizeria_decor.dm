@@ -188,6 +188,12 @@
 	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
 	icon_state = "flag12"
 
+/obj/structure/fluff/walldeco/alizeria/decor/flag13
+	name = "флаг неизвестного королевства"
+	desc = "Обычное знамя какого-то враждебного королевства. Его воины являются настоящими психами, следует быть крайне осторожным."
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "flag13"
+
 /obj/structure/fluff/walldeco/alizeria/decor/flagorkind1
 	name = "флаг оркоидов"
 	desc = "Флаг мерзких оркоидов. Будь осторожен, они где-то рядом."

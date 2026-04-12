@@ -9,6 +9,7 @@
 #define FOOTSTEP_MUD "mud"
 #define FOOTSTEP_STONE "stone"
 #define FOOTSTEP_SHALLOW "shallow"
+#define FOOTSTEP_ICE "ice"
 
 //barefoot sounds
 #define FOOTSTEP_WOOD_BAREFOOT "woodbarefoot"
@@ -50,6 +51,9 @@ GLOBAL_LIST_INIT(footstep, list(
 		'sound/foley/footsteps/FTTIL_A2.ogg',
 		'sound/foley/footsteps/FTTIL_A3.ogg',
 		'sound/foley/footsteps/FTTIL_A4.ogg'), 50, 0),
+	FOOTSTEP_ICE = list(list(
+		'sound/alizeria/tiles/ice.ogg',
+		'sound/alizeria/tiles/ice.ogg'), 50, 0),
 	FOOTSTEP_PLATING = list(list(
 		'sound/foley/footsteps/FTMET_A1.ogg',
 		'sound/foley/footsteps/FTMET_A2.ogg',

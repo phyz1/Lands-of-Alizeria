@@ -1,6 +1,6 @@
 /datum/advclass/butcher
 	name = "Butcher"
-	tutorial = "Some say you're a strange individual, some say you're a cheat, while some claim you're a savant in the art of sausage making. Without your skilled hands and knifework, most of the livestock around the town would be wasted. "
+	tutorial = "Одни говорят, что ты странный тип, другие что ты поехавший, а третьи считают тебя гением в искусстве изготовления сосисок. Без твоих умелых рук и работы с ножом большая часть скотины в округе пропадала бы зря."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/butcher

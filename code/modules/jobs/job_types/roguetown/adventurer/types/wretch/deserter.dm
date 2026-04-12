@@ -1,6 +1,6 @@
 /datum/advclass/wretch/deserter
 	name = "Disgraced Knight"
-	tutorial = "You were once a venerated and revered knight - now, a traitor who abandoned your liege. You lyve the lyfe of an outlaw, shunned and looked down upon by society."
+	tutorial = "Когда-то ты был почитаемым и уважаемым рыцарем, а теперь ты предатель, бросивший своего сюзерена. Ты живёшь жизнью изгоя, отвергнутого и презираемого обществом."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/wretch/deserter

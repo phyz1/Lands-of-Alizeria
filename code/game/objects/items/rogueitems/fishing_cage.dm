@@ -17,15 +17,15 @@
 
 	var/turf/T = get_step(user, user.dir)
 	if(!istype(T, /turf/open/water))
-		to_chat(user, span_warning("This goes into water!"))
+		to_chat(user, span_warning("Она ушла в воду!"))
 		return // We don't need to check non water tiles.
 
-	user.visible_message(span_notice("[user] begins deploying the fishing cage..."), \
-						span_notice("I begin deploying the fishing cage..."))
+	user.visible_message(span_notice("[user] начинает размещать ловушку..."), \
+						span_notice("Я начинаю размещать ловушку..."))
 	var/deploy_speed = get_skill_delay(user.get_skill_level(/datum/skill/labor/fishing), 1, slowest = 6) //in seconds
 
 	if(!is_valid_fishing_spot(T))
-		to_chat(user, span_warning("This body of water seems devoid of aquatic life..."))
+		to_chat(user, span_warning("В этом водоёме, кажется, полностью отсутствует жизнь..."))
 		return
 	
 	if(istype(T, /turf/open/water))
@@ -35,15 +35,15 @@
 			icon_state = "fishingcage_deployed"
 			anchored = 1
 	else
-		to_chat(user, span_warning("I'm not catching anything if I don't put this on water"))
+		to_chat(user, span_warning("Я ничего не поймаю, если не оставлю. это в воде."))
 		return
 
 /obj/item/fishingcage/attack_hand(mob/user)
 	if(deployed)
 		var/deploy_speed = get_skill_delay(user.get_skill_level(/datum/skill/labor/fishing), 1, slowest = 6) //in seconds
 		if(caught)
-			user.visible_message(span_notice("[user] begins to harvest from the cage..."), \
-								span_notice("I begin harvesting the from the cage..."))
+			user.visible_message(span_notice("[user] начинает собирать улов из ловушки..."), \
+								span_notice("Я начинаю собирать улов..."))
 			if(do_after(user, deploy_speed, target = src))
 				STOP_PROCESSING(SSobj, src)
 				icon_state = "fishingcage_deployed"
@@ -52,8 +52,8 @@
 				caught = null
 				desc = initial(desc)
 		else
-			user.visible_message(span_notice("[user] begins disarming the fishing cage..."), \
-								span_notice("I begin disarming the fishing cage..."))
+			user.visible_message(span_notice("[user] начинает снимать приманку из ловушки..."), \
+								span_notice("Я начинаю снимать приманку из ловушки..."))
 			if(do_after(user, deploy_speed, target = src))
 				STOP_PROCESSING(SSobj, src)
 				deployed = 0
@@ -67,11 +67,11 @@
 
 /obj/item/fishingcage/attackby(obj/item/I, mob/user, params)
 	if(bait)
-		to_chat(user, span_warning("There's bait already on the cage."))
+		to_chat(user, span_warning("Приманка уже внутри"))
 		return
 	if(I.baitpenalty != 100) // We use baitpenalty instead of baitchance so let's just exclude anything with 100
-		user.visible_message(span_notice("[user] starts adding the bait to the fishing cage..."), \
-							span_notice("I start to add [I] to the fishing cage..."))
+		user.visible_message(span_notice("[user] начинает добавлять приманку в ловушку..."), \
+							span_notice("Я начинаю размещать [I] в ловушке..."))
 		if(do_after(user, 3 SECONDS, target = src))
 			playsound(src.loc, 'sound/foley/pierce.ogg', 50, FALSE)
 			I.forceMove(src)
@@ -95,5 +95,5 @@
 /obj/item/fishingcage/examine(mob/user)
 	. = ..()
 	if(icon_state == "fishingcage_caught")
-		. += span_warning("Something seems to be inside...")
+		. += span_warning("Внутри что то есть...")
 	

@@ -1,7 +1,7 @@
 // Hedge Mage, a pure mage adventurer sidegrade to Necromancer without the Necromancer free spells and forced patron. More spellpoints, otherwise mostly the same.
 /datum/advclass/wretch/wretchedtoiler
 	name = "Wretched Toiler"
-	tutorial = "The wretched engine of evil churns ever onward - the gears pushed by wretched toilers such as yourself. And toil you shall - until the machinations of thine masters come to fruition."
+	tutorial = "Мерзкая машина зла продолжает вращаться — шестерни приводятся в движение жалкими тружениками вроде тебя. И ты будешь трудиться — пока козни твоих хозяев не увенчаются успехом."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/wretch/wretchedtoiler

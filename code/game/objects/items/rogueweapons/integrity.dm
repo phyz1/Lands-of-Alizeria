@@ -35,7 +35,7 @@
 		var/newratio = (blade_int - amt) / max_blade_int
 		if(ratio > SHARPNESS_TIER1_THRESHOLD && newratio <= SHARPNESS_TIER1_THRESHOLD) //We are above the first threshold but are about to hit it.
 			if(L.STAINT > 9)
-				to_chat(L, span_info("<i><font color = '#ececec'>The edge chips! \The [src]'s damage will start to slowly wane, now.</font></i>"))
+				to_chat(L, span_info("<i><font color = '#ececec'>Заточка тупится! Урон наносимый \The [src]'s постепенно снижается.</font></i>"))
 			playsound(L, 'sound/combat/sharpness_loss1.ogg', 75, TRUE)
 
 		//We are above the second threshold but are about to hit it.
@@ -72,7 +72,7 @@
 		if(ratio < SHARPNESS_TIER2_THRESHOLD && ((blade_int + amt) / max_blade_int) > SHARPNESS_TIER2_THRESHOLD)
 			to_chat(user, span_info("The <b>chunks</b> smooth out. The edge regains some smoothness."))
 		if(ratio < SHARPNESS_TIER1_THRESHOLD && ((blade_int + amt) / max_blade_int) > SHARPNESS_TIER1_THRESHOLD)
-			to_chat(user, span_info("The <b>chips</b> disappear. The edge is now as sharp as ever."))
+			to_chat(user, span_info("Сколы на <b>chips</b> исчезают. Лезвия остро как и прежде."))
 		blade_int = blade_int + amt
 		if(blade_int >= max_blade_int)
 			blade_int = max_blade_int

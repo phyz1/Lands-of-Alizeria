@@ -2,9 +2,7 @@
 
 /datum/advclass/masterwoodcutter
 	name = "Master Lumberjack"
-	tutorial = "The strongest and wisest Lumberjack, trained in the art of both chopping and transforming wood. \
-	With your mighty hands you chopped countless trees, Dendor fears you, the elves tell the children stories about you, \
-	so they don't wander in the forest."
+	tutorial = "Ты сильнейший и мудрейший лесоруб, обученный искусству рубки и обработки дерева. Своими могучими руками ты срубил бесчисленные деревья. Дендор боится тебя, эльфы рассказывают о тебе детям сказки, чтобы те не бродили по лесу."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/masterwoodcutter

@@ -30,7 +30,7 @@
 
 /datum/advclass/seneschal/seneschal
 	name = "Seneschal"
-	tutorial = "While still expected to fill in for the duties of the household servantry as needed, you have styled yourself as a figure beyond them."
+	tutorial = "Хотя от тебя всё ещё ожидают выполнения обязанностей домашней прислуги по мере необходимости, ты позиционируешь себя как фигуру, стоящую выше них."
 	outfit = /datum/outfit/job/seneschal/seneschal
 
 	subclass_stats = list(
@@ -86,7 +86,7 @@
 
 /datum/advclass/seneschal/headmaid
 	name = "Head Maid"
-	tutorial = "Whether you were promoted from one or just like the frills, you stylize yourself as a head maid. Your duties and talents remain the same, though."
+	tutorial = "Будь то повышение из обычных горничных или просто любовь хозяев, ты называешь себя старшей горничной. Твои обязанности и таланты, однако, остаются прежними."
 	outfit = /datum/outfit/job/seneschal/headmaid
 
 	subclass_stats = list(
@@ -125,7 +125,7 @@
 
 /datum/advclass/seneschal/chiefbutler
 	name = "Chief Butler"
-	tutorial = "You are the ruling class of butler and your ability to clear your throat and murmur 'I say' is without peer. Your duties and talents as seneschal remain the same, though."
+	tutorial = "Ты правящий класс дворецких, и твоя способность прочищать горло и бормотать «я полагаю» не имеет равных. Твои обязанности и таланты как сенешаля, однако, остаются прежними."
 	outfit = /datum/outfit/job/seneschal/chiefbutler
 
 	subclass_stats = list(

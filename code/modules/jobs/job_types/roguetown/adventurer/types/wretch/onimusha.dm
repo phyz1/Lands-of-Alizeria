@@ -1,6 +1,6 @@
 /datum/advclass/wretch/onimusha
 	name = "Onimusha"
-	tutorial = "You are a fiend of the Kazengunese mountains, a warrior who has cast aside their humenity and seeks to emulate the beasts of Graggar and Dendor."
+	tutorial = "Ты — чудовище Казенгунских гор, воин, отбросивший свою человечность и стремящийся подражать зверям Граггара и Дендора."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/wretch/onimusha

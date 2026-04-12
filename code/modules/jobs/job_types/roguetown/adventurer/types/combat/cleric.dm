@@ -1,6 +1,6 @@
 /datum/advclass/cleric
 	name = "Wandering Monk"
-	tutorial = "You are a wandering acolyte, versed in both miracles and martial arts. You forgo the heavy armor worn by paladins in favor of a more nimble approach to combat, utilizing your fists."
+	tutorial = "Ты — странствующий послушник, владеющий как чудесами, так и боевыми искусствами. Ты отказываешься от тяжелых доспехов, которые носят паладины, в пользу более ловкого подхода к бою, используя кулаки."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	vampcompat = FALSE
@@ -34,7 +34,7 @@
 
 /datum/outfit/job/adventurer/cleric/monk/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are a wandering acolyte, versed in both miracles and martial arts. You forego the heavy armor paladins wear in favor of a more nimble approach to combat, utilizing your fists."))
+	to_chat(H, span_warning("Ты — странствующий послушник, владеющий как чудесами, так и боевыми искусствами. Ты отказываешься от тяжелых доспехов, которые носят паладины, в пользу более ловкого подхода к бою, используя кулаки."))
 	H.adjust_blindness(-3)
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/monk
@@ -205,7 +205,7 @@
 
 /datum/advclass/cleric/paladin
 	name = "Paladin"
-	tutorial = "A holy warrior. Where others of the clergy may have spent their free time studying scriptures, you have instead honed your skills with a blade."
+	tutorial = "Святой воин. В то время как другие священнослужители проводили свободное время за изучением писаний, ты оттачивал свое мастерство владения клинком."
 	outfit = /datum/outfit/job/adventurer/cleric/paladin
 	subclass_social_rank = SOCIAL_RANK_YEOMAN
 
@@ -231,7 +231,7 @@
 	)
 
 /datum/outfit/job/adventurer/cleric/paladin/pre_equip(mob/living/carbon/human/H)
-	to_chat(H, span_warning("A holy warrior. Where others of the clergy may have spent their free time studying scriptures, you have instead honed your skills with a blade."))
+	to_chat(H, span_warning("Святой воин. В то время как другие священнослужители проводили свободное время за изучением писаний, ты оттачивал свое мастерство владения клинком."))
 	H.adjust_blindness(-3)
 	belt = /obj/item/storage/belt/rogue/leather
 	backl = /obj/item/storage/backpack/rogue/satchel
@@ -420,7 +420,7 @@
 
 /datum/advclass/cleric/cantor
 	name = "Cantor"
-	tutorial = "You were a bard once - but you've found a new calling. Your eyes have been opened to the divine, now you wander from city to city singing songs and telling tales of your patron's greatness."
+	tutorial = "Когда-то ты был бардом, но теперь нашёл новое призвание. Твои глаза открылись божественному, и теперь ты странствуешь из города в город, распевая песни и рассказывая истории о величии своего покровителя"
 	outfit = /datum/outfit/job/adventurer/cleric/cantor
 	subclass_social_rank = SOCIAL_RANK_YEOMAN
 
@@ -444,7 +444,7 @@
 	)
 
 /datum/outfit/job/adventurer/cleric/cantor/pre_equip(mob/living/carbon/human/H)
-	to_chat(H, span_warning("You were a bard once - but you've found a new calling. Your eyes have been opened to the divine, now you wander from city to city singing songs and telling tales of your patron's greatness."))
+	to_chat(H, span_warning("Когда-то ты был бардом, но теперь нашёл новое призвание. Твои глаза открылись божественному, и теперь ты странствуешь из города в город, распевая песни и рассказывая истории о величии своего покровителя"))
 	H.adjust_blindness(-3)
 	head = /obj/item/clothing/head/roguetown/bardhat
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
@@ -626,7 +626,7 @@
 
 /datum/advclass/cleric/missionary
 	name = "Missionary"
-	tutorial = "You are a devout worshipper of the divine with a strong connection to your patron god. You've spent years studying scriptures and serving your deity - now you wander into foreign lands, spreading the word of your faith."
+	tutorial = "Ты — преданный почитатель божественного, тесно связанный со своим богом-покровителем. Ты годами изучал священные писания и служил своему божеству, а теперь странствуешь по чужим землям, распространяя весть о своей вере."
 	outfit = /datum/outfit/job/adventurer/cleric/missionary
 	subclass_social_rank = SOCIAL_RANK_YEOMAN
 
@@ -653,7 +653,7 @@
 	)
 
 /datum/outfit/job/adventurer/cleric/missionary/pre_equip(mob/living/carbon/human/H)
-	to_chat(H, span_warning("You are a devout worshipper of the divine with a strong connection to your patron god. You've spent years studying scriptures and serving your deity - now you wander into foreign lands, spreading the word of your faith."))
+	to_chat(H, span_warning("Ты — преданный почитатель божественного, тесно связанный со своим богом-покровителем. Ты годами изучал священные писания и служил своему божеству, а теперь странствуешь по чужим землям, распространяя весть о своей вере."))
 	H.adjust_blindness(-3)
 	backl = /obj/item/storage/backpack/rogue/satchel
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest

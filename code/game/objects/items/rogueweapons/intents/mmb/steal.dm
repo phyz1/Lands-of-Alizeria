@@ -8,34 +8,26 @@
 
 /// Determines what ends up in the end list of things pickpocket can attempt to steal.
 /datum/intent/steal/proc/can_steal(obj/item/thing, mob/living/carbon/human/target)
-	if (!thing)
+	if(!thing)
 		return FALSE
 
+	var/is_incapacitated = target.IsUnconscious() || !(target.mobility_flags & MOBILITY_STAND)
+
 	// can't steal armored items from someone in combat mode
-	if (isclothing(thing))
+	if(isclothing(thing))
 		var/obj/item/clothing/thing_clothing = thing
-		if (target.cmode && thing_clothing.armor)
-			if (target.IsUnconscious() || !(target.mobility_flags & MOBILITY_STAND))
-				return TRUE
-			else
+		if(target.cmode && thing_clothing.armor)
+			if(target.cmode && thing_clothing.armor && !is_incapacitated)
 				return FALSE
 
 	// can't steal long items (like longswords, spears, etc) unless they're floored or KO'd
-	if (thing.wlength > WLENGTH_NORMAL)
-		if (target.IsUnconscious() || !(target.mobility_flags & MOBILITY_STAND))
-			return TRUE
-		else
-			return FALSE
-
-	// can't steal especially heavy items unless they're floored or KO'd
-	if (thing.w_class > WEIGHT_CLASS_NORMAL)
-		if (target.IsUnconscious() || !(target.mobility_flags & MOBILITY_STAND))
-			return TRUE
-		else
-			return FALSE
-		
+	if(thing.wlength > WLENGTH_NORMAL && !is_incapacitated)
 		return FALSE
 
+	// can't steal especially heavy items unless they're floored or KO'd
+	if(thing.w_class > WEIGHT_CLASS_NORMAL && !is_incapacitated)
+		return FALSE
+		
 	return TRUE
 
 /datum/intent/steal/on_mmb(atom/target, mob/living/user, params)
@@ -47,7 +39,7 @@
 		var/mob/living/carbon/human/target_human = target
 
 		if(user_human.get_active_held_item())
-			to_chat(user, span_warning("I can't pickpocket while my hand is full!"))
+			to_chat(user, span_warning("Я не могу воровать, когда у меня занята рука!"))
 			return
 
 		// the last changes made to pickpocket made it horrendously fucking overpowered, so here's what we're doing
@@ -67,7 +59,7 @@
 		// if they're alert, they get a big ass bonus. cmode is also checked in can_steal for things like armor
 		if(target_human.cmode)
 			targetperception += 7 // d6 average is 3.5, so this on average, accomodates for roughly 2 ranks of thieving skill
-			to_chat(user, span_notice("[target_human] is tense and is more likely to detect me."))
+			to_chat(user, span_notice("[target_human] напряжён и с большей вероятностью меня заметит."))
 
 		// if we're rumbled, they're harder to steal from
 		if(user.has_status_effect(/datum/status_effect/debuff/risk_low))
@@ -93,7 +85,7 @@
 
 		var/exp_to_gain = user_human.STAINT
 
-		to_chat(user, span_notice("I try to steal from [target_human]..."))
+		to_chat(user, span_notice("Я пробую украсть у [target_human]..."))
 
 		if(do_after(user, do_time, target = target_human, progress = 0))
 
@@ -104,10 +96,10 @@
 				//TODO add exp here
 
 				if(HAS_TRAIT(user, TRAIT_CULTIC_THIEF) && initialstealroll < targetperception)
-					to_chat(user, span_green("Matthios tips fate in my favor..."))
+					to_chat(user, span_green("Маттиос склоняет судьбу в мою пользу..."))
 
 				if(!(user.zone_selected in stealablezones))
-					to_chat(user, span_warning("What am I going to steal from there?"))
+					to_chat(user, span_warning("Что я там украду?"))
 					return
 
 				mobsbehind |= cone(target_human, list(turn(target_human.dir, 180)), list(user))
@@ -137,7 +129,7 @@
 						picked = pick(stealpos)
 
 					if (!picked)
-						to_chat(user, span_notice("...can't find anything worth trying to take."))
+						to_chat(user, span_notice("...не могу найти ничего, что стоило бы попробовать забрать."))
 						return
 					
 					// if we're yoinking a storage container, we should reassess the rolls again based on how full it is.
@@ -149,25 +141,25 @@
 					if (!target_human.IsUnconscious() && picked_item_contents && picked_item_contents.len > 0)
 						var/penalty_per_stored_item = picked_item_contents.len * 0.5
 						stealroll -= penalty_per_stored_item
-						to_chat(user, span_notice("My fingers find [picked], heavy with the promise of loot..."))
+						to_chat(user, span_notice("Мои пальцы находят [picked], как хорошо!"))
 						if (stealroll < targetperception)
 							do_steal = FALSE
 							if (stealroll < (targetperception * 0.66) || user.has_status_effect(/datum/status_effect/debuff/risk_low) || user.has_status_effect(/datum/status_effect/debuff/risk_high)) // you royally fucked up. probably because you stole a satchel or a backpack. fool. suffer. perish.
-								to_chat(user, span_boldwarning("...oh, taff. They heard that. THEY HEARD THAT!!!"))
-								to_chat(target_human, span_boldwarning("[picked] rustles loudly as something behind you fiddles with it!"))
+								to_chat(user, span_boldwarning("... ох, чёрт. Они услышали... ОНИ ЭТО УСЛЫШАЛИ!!!"))
+								to_chat(target_human, span_boldwarning("[picked] громко шуршит. Кто там сзади меня трогает?!"))
 								playsound(target_human, 'sound/foley/pickpocketing-storage-fail.ogg', 100)
 								user.apply_status_effect(/datum/status_effect/debuff/risk_high)
 							else
-								to_chat(user, span_warning("...gotta back off, they'll hear it rustle."))
+								to_chat(user, span_warning("...нужно отступить, они услышат шорох."))
 								user.apply_status_effect(/datum/status_effect/debuff/risk_low)
 							return
 
 					if (do_steal && picked)
 						target_human.dropItemToGround(picked)
 						user.put_in_active_hand(picked)
-						to_chat(user, span_green("I stole [picked]!"))
-						target_human.log_message("has had \the [picked] stolen by [key_name(user_human)]", LOG_ATTACK, color="white")
-						user_human.log_message("has stolen \the [picked] from [key_name(target_human)]", LOG_ATTACK, color="white")
+						to_chat(user, span_green("Я украл [picked]!"))
+						target_human.log_message(" \the [picked] украден [key_name(user_human)]", LOG_ATTACK, color="white")
+						user_human.log_message("был украден \the [picked] у [key_name(target_human)]", LOG_ATTACK, color="white")
 						
 						// if we haul something big, clear our risk debuffs and give us a little fortune boost
 						var/mammons_in_haul = get_mammons_in_atom(picked)
@@ -176,7 +168,7 @@
 							user.apply_status_effect(/datum/status_effect/buff/risk_jackpot)
 							user.remove_status_effect(/datum/status_effect/debuff/risk_low)
 							user.remove_status_effect(/datum/status_effect/debuff/risk_high)
-							to_chat(user, span_green("SCORE!! This must be worth an arsing ton of mammons!"))
+							to_chat(user, span_green("УРА!! Это, должно быть, стоит целую кучу денег!"))
 
 						if(target_human.client && target_human.stat != DEAD && !target_human.IsUnconscious())
 							SEND_SIGNAL(user_human, COMSIG_ITEM_STOLEN, target_human)
@@ -186,14 +178,14 @@
 						
 						// if our success is only narrowly above their perception, we incur risk, and if we're already at risk, we get rumbled.
 						if (stealroll < (1.2 * targetperception) && target_human.STAINT > 8)
-							to_chat(target_human, span_boldwarning("Huh? My [picked] is gone! <I>THIEF!!</I>"))
-							to_chat(user, span_boldwarning("[target_human] pats themselves down - they've noticed something's wrong!"))
+							to_chat(target_human, span_boldwarning("Хах? [picked] пропал! <I>Меня обокрали!!</I>"))
+							to_chat(user, span_boldwarning("[target_human] ощупывает себя и понимает, что что то не так!!"))
 							if (user.has_status_effect(/datum/status_effect/debuff/risk_low))
 								user.apply_status_effect(/datum/status_effect/debuff/risk_high)
 							else
 								user.apply_status_effect(/datum/status_effect/debuff/risk_low)
 				else
-					to_chat(user, "<span class='warning'>They can see me!")
+					to_chat(user, "<span class='warning'>Они меня видят!")
 			if(stealroll < targetperception)
 				if(stealroll <= 8)
 					target_human.log_message("has had an attempted pickpocket by [key_name(user_human)]", LOG_ATTACK, color="white")
@@ -222,7 +214,7 @@
 				user.mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
 			user.changeNext_move(clickcd)
 		else
-			to_chat(user, span_warning("I lost contact with them!"))
+			to_chat(user, span_warning("Я потерял с ним контакт!"))
 
 	. = ..()
 
@@ -240,11 +232,11 @@
 
 /atom/movable/screen/alert/status_effect/debuff/theft_risk_low
 	name = "Rumbled"
-	desc = "Shaking hands, trembling fingers. Almost blew it. Almost. Better be more careful..."
+	desc = "Дрожащие руки, дрожащие пальцы. Чуть не всё испортил. Почти. Лучше быть осторожнее..."
 
 /atom/movable/screen/alert/status_effect/debuff/theft_risk_high
 	name = "BUSTED!"
-	desc = "OH, FRICK!!! THEY SAW ME!!!"
+	desc = "О, чёрт!!! Они меня увидели!!!"
 
 /datum/status_effect/buff/risk_jackpot
 	id = "risk_jackpot"
@@ -254,4 +246,4 @@
 
 /atom/movable/screen/alert/status_effect/buff/risk_jackpot
 	name = "SCORE!!"
-	desc = "I filched something valuable off a hapless rube. Ehehe."
+	desc = "Я украл кое-что ценное у какого-то несчастного деревенщины. Эхехе."

@@ -7,10 +7,7 @@
 
 	maximum_possible_slots = 1 // Disabled Role
 
-	tutorial = "The crusaders... Knights who have pledged \
-	their wealth and lands to the church, taking up the banner \
-	of one of the rival Orders dedicated to retaking the holy land. \
-	The 451st crusade is sure to be the last."
+	tutorial = "Крестоносцы... Рыцари, которые пожертвовали своё богатство и земли церкви, подняв знамя одного из враждующих орденов, посвящённых возвращению Святой земли. 451-й крестовый поход, несомненно, будет последним."
 
 	category_tags = list(CTAG_DISABLED)
 

@@ -41,7 +41,7 @@
 /datum/intent/flail/strikerange
 	name = "ranged strike"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("strikes", "hits")
+	attack_verb = list("ударяет", "попадает")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 15
@@ -62,7 +62,7 @@
 	keep_looping = TRUE
 	icon_state = "insmash"
 	blade_class = BCLASS_SMASH
-	attack_verb = list("smashes")
+	attack_verb = list("разносит")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	item_d_type = "blunt"
 
@@ -88,7 +88,7 @@
 	keep_looping = TRUE
 	icon_state = "insmash"
 	blade_class = BCLASS_SMASH
-	attack_verb = list("smashes")
+	attack_verb = list("разносит")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	item_d_type = "blunt"
 

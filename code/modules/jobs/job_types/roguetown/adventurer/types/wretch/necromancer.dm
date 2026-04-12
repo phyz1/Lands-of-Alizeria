@@ -1,6 +1,6 @@
 /datum/advclass/wretch/necromancer
 	name = "Necromancer"
-	tutorial = "You have been ostracized and hunted by society for your dark magics and perversion of life."
+	tutorial = "Тебя изгнали и преследуют за тёмную магию и извращение жизни."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/wretch/necromancer

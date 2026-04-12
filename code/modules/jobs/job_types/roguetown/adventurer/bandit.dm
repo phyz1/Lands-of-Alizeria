@@ -9,7 +9,7 @@
 	allowed_races = RACES_ALL_KINDS
 	disallowed_races = /datum/species/ogre
 	allowed_patrons = ALL_INHUMEN_PATRONS
-	tutorial = "Long ago you did a crime worthy of your bounty being hung on the wall outside of the local inn. You now live with your fellow freemen in the bog, and generally get up to no good."
+	tutorial = "Давным-давно ты совершил преступление, за которое награда за вашу голову ныне висит на стене местной гостиницы. Теперь ты живёшь со своими собратьями-свободными людьми в болоте и затеваешь всякие пакости."
 
 	outfit = null
 	outfit_female = null

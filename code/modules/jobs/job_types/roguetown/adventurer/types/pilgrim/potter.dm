@@ -1,7 +1,6 @@
 /datum/advclass/potter
 	name = "Potter"
-	tutorial = "You are a skilled artisan in the manipulation of ceramics, \
-	and their fashioning into a multitude of different objects and valuables, including glass."
+	tutorial = "Ты умелый ремесленник в обработке керамики и создании из неё множества различных предметов и ценностей, включая стекло."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/potter

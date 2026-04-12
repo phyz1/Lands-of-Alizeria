@@ -15,23 +15,23 @@
 /obj/item/construction/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/construction/bundle))
 		if(item_flags & IN_STORAGE)
-			to_chat(user, span_warning("It's hard to find [W] in my bag."))
+			to_chat(user, span_warning("Трундно найти [W] в моей сумке"))
 			return
 		var/obj/item/construction/bundle/B = W
 		if(istype(src, B.stacktype))
 			if(B.amount < B.maxamount)
 				B.amount++
 				B.update_bundle()
-				user.visible_message("[user] adds [src] to [W].")
+				user.visible_message("[user] добавляет [src] в [W].")
 				qdel(src)
 			else
-				to_chat(user, "There's not enough space in [W].")
+				to_chat(user, "Недостаточно места для[W].")
 			return
 	else if(istype(W, /obj/item/construction/))
 		var/obj/item/construction/B = W
 		if(B.bundletype == src.bundletype && src.bundletype != null)
 			var/obj/item/construction/bundle/N = new bundletype(src.loc)
-			to_chat(user, "You tie the [N.stackname] into a bundle.")
+			to_chat(user, "Ты добавляешь [N.stackname] в связку")
 			qdel(B)
 			qdel(src)
 			user.put_in_hands(N)
@@ -73,13 +73,13 @@
 				src.amount = maxamount
 				src.update_bundle()
 				B.update_bundle()
-				to_chat(user, "There's not enough space in [src].")
+				to_chat(user, "Недостаточно места в [src].")
 				if(B.amount == 1)
 					var/obj/H = new stacktype(src.loc)
 					user.put_in_hands(H)
 					qdel(B)
 			else
-				to_chat(user, "I add the [W] to the [src].")
+				to_chat(user, "Я добавляю [W] в [src].")
 				src.amount += B.amount
 				update_bundle()
 				qdel(B)
@@ -87,11 +87,11 @@
 		if(item_flags & IN_STORAGE)
 			return
 		if(src.amount < src.maxamount)
-			to_chat(user, "I add the [W] to the [src].")
+			to_chat(user, "Я добавляю [W] в [src].")
 			src.amount++
 			qdel(W)
 		else
-			to_chat(user, "There's not enough space in [src].")
+			to_chat(user, "Недостаточно места в [src].")
 	else
 		return ..()
 
@@ -125,7 +125,7 @@
 			amount -= 1
 			var/obj/F = new stacktype(src.loc)
 			H.put_in_hands(F)
-			user.visible_message("[user] removes [F] from [src].", "I remove [F] from [src].")
+			user.visible_message("[user] вынимает [F] из [src].", "Я вынимаю [F] из [src].")
 	update_bundle()
 
 /obj/item/construction/bundle/attack_turf(turf/T, mob/living/user)
@@ -135,9 +135,9 @@
 			stackables += I
 	if(stackables.len)
 		if(amount >= maxamount)
-			to_chat(user, span_info("[src] can't hold any more without falling apart."))
+			to_chat(user, span_info("[src] не может держать больше, дабы не развалиться"))
 			return
-		to_chat(user, span_info("I begin filling [src]..."))
+		to_chat(user, span_info("Я начинаю заполнять [src]..."))
 		for(var/obj/I in stackables)
 			if(amount >= maxamount)
 				break
@@ -154,9 +154,9 @@
 /obj/item/construction/bundle/examine(mob/user)
 	. = ..()
 	if(amount == maxamount )
-		to_chat(user, span_notice("There are [amount] [stackname] in this bundle. It can not take any more."))
+		to_chat(user, span_notice("Здесь [amount] [stackname] в этой связке. Больше не влезет"))
 	else
-		to_chat(user, span_notice("There are [amount] [stackname] in this bundle."))
+		to_chat(user, span_notice("Здесь [amount] [stackname] в этой связке"))
 
 /obj/item/construction/bundle/proc/update_bundle()
 	if(firefuel != 0)

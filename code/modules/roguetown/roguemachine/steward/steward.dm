@@ -26,6 +26,7 @@
 	var/current_category = "Raw Materials"
 	var/list/categories = list("Raw Materials", "Foodstuffs", "Fruits")
 	var/list/daily_payments = list() // Associative list: job name -> payment amount
+	var/lockid = null
 
 /obj/structure/roguemachine/steward/Initialize()
 	. = ..()

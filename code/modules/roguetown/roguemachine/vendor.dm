@@ -16,6 +16,7 @@
 	var/keycontrol = "merchant"
 	var/next_hawk = 0
 	var/will_hawk = TRUE
+	var/lockid = null
 
 /obj/structure/roguemachine/vendor/proc/get_group_items(var/param)
 	// Accepts either:

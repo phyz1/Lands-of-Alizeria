@@ -14,7 +14,7 @@
 	tutorial = "Ализерия пропитана арканическим потенциалом. Будучи магом тебе предстоит вести различные исследования в своей одинокой башке посреди моря. Однако тебе никто не запрещает взять ученика, ведь кто-то же должен будет рано или поздно тебя заменить, что бы твои труды не пропали зря?"
 	outfit = /datum/outfit/job/magician
 	whitelist_req = FALSE
-	give_bank_account = 47
+	give_bank_account = 120
 	min_pq = 0 //High potential for abuse, lovepotion/killersice/greater fireball is not for the faint of heart
 	max_pq = null
 	round_contrib_points = 2
@@ -24,13 +24,14 @@
 
 	// Can't get very far as a magician if you can't chant spells now can you?
 	vice_restrictions = list(/datum/charflaw/mute)
+	job_traits = list(TRAIT_ARCYNE_T3)
 
 	job_subclasses = list(
 		/datum/advclass/courtmage
 	)
 
 /datum/advclass/courtmage
-	name = "Court Magician"
+	name = "Magician"
 	tutorial = "Your creed is one dedicated to the conquering of the arcane arts and the constant thrill of knowledge. \
 		You owe your life to the Lord, for it was his coin that allowed you to continue your studies in these dark times. \
 		In return, you have proven time and time again as justicar and trusted advisor to their reign."

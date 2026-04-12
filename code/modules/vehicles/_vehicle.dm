@@ -55,16 +55,16 @@
 
 /obj/vehicle/proc/return_amount_of_controllers_with_flag(flag)
 	. = 0
-	for(var/i in occupants)
-		if(occupants[i] & flag)
+	for(var/mob/M in occupants)
+		if(occupants[M] & flag)
 			.++
 
 /obj/vehicle/proc/return_controllers_with_flag(flag)
 	RETURN_TYPE(/list/mob)
 	. = list()
-	for(var/i in occupants)
-		if(occupants[i] & flag)
-			. += i
+	for(var/mob/M in occupants)
+		if(occupants[M] & flag)
+			. += M
 
 /obj/vehicle/proc/return_drivers()
 	return return_controllers_with_flag(VEHICLE_CONTROL_DRIVE)

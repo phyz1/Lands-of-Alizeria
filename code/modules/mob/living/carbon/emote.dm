@@ -24,7 +24,7 @@
 
 /datum/emote/living/carbon/blink_r
 	key = "blink_r"
-	message = "blinks rapidly."
+	message = "быстро моргает."
 
 /datum/emote/living/carbon/clap
 	key = "clap"
@@ -50,7 +50,7 @@
 /datum/emote/living/moan
 	key = "moan"
 	key_third_person = "moans"
-	message = "moans."
+	message = "стонет."
 	message_mime = "appears to moan!"
 	emote_type = EMOTE_AUDIBLE
 
@@ -95,7 +95,7 @@
 
 /datum/emote/living/carbon/tail
 	key = "tail"
-	message = "waves their tail."
+	message = "машет хвостом"
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey, /mob/living/carbon/alien)
 
 /datum/emote/living/carbon/wink

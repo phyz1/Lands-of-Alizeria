@@ -9,7 +9,7 @@
  * Misc
  */
 
-#define LAZYINITLIST(L) if (!L) L = list()
+#define LAZYINITLIST(L) if (!L) L = list() 
 #define UNSETEMPTY(L) if (L && !length(L)) L = null
 #define ASSOC_UNSETEMPTY(L, K) if (!length(L[K])) L -= K;
 #define LAZYREMOVE(L, I) if(L) { L -= I; if(!length(L)) { L = list(); } }

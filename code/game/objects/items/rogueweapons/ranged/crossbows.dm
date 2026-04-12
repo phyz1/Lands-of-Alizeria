@@ -51,13 +51,13 @@
 /datum/intent/shoot/crossbow/can_charge()
 	if(mastermob?.next_move > world.time)
 		if(mastermob.client.last_cooldown_warn + 10 < world.time)
-			to_chat(mastermob, span_warning("I'm not ready to do that yet!"))
+			to_chat(mastermob, span_warning("Я ещё не готов к этому!"))
 			mastermob.client.last_cooldown_warn = world.time
 			return FALSE
 		if(mastermob && masteritem)
 			var/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/c_bow = masteritem
 			if(mastermob.get_num_arms(FALSE) < 2 && !c_bow.onehanded || mastermob.get_inactive_held_item() && !c_bow.onehanded)
-				to_chat(mastermob, span_warning("I need a free hand to draw [masteritem]!"))
+				to_chat(mastermob, span_warning("Мне нужна свободная рука дабы стрелять с [masteritem]!"))
 				return FALSE
 	return TRUE
 
@@ -92,13 +92,13 @@
 /datum/intent/arc/crossbow/can_charge()
 	if(mastermob?.next_move > world.time)
 		if(mastermob.client.last_cooldown_warn + 10 < world.time)
-			to_chat(mastermob, span_warning("I'm not ready to do that yet!"))
+			to_chat(mastermob, span_warning("Я ещё не готов к этому!"))
 			mastermob.client.last_cooldown_warn = world.time
 			return FALSE
 		if(mastermob && masteritem)
 			var/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/c_bow = masteritem
 			if(mastermob.get_num_arms(FALSE) < 2 && !c_bow.onehanded || mastermob.get_inactive_held_item() && !c_bow.onehanded)
-				to_chat(mastermob, span_warning("I need a free hand to draw [masteritem]!"))
+				to_chat(mastermob, span_warning("Мне нужна свободная рука дабы стрелять с [masteritem]!"))
 				return FALSE
 	return TRUE
 
@@ -135,7 +135,7 @@
 		..()
 	else
 		if(!cocked)
-			to_chat(user, span_info("I step on the stirrup and use all my might..."))
+			to_chat(user, span_info("Я наступаю на стремя и изо всех сил стараюсь..."))
 			if(!movingreload)
 				if(do_after(user, reloadtime - user.STASTR, target = user))
 					playsound(user, 'sound/combat/Ranged/crossbow_medium_reload-01.ogg', 100, FALSE)
@@ -145,7 +145,7 @@
 					playsound(user, 'sound/combat/Ranged/crossbow_medium_reload-01.ogg', 100, FALSE)
 					cocked = TRUE
 		else
-			to_chat(user, span_warning("I carefully de-cock the crossbow."))
+			to_chat(user, span_warning("Я осторожно снимаю арбалет с боевого взвода."))
 			cocked = FALSE
 	update_icon()
 
@@ -156,7 +156,7 @@
 				return
 			..()
 		else
-			to_chat(user, span_warning("I need to cock the bow first."))
+			to_chat(user, span_warning("Сначала мне нужно взвести арбалет."))
 
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)

@@ -1,6 +1,6 @@
 /datum/advclass/wretch/outlaw
 	name = "Outlaw"
-	tutorial = "You are the person folk fear at night - use your cunning and speed to strike fast and get out with your spoils before anyone notices."
+	tutorial = "Ты тот, кого люди боятся по ночам. Используй свою хитрость и скорость, чтобы нанести удар быстро и уйти с добычей, пока никто не заметил."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/wretch/outlaw

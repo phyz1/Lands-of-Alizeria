@@ -148,11 +148,11 @@ GLOBAL_LIST_INIT(freqtospan, list(
 					namepart = "Unknown"
 			if(dist > hear_limit)
 				if(yelling == "3")
-					messagepart = " yells, \"<B>" + "[Gibberish(raw_message, TRUE, scramble)]\"</B>"
+					messagepart = " кричит, \"<B>" + "[Gibberish(raw_message, TRUE, scramble)]\"</B>"
 				else if(yelling == "2")
-					messagepart = " exclaims, \"" + "[Gibberish(raw_message, TRUE, scramble)]\""
+					messagepart = " восклицает, \"" + "[Gibberish(raw_message, TRUE, scramble)]\""
 				else
-					messagepart = " says, \"" + "[Gibberish(raw_message, TRUE, scramble)]\""
+					messagepart = " говорит, \"" + "[Gibberish(raw_message, TRUE, scramble)]\""
 			spanpart1 = "<span class='smallyell'>"
 
 	var/languageicon = ""

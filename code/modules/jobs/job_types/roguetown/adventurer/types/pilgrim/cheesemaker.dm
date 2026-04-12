@@ -1,8 +1,6 @@
 /datum/advclass/cheesemaker
 	name = "Cheesemaker"
-	tutorial = "Cheese cheese cheese! You have a rare wheel of cheese and know how to make more of the rare delicacy \
-	As very skilled cook you come with some ingredients to make food and feed the masses. \
-	cook up some cuisine with food gathered from the local flora and fauna"
+	tutorial = "Сыр, сыр, сыр! У тебя есть редкая головка сыра, и ты знаешь, как приготовить ещё этого редкого деликатеса. Будучи очень искусным поваром, ты приходишь с некоторыми ингредиентами, чтобы готовить еду и кормить народ. Приготовь какое-нибудь блюдо из продуктов, собранных из местной флоры и фауны."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/cheesemaker

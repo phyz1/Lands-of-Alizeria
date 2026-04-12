@@ -2,7 +2,7 @@
 /datum/intent/katar/cut
 	name = "cut"
 	icon_state = "incut"
-	attack_verb = list("cuts", "slashes")
+	attack_verb = list("режет", "секёт")
 	animname = "cut"
 	blade_class = BCLASS_CUT
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
@@ -29,7 +29,7 @@
 	name = "bash"
 	blade_class = BCLASS_BLUNT
 	icon_state = "inbash"
-	attack_verb = list("bashes", "strikes")
+	attack_verb = list("бьёт", "ударяет")
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	item_d_type = "blunt"
 
@@ -50,7 +50,7 @@
 /datum/intent/knuckles/strike
 	name = "punch"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("punches", "clocks")
+	attack_verb = list("бьёт")
 	hitsound = list('sound/combat/hits/punch/punch_hard (1).ogg', 'sound/combat/hits/punch/punch_hard (2).ogg', 'sound/combat/hits/punch/punch_hard (3).ogg')
 	chargetime = 0
 	penfactor = BLUNT_DEFAULT_PENFACTOR
@@ -63,7 +63,7 @@
 /datum/intent/knuckles/smash
 	name = "smash"
 	blade_class = BCLASS_SMASH
-	attack_verb = list("smashes")
+	attack_verb = list("разносит")
 	hitsound = list('sound/combat/hits/punch/punch_hard (1).ogg', 'sound/combat/hits/punch/punch_hard (2).ogg', 'sound/combat/hits/punch/punch_hard (3).ogg')
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	damfactor = 1.35

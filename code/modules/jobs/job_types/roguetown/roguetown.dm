@@ -67,8 +67,10 @@
 				preferredgods |= god
 		if(length(preferredgods))
 			H.set_patron(default_patron || pick(preferredgods))
-		else
+		else if(length(possiblegods))
 			H.set_patron(default_patron || pick(possiblegods))
+		else
+			H.set_patron(default_patron)
 		var/change_message = span_warning("[old_patron] had not endorsed my practices in my younger years. I've since grown accustomed to [H.patron].")
 		if(H.client)
 			to_chat(H, change_message)

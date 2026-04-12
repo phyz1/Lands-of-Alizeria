@@ -1,6 +1,6 @@
 /datum/advclass/wretch/heretic
 	name = "Heretic"
-	tutorial = "You father your unholy cause through the most time-tested of ways: hard, heavy steel in both arms and armor."
+	tutorial = "Ты продвигаешь своё нечестивое дело самым проверенным способом: тяжёлой сталью в оружии и доспехах."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/wretch/heretic

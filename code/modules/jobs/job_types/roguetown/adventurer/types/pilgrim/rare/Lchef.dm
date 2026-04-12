@@ -2,9 +2,7 @@
 
 /datum/advclass/masterchef
 	name = "Master Chef"
-	tutorial = "A master chef, one of the best cooks to ever live. \
-	With noble origins, you were taught by cooking masters in the secretive League of Fine Dining in exotic meals from all around the world \
-	Now you wander, free to experiment, cook exotic dishes and gourmet meals, worthy for a king"
+	tutorial = "Ты мастер-шеф, один из лучших поваров, когда-либо живших. Благородного происхождения, ты обучался у мастеров кулинарии в тайной Лиге изысканной кухни, познавая экзотические блюда со всего мира. Теперь ты странствуешь, свободный в экспериментах, готовя экзотические кушанья и изысканные яства, достойные короля."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/masterchef

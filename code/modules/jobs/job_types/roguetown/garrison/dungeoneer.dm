@@ -17,9 +17,7 @@
 		/datum/species/harpy, // very imposing with -3 baseline str
 	)
 
-	tutorial = "Sometimes at night you stare into the vacant room and feel the loneliness of your existence crawl into whatever remains of your loathsome soul. \
-				You will never know hunger, thirst or want for anything with the mammons you make: Just as you’ll never forget the sounds a saw makes cutting through the bone, what a drowning man will gurgle out between the blood and teeth strangling his breath. \
-				You fall under the garrison's command, obeying orders of the Sergeant, Marshal, and the Crown. Tending to those awaiting condemning and dishing punishment are your specialties.."
+	tutorial = "Иногда по ночам ты смотришь в пустую комнату и чувствуешь, как одиночество твоего существования заползает в остатки твоей презренной души. Ты никогда не узнаешь голода, жажды или нужды в чём-либо благодаря деньгам, которые зарабатываешь. Так же, как никогда не забудешь звук пилы, перерезающей кость, и то, как выбулькивает тонущий человек сквозь кровь и зубы, перекрывающие ему дыхание. Ты находишься под командованием гарнизона, подчиняясь приказам сержанта, маршала и короны. Твоя специализация это уход за теми, кто ждёт приговора, и исполнение наказаний."
 
 	announce_latejoin = FALSE
 	outfit = /datum/outfit/job/dungeoneer

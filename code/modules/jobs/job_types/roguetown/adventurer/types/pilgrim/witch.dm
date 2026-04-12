@@ -1,6 +1,6 @@
 /datum/advclass/witch
 	name = "Witch"
-	tutorial = "You are a witch, seen as wisefolk to some and a demon to many. Ostracized and sequestered for wrongthinks or outright heresy, your potions are what the commonfolk turn to when all else fails, and for this they tolerate you — at an arm's length. Take care not to end 'pon a pyre, for the church condemns your left handed arts."
+	tutorial = "Ты ведьма. Кто-то считает тебя мудрой, а многие — демоном. Изгнанная и оторванная от общества за крамольные мысли или откровенную ересь, ты варишь зелья, к которым простой люд обращается, когда всё остальное не помогает, и за это тебя терпят — но на расстоянии вытянутой руки. Смотри не окажись на костре, ибо церковь осуждает твои левые искусства."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/witch

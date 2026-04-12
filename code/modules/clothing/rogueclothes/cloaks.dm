@@ -456,6 +456,15 @@
 	var/picked
 	var/overarmor = TRUE
 
+/obj/item/clothing/cloak/stabard/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
 /obj/item/clothing/cloak/stabard/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/storage/concrete/roguetown/cloak)
@@ -546,11 +555,31 @@
 	var/picked
 	var/overarmor = TRUE
 
+/obj/item/clothing/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
+	if(get_altdetail_tag())
+		var/mutable_appearance/pic2 = mutable_appearance(icon(icon, "[icon_state][altdetail_tag]"))
+		pic2.appearance_flags = RESET_COLOR
+		if(get_altdetail_color())
+			pic2.color = get_altdetail_color()
+		add_overlay(pic2)
+
+/obj/item/clothing/Initialize()
+	. = ..()
+	update_icon()
+
 /obj/item/clothing/cloak/tstabard/townguard
 	name = "guard tabard"
 	desc = "A tabard with the lord's heraldic colors."
 	color = "#3a7a29"
-	detail_tag = "_box"
+	detail_tag = "_quad"
 	detail_color = "#0b1e06"
 
 /obj/item/clothing/cloak/stabard/guard/attack_right(mob/user)

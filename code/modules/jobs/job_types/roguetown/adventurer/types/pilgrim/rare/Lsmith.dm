@@ -2,8 +2,7 @@
 
 /datum/advclass/masterblacksmith
 	name = "Master Blacksmith"
-	tutorial = "A master blacksmith, able to forge steel like dough, and gold like clay. \
-	create masterful weapons and armor, be a legend among those who interest in your mighty forge"
+	tutorial = "Ты мастер-кузнец, способный ковать сталь как тесто, а золото как глину. Создавай искусное оружие и доспехи, стань легендой среди тех, кому интересно твоё ремесло"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/masterblacksmith

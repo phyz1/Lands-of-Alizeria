@@ -1,6 +1,6 @@
 /datum/advclass/pioneer //minecraft griefer class that tnts your house dog and ass
 	name = "Pioneer"
-	tutorial = "Pioneers redraw the battlefield. They cut roads through obstacles, unhinge gates, and lace the ground with clever devices-making allies swift and enemies slow."
+	tutorial = "Сапёр перекраивает поле боя. Он прокладывает дороги сквозь препятствия, вскрывает ворота и усеивает землю хитроумными приспособлениями, делая союзников быстрее, а врагов — медленее."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/bandit/pioneer

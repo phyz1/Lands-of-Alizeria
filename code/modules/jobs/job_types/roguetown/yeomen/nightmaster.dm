@@ -1,5 +1,5 @@
 /datum/job/roguetown/niteman
-	title = "Caïd"
+	title = "Caid"
 	f_title = "Daronne"
 	flag = NITEMASTER
 	department_flag = YEOMEN

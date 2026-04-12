@@ -485,3 +485,16 @@
 	item_state = "maidhat"
 	mob_overlay_icon = 'icons/roguetown/alizeria/armoronmob.dmi'
 	sewrepair = TRUE
+
+///////////////////////////////////////
+// NK ITEMS
+/obj/item/clothing/head/roguetown/grenzelhofthat/nk
+	altdetail_color = "#c1b144"
+	color = "#414143"
+	detail_color = "#c1b144"
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/nk
+	color = "#414143"
+
+/obj/item/storage/belt/rogue/leather/battleskirt/nk
+	color = "#414143"

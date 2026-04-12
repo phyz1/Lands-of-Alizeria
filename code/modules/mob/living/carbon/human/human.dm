@@ -54,7 +54,7 @@
 			if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
 				if(!underwear)
 					return
-				src.visible_message(span_notice("[src] begins to take off [underwear]..."))
+				src.visible_message(span_notice("[src] начинает снимать [underwear]..."))
 				if(do_after(user, 30, needhand = 1, target = src))
 					var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
 					chest.remove_bodypart_feature(underwear.undies_feature)
@@ -65,7 +65,7 @@
 			if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
 				if(!legwear_socks)
 					return
-				src.visible_message(span_notice("[src] begins to take off [legwear_socks]..."))
+				src.visible_message(span_notice("[src] начинает снимать [legwear_socks]..."))
 				if(do_after(user, 30, needhand = 1, target = src))
 					var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
 					chest.remove_bodypart_feature(legwear_socks.legwears_feature)
@@ -112,18 +112,18 @@
 	switch(rand(1,4))
 		if(1)
 			affecting = get_bodypart(pick(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG))
-			chat_message = span_danger("I fall on my [affecting]!")
+			chat_message = span_danger("Я падаю на мою [affecting]!")
 		if(2)
 			affecting = get_bodypart(pick(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM))
-			chat_message = span_danger("I fall on my arm!")
+			chat_message = span_danger("Я падаю на свою руку!")
 		if(3)
 			affecting = get_bodypart(BODY_ZONE_CHEST)
-			chat_message = span_danger("I fall flat! I'm winded!")
+			chat_message = span_danger("Я падаю плашмя! Сбило дыхание...")
 			emote("gasp")
 			adjustOxyLoss(50)
 		if(4)
 			affecting = get_bodypart(BODY_ZONE_HEAD)
-			chat_message = span_danger("I fall on my head!")
+			chat_message = span_danger("Я падаю на голову!")
 	if(affecting && apply_damage(dam, BRUTE, affecting, run_armor_check(affecting, "blunt", damage = dam)))
 		update_damage_overlays()
 		if(levels >= 1)
@@ -367,13 +367,13 @@
 	CHECK_DNA_AND_SPECIES(C)
 
 	if(C.stat == DEAD || (HAS_TRAIT(C, TRAIT_FAKEDEATH)))
-		to_chat(src, span_warning("[C.name] is dead!"))
+		to_chat(src, span_warning("[C.name] он мёртв!"))
 		return
 	if(is_mouth_covered())
-		to_chat(src, span_warning("Remove your mask first!"))
+		to_chat(src, span_warning("Сними сначала свою маску!"))
 		return 0
 	if(C.is_mouth_covered())
-		to_chat(src, span_warning("Remove [p_their()] mask first!"))
+		to_chat(src, span_warning("Сними сначала маску с[p_their()]!"))
 		return 0
 
 	if(C.cpr_time < world.time + 30)
@@ -398,11 +398,11 @@
 			var/suff = min(C.getOxyLoss(), 7)
 			C.adjustOxyLoss(-suff)
 			C.updatehealth()
-			to_chat(C, span_unconscious("I feel a breath of fresh air enter your lungs... It feels good..."))
+			to_chat(C, span_unconscious("Я чувствую, как в твои легкие входит глоток свежего воздуха... Это приятно..."))
 		else if(they_breathe && !they_lung)
-			to_chat(C, span_unconscious("I feel a breath of fresh air... but you don't feel any better..."))
+			to_chat(C, span_unconscious("Я чувствую глоток свежего воздуха... Но тебе от этого не лучше..."))
 		else
-			to_chat(C, span_unconscious("I feel a breath of fresh air... which is a sensation you don't recognise..."))
+			to_chat(C, span_unconscious("Я чувствую глоток свежего воздуха... Это ощущение вам незнакомо..."))
 
 /mob/living/carbon/human/cuff_resist(obj/item/I)
 	if(..())
@@ -441,13 +441,13 @@
 
 /mob/living/carbon/human/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(!(mobility_flags & MOBILITY_UI))
-		to_chat(src, span_warning("I can't do that right now!"))
+		to_chat(src, span_warning("Я не могу сделать это прямо сейчас!"))
 		return FALSE
 	if(incapacitated())
-		to_chat(src, span_warning("I can't do that right now!"))
+		to_chat(src, span_warning("Я не моу сделать это прямо сейчас!"))
 		return FALSE
 	if(be_close && !in_range(M, src))
-		to_chat(src, span_warning("I am too far away!"))
+		to_chat(src, span_warning("Я слишком далеко!"))
 		return FALSE
 	return TRUE
 
@@ -650,8 +650,8 @@
 /mob/living/carbon/human/vomit(lost_nutrition = 10, blood = 0, stun = 1, distance = 0, message = 1, toxic = 0)
 	if(blood && (NOBLOOD in dna.species.species_traits) && !HAS_TRAIT(src, TRAIT_TOXINLOVER) && !HAS_TRAIT(src, TRAIT_NOMETABOLISM))
 		if(message)
-			visible_message(span_warning("[src] dry heaves!"), \
-							span_danger("I try to throw up, but there's nothing in your stomach!"))
+			visible_message(span_warning("[src] испытывает рвотные позывы!"), \
+							span_danger("Тебя рвёт, но у тебя в желудке ничего нет!"))
 		if(stun)
 			Immobilize(200)
 		return 1
@@ -788,9 +788,9 @@
 
 	if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE))
 		if(backnotshoulder)
-			visible_message(span_notice("[src] starts lifting [target] onto their back.."))
+			visible_message(span_notice("[src] начинает поднимать [target] на спину.."))
 		else
-			visible_message(span_notice("[src] starts lifting [target] onto their shoulder.."))
+			visible_message(span_notice("[src] начинает поднимать [target] на плечи.."))
 		if(do_after(src, carrydelay, TRUE, target))
 			//Second check to make sure they're still valid to be carried
 			if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE))
@@ -800,15 +800,15 @@
 
 /mob/living/carbon/human/proc/piggyback(mob/living/carbon/target)
 	if(can_piggyback(target))
-		visible_message(span_notice("[target] starts to climb onto [src]..."))
+		visible_message(span_notice("[target] начинает подниматься на [src]..."))
 		if(do_after(target, 15, target = src))
 			if(can_piggyback(target))
 				if(target.incapacitated(FALSE, TRUE) || incapacitated(FALSE, TRUE))
-					to_chat(target, span_warning("I can't piggyback ride [src]."))
+					to_chat(target, span_warning("Я не могу кататься верхом на [src]."))
 					return
 				buckle_mob(target, TRUE, TRUE, FALSE, 0, 0)
 	else
-		to_chat(target, span_warning("I can't piggyback ride [src]."))
+		to_chat(target, span_warning("Я не могу кататься верхом на [src]."))
 
 /mob/living/carbon/human/buckle_mob(mob/living/target, force = FALSE, check_loc = TRUE, lying_buckle = FALSE, hands_needed = 0, target_hands_needed = 0)
 	if(!force)//humans are only meant to be ridden through piggybacking and special cases

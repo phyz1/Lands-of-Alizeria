@@ -1,6 +1,6 @@
 /datum/advclass/sellsword //Strength class, starts with axe or flails and medium armor training
 	name = "Sellsword"
-	tutorial = "Perhaps a mercenary, perhaps a deserter - at one time, you killed for a master in return for gold. Now you live with no such master over your head - and take what you please."
+	tutorial = "Возможно, ты был наемником, возможно, дезертером — когда-то ты убивали за хозяина в обмен на золото. Теперь ты живёшь без такого хозяина над головой и берёшь все, что только пожелаешь."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/bandit/sellsword

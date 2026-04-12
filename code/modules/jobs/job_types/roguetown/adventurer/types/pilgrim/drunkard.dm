@@ -1,6 +1,6 @@
 /datum/advclass/drunkard
 	name = "Gambler"
-	tutorial = "You are a gambler. Everyone in your life has given up on you, and the stress of losing it all over and over has taken its toll on your body. All you have left to your name are some cards, dice and whatever is in this bottle. At least you're still in Baotha's good graces, whether you reciprocate such feelings or not..."
+	tutorial = "Ты игрок. Все в твоей жизни от тебя отвернулись, и стресс от постоянных проигрышей сказался на твоём теле. Всё, что у тебя осталось — это несколько карт, кости и что там в этой бутылке. По крайней мере, ты всё ещё в милости у Баоты, питаешь ли ты к ней ответные чувства или нет..."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/drunkard

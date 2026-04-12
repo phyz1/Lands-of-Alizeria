@@ -30,10 +30,10 @@
 		return
 	if(!get_location_accessible(user, BODY_ZONE_PRECISE_MOUTH, grabs="other"))
 		if(!HAS_TRAIT(user, TRAIT_BITERHELM))
-			to_chat(user, span_warning("My mouth is blocked."))
+			to_chat(user, span_warning("Мой рот заблокирован"))
 			return
 	if(HAS_TRAIT(user, TRAIT_NO_BITE))
-		to_chat(user, span_warning("I can't bite."))
+		to_chat(user, span_warning("Я не могу кусать"))
 		return
 	if(!user_species || (user_species && !user_species.headless))
 		user.face_atom(target)
@@ -60,10 +60,10 @@
 ///Initial bite on target
 /mob/living/carbon/onbite(mob/living/carbon/human/user)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("I don't want to harm [src]!"))
+		to_chat(user, span_warning("Я не могу причиниить вред [src]!"))
 		return FALSE
 	if(!user.can_bite())
-		to_chat(user, span_warning("My mouth has something in it."))
+		to_chat(user, span_warning("У меня во рту что-то есть."))
 		return FALSE
 
 	var/datum/intent/bite/bitten = new()
@@ -100,8 +100,8 @@
 	var/datum/wound/caused_wound
 	if(!nodmg)
 		caused_wound = affecting.bodypart_attacked_by(BCLASS_BITE, dam2do, user, user.zone_selected, crit_message = TRUE)
-	visible_message(span_danger("[user] bites [src]'s [parse_zone(user.zone_selected)]![next_attack_msg.Join()]"), \
-					span_userdanger("[user] bites my [parse_zone(user.zone_selected)]![next_attack_msg.Join()]"))
+	visible_message(span_danger("[user] кусает [src]'s [parse_zone(user.zone_selected)]![next_attack_msg.Join()]"), \
+					span_userdanger("[user] кусает мне [parse_zone(user.zone_selected)]![next_attack_msg.Join()]"))
 
 	next_attack_msg.Cut()
 //nodmg if they don't have an open wound
@@ -121,7 +121,7 @@
 							caused_wound.werewolf_infect_attempt()
 
 				if(HAS_TRAIT(src, TRAIT_SILVER_BLESSED))
-					to_chat(user, span_warning("BLEH! [bite_victim] tastes of SILVER! My gift cannot take hold."))
+					to_chat(user, span_warning("ГРХХ! [bite_victim] вкус СЕРЕБРА! Мой дар не может прижиться.."))
 				else
 					caused_wound?.werewolf_infect_attempt()
 					if(prob(30))
@@ -133,7 +133,7 @@
 			if(zombie_antag && zombie_antag.has_turned)
 				zombie_antag.last_bite = world.time
 				if(bite_victim.zombie_infect_attempt())   // infect_attempt on bite
-					to_chat(user, span_danger("You feel your gift trickling from your mouth into [bite_victim]'s wound..."))
+					to_chat(user, span_danger("Вы чувствуете, как ваш дар струится изо рта в раны на [bite_victim] "))
 	var/obj/item/grabbing/bite/B = new()
 	user.equip_to_slot_or_del(B, SLOT_MOUTH)
 	if(user.mouth == B)
@@ -260,7 +260,7 @@
 			if(zombie_antag && zombie_antag.has_turned)
 				var/datum/antagonist/zombie/existing_zombie = C.mind?.has_antag_datum(/datum/antagonist/zombie) //If the bite target is a zombie
 				if(!existing_zombie && caused_wound.zombie_infect_attempt())   // infect_attempt on wound
-					to_chat(user, span_danger("You feel your gift trickling into [C]'s wound...")) //message to the zombie they infected the target
+					to_chat(user, span_danger("Вы чувствуете, как ваш дар постепенно проникает в раны [C] ")) //message to the zombie they infected the target
 /*
 	Code below is for a zombie smashing the brains of unit. The code expects the brain to be part of the head which is not the case with AP. Kept for posterity in case it's used in an overhaul.
 */
@@ -282,11 +282,11 @@
 							return*/
 	else
 		C.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
-	C.visible_message(span_danger("[user] bites [C]'s [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), \
-					span_userdanger("[user] bites my [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), span_hear("I hear a sickening sound of chewing!"), COMBAT_MESSAGE_RANGE, user)
-	to_chat(user, span_danger("I bite [C]'s [parse_zone(sublimb_grabbed)].[C.next_attack_msg.Join()]"))
+	C.visible_message(span_danger("[user] кусает [C]'s [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), \
+					span_userdanger("[user] кусает мне [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), span_hear("I hear a sickening sound of chewing!"), COMBAT_MESSAGE_RANGE, user)
+	to_chat(user, span_danger("Я кусаю [C] [parse_zone(sublimb_grabbed)].[C.next_attack_msg.Join()]"))
 	C.next_attack_msg.Cut()
-	log_combat(user, C, "limb chewed [sublimb_grabbed] ")
+	log_combat(user, C, "конечность обгрызана [sublimb_grabbed] ")
 
 //this is for carbon mobs being drink only
 /obj/item/grabbing/bite/proc/drinklimb(mob/living/user) //implies limb_grabbed and sublimb are things
@@ -306,6 +306,6 @@
 		qdel(src)
 		return
 	if(!limb_grabbed.get_bleed_rate())
-		to_chat(user, span_warning("Sigh. It's not bleeding."))
+		to_chat(user, span_warning("Мгх... Кровь не течёт."))
 		return
 	user.drinksomeblood(grabbed, sublimb_grabbed)

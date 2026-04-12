@@ -90,11 +90,11 @@
 				return zone
 			else
 				if(user.client?.prefs.showrolls)
-					to_chat(user, span_warning("Precision fail! [precision_chance]%"))
+					to_chat(user, span_warning("Не попал! [precision_chance]%"))
 				return check_zone(zone)
 	else
 		if(user.client?.prefs.showrolls)
-			to_chat(user, span_warning("Accuracy fail! [accuracy_chance]%"))
+			to_chat(user, span_warning("Вообще не попал! [accuracy_chance]%"))
 		return BODY_ZONE_CHEST		
 
 /mob/proc/get_generic_parry_drain()
@@ -108,7 +108,7 @@
 	if(!(mobility_flags & MOBILITY_STAND))
 		return FALSE
 	if(user.badluck(4))
-		var/list/usedp = list("Critical miss!", "Damn! Critical miss!", "No! Critical miss!", "It can't be! Critical miss!", "Xylix laughs at me! Critical miss!", "Bad luck! Critical miss!", "Curse creation! Critical miss!", "What?! Critical miss!")
+		var/list/usedp = list("Критический промах!", "Блять! Критический промах!", "Нет! Критический промах!", "Не может быть! Критический промах", "Ксайликс смеётся! Критический промах!", "Невезенье! Критическйи промах!", "Проклятье! Критический промах!", "Что?! Критический промах!")
 		to_chat(user, span_boldwarning("[pick(usedp)]"))
 		flash_fullscreen("blackflash2")
 		user.aftermiss()
@@ -189,7 +189,7 @@
 		if(H.magearmor == 0)
 			H.magearmor = 1
 			H.apply_status_effect(/datum/status_effect/buff/magearmor)
-			to_chat(src, span_boldwarning("My mage armor absorbs the hit and dissipates!"))
+			to_chat(src, span_boldwarning("Моя магическая броня поглощает удар и рассеивается!"))
 			return TRUE
 	
 	if(client && used_intent)
@@ -558,9 +558,9 @@
 				record_round_statistic(STATS_PARRIES)
 
 			if(istype(rmb_intent, /datum/rmb_intent/riposte))
-				src.visible_message(span_boldwarning("<b>[src]</b> ripostes [user] with [W]!"))
+				src.visible_message(span_boldwarning("<b>[src]</b> совершает рипост [user] с помощью [W]!"))
 			else
-				src.visible_message(span_boldwarning("<b>[src]</b> parries [user] with [W]!"))
+				src.visible_message(span_boldwarning("<b>[src]</b> паррирует [user] с помощью [W]!"))
 			if(!iscarbon(user))	//Non-carbon mobs never make it to the proper parry proc where the other calculations are done.
 				if(W.max_blade_int)
 					W.remove_bintegrity(SHARPNESS_ONHIT_DECAY, user)
@@ -569,7 +569,7 @@
 					W.take_damage(INTEG_PARRY_DECAY_NOSHARP, BRUTE, "slash")
 			return TRUE
 		else
-			to_chat(src, span_warning("I'm too tired to parry!"))
+			to_chat(src, span_warning("Я слишком выдохся, дабы паррировать!"))
 			return FALSE //crush through
 	else
 		if(W)
@@ -581,12 +581,12 @@
 		var/mob/living/carbon/human/H = src
 		if(H.stamina_add(parrydrain))
 			playsound(src, pick(parry_sound), 100, FALSE)
-			src.visible_message(span_warning("<b>[src]</b> parries [user]!"))
+			src.visible_message(span_warning("<b>[src]</b> паррирует [user]!"))
 			if(src.client)
 				record_round_statistic(STATS_PARRIES)
 			return TRUE
 		else
-			to_chat(src, span_boldwarning("I'm too tired to parry!"))
+			to_chat(src, span_boldwarning("Я слишком выдохся, дабы паррировать!"))
 			return FALSE
 	else
 		if(src.client)
@@ -693,21 +693,21 @@
 
 		var/attacker_feedback
 		if(user.client?.prefs.showrolls && (attacker_dualw || defender_dualw))
-			attacker_feedback = "Attacking with advantage. ([100 - ((prob2defend / 100) * (prob2defend / 100) * 100)]%)"
+			attacker_feedback = "Атака с преимуществом. ([100 - ((prob2defend / 100) * (prob2defend / 100) * 100)]%)"
 
 		if(src.client?.prefs.showrolls)
-			var/text = "Roll to dodge... [prob2defend]%"
+			var/text = "Бросок на уклонение... [prob2defend]%"
 			if((defender_dualw || attacker_dualw))
 				if(defender_dualw && attacker_dualw)
-					text += " Our dual wielding cancels out!"
+					text += "Наш стиль боя компенсирует друг-друга"
 				else//If we're defending against or as a dual wielder, we roll disadv. But if we're both dual wielding it cancels out.
-					text += " Twice! Disadvantage! ([(prob2defend / 100) * (prob2defend / 100) * 100]%)"
+					text += " Бросок дважды! ([(prob2defend / 100) * (prob2defend / 100) * 100]%)"
 			to_chat(src, span_info("[text]"))
 
 		var/dodge_status = FALSE
 		if((!defender_dualw && !attacker_dualw) || (defender_dualw && attacker_dualw)) //They cancel each other out
 			if(attacker_feedback)
-				attacker_feedback = "Advantage cancelled out!"
+				attacker_feedback = "Преимущество нивелировалось!"
 			if(prob(prob2defend))
 				dodge_status = TRUE
 		else if(attacker_dualw)
@@ -729,21 +729,21 @@
 		drained -= H.get_tempo_bonus(TEMPO_TAG_STAMLOSS_DODGE)
 
 		if(!H.stamina_add(max(drained,5)))
-			to_chat(src, span_warning("I'm too tired to dodge!"))
+			to_chat(src, span_warning("Я слишком выдохся, дабы уколняться"))
 			return FALSE
 	else //we are a non human
 		prob2defend = clamp(prob2defend, 5, 90)
 		if(client?.prefs.showrolls)
-			to_chat(src, span_info("Roll to dodge... [prob2defend]%"))
+			to_chat(src, span_info("Бросок на уворот... [prob2defend]%"))
 		if(!prob(prob2defend))
 			return FALSE
 	dodgecd = TRUE
 	playsound(src, 'sound/combat/dodge.ogg', 100, FALSE)
 	throw_at(turfy, 1, 2, src, FALSE)
 	if(drained > 0)
-		src.visible_message(span_warning("<b>[src]</b> dodges [user]'s attack!"))
+		src.visible_message(span_warning("<b>[src]</b> уклоняется от атаки [user]"))
 	else
-		src.visible_message(span_warning("<b>[src]</b> easily dodges [user]'s attack!"))
+		src.visible_message(span_warning("<b>[src]</b> легко уклоняется от атаки [user]"))
 	if(get_dist(src, user) <= user.used_intent?.reach)	//We are still in range of the attacker's weapon post-dodge
 		var/probclip = 50
 		var/obj/item/IS = L.get_active_held_item()
@@ -849,7 +849,7 @@
 	if(!ishuman(user))
 		return
 	if(user == src)
-		bad_guard(span_warning("I hit myself."))
+		bad_guard(span_warning("Я ударил себя"))
 		return
 	var/mob/living/carbon/human/H = user
 	if(!IU)	//The opponent is trying to rawdog us with their bare hands while we have Guard up. We get a free attack on their active hand.
@@ -857,10 +857,10 @@
 		var/force = get_complex_damage(IM, src)
 		var/armor_block = H.run_armor_check(BODY_ZONE_PRECISE_L_HAND, used_intent.item_d_type, armor_penetration = used_intent.penfactor, damage = force, used_weapon = IM)
 		if(H.apply_damage(force, IM.damtype, affecting, armor_block))
-			visible_message(span_suicide("[src] gores [user]'s hands with \the [IM]!"))
+			visible_message(span_suicide("[src] руки [user] покрыты ранами от [IM]!"))
 			affecting.bodypart_attacked_by(used_intent.blade_class, force, crit_message = TRUE, weapon = IM)
 		else
-			visible_message(span_suicide("[src] clashes into [user]'s hands with \the [IM]!"))
+			visible_message(span_suicide("[src] попадает в руки [user] с помощью [IM]!"))
 		playsound(src, pick(used_intent.hitsound), 80)
 		remove_status_effect(/datum/status_effect/buff/clash)
 		return
@@ -877,12 +877,12 @@
 			if(IU.blade_dulling == DULLING_SHAFT_CONJURED)
 				integdam *= 2
 			IU.take_damage(integdam, BRUTE, IM.d_type)
-		visible_message(span_suicide("[src] ripostes [H] with \the [IM]!"))
+		visible_message(span_suicide("[src] совершает рипост [H] с помощью [IM]!"))
 		playsound(src, 'sound/combat/clash_struck.ogg', 100)
 		H.apply_status_effect(/datum/status_effect/debuff/exposed, 3 SECONDS)
 		H.apply_status_effect(/datum/status_effect/debuff/clickcd, 3 SECONDS)
 		H.Slowdown(3)
-		to_chat(src, span_notice("[capitalize(H.p_theyre())] exposed!"))
+		to_chat(src, span_notice("[capitalize(H.p_theyre())] открыт для удара!"))
 		remove_status_effect(/datum/status_effect/buff/clash)
 		apply_status_effect(/datum/status_effect/buff/adrenaline_rush)
 		purge_peel(GUARD_PEEL_REDUCTION)
@@ -954,7 +954,7 @@
 		prob_opp = max(prob_us, prob_opp)
 
 	if((!instantloss && !instantwin) || (instantloss && instantwin))	//We are both using normal weapons OR we're both using memes. Either way, proceed as normal.
-		visible_message(span_boldwarning("[src] and [HU] clash!"))
+		visible_message(span_boldwarning("[src] и [HU] совершают клинч!"))
 		flash_fullscreen("whiteflash")
 		HU.flash_fullscreen("whiteflash")
 		var/datum/effect_system/spark_spread/S = new()
@@ -973,8 +973,8 @@
 			play_overhead_indicator('icons/mob/overhead_effects.dmi', "clashtwo", 1 SECONDS, OBJ_LAYER, soundin = 'sound/combat/clash_disarm_opp.ogg', y_offset = 24)
 			success = TRUE
 		if(!success)
-			to_chat(src, span_warningbig("Draw! Opponent's chances were... [prob_opp]%"))
-			to_chat(HU, span_warningbig("Draw! Opponent's chances were... [prob_us]%"))
+			to_chat(src, span_warningbig("Ничья! Шансы противника были... [prob_opp]%"))
+			to_chat(HU, span_warningbig("Ничья! Шансы противника были... [prob_us]%"))
 			playsound(src, 'sound/combat/clash_draw.ogg', 100, TRUE)
 	else
 		if(instantloss)
@@ -989,8 +989,8 @@
 ///At the moment it doesn't have a get_active_held_item() failsafe, so the I has to be defined first.
 ///This is due to, uh, bad code.
 /mob/living/carbon/human/proc/disarmed(obj/item/I)
-	visible_message(span_suicide("[src] is disarmed!"),
-					span_boldwarning("I'm disarmed!"))
+	visible_message(span_suicide("[src] обезоружен"),
+					span_boldwarning("Я обезоружен"))
 	var/turnangle = (prob(50) ? 270 : 90)
 	var/turndir = turn(dir, turnangle)
 	var/dist = rand(1, 5)
@@ -1048,7 +1048,7 @@
 	if(!cmode)
 		if(bait_stacks > 0)
 			bait_stacks = 0
-			to_chat(src, span_info("My focus and balance returns. I won't lose my footing if I am baited again."))
+			to_chat(src, span_info("Ко мне возвращаются сосредоточенность и равновесие. Я не потеряю равновесие, даже если меня снова обманут."))
 
 ///Called by a timer after toggling cmode off.
 /mob/living/carbon/human/proc/expire_peel()
@@ -1137,7 +1137,7 @@
 /mob/living/carbon/human/proc/clear_tempo_all()
 	if(length(tempo_attackers) && HAS_TRAIT(src, TRAIT_TEMPO))
 		LAZYCLEARLIST(tempo_attackers)
-		to_chat(src, span_info("My muscles relax. My tempo is gone."))
+		to_chat(src, span_info("Мои мышцы расслабляются. Темп пропал."))
 		manage_tempo()
 
 /mob/living/proc/get_tempo_bonus(id)

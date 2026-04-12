@@ -1,6 +1,6 @@
 /datum/advclass/rogue
 	name = "Treasure Hunter"
-	tutorial = "You are a treasure hunter trained in hunting for valuables. Discern what is treasure or not, your fortune could be hidden anywhere."
+	tutorial = "Ты — расхититель могил. Умеешь отличать богатые могилы от не очень."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/rogue
@@ -36,7 +36,7 @@
 
 /datum/outfit/job/adventurer/rogue/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are a treasure hunter trained in hunting for valuables. Discern what is treasure or not, your fortune could be hidden anywhere."))
+	to_chat(H, span_warning("Ты — расхититель могил. Умеешь отличать богатые могилы от не очень."))
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 	backl = /obj/item/storage/backpack/rogue/satchel
@@ -70,7 +70,7 @@
 
 /datum/advclass/rogue/thief
 	name = "Thief"
-	tutorial = "You are a scoundrel and a thief. A master in getting into places you shouldn't be and taking things that aren't rightfully yours."
+	tutorial = "Ты негодяй и вор. Мастерски проникаешь туда, куда не следует, и забираешь то, что тебе по праву не принадлежит."
 	outfit = /datum/outfit/job/adventurer/thief
 
 	cmode_music = 'sound/music/combat_rogue.ogg'
@@ -105,7 +105,7 @@
 
 /datum/outfit/job/adventurer/thief/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are a scoundrel and a thief. A master in getting into places you shouldn't be and taking things that aren't rightfully yours."))
+	to_chat(H, span_warning("Ты негодяй и вор. Мастерски проникаешь туда, куда не следует, и забираешь то, что тебе по праву не принадлежит."))
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -129,7 +129,7 @@
 
 /datum/advclass/rogue/bard
 	name = "Bard"
-	tutorial = "You make your fortune in brothels, flop houses, and taverns – gaining fame for your songs and legends. If there is any truth to them, that is."
+	tutorial = "Ты сколачиваешь состояние в борделях, ночлежках и тавернах, обретая славу благодаря своим песням и легендам. Если, конечно, в них есть хоть доля правды."
 	outfit = /datum/outfit/job/adventurer/bard
 	subclass_social_rank = SOCIAL_RANK_PEASANT
 
@@ -160,7 +160,7 @@
 
 /datum/outfit/job/adventurer/bard/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You make your fortune in brothels, flop houses, and taverns – gaining fame for your songs and legends. If there is any truth to them, that is."))
+	to_chat(H, span_warning("Ты сколачиваешь состояние в борделях, ночлежках и тавернах, обретая славу благодаря своим песням и легендам. Если, конечно, в них есть хоть доля правды."))
 
 	head = /obj/item/clothing/head/roguetown/bardhat
 	shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -213,7 +213,7 @@
 
 /datum/advclass/rogue/swashbuckler
 	name = "Swashbuckler"
-	tutorial = "You are a daring rogue of the seas! Swashbucklers wield agile swordplay and acrobatic prowess - fighting dirty to outmaneuver foes with flair."
+	tutorial = "Ты — отважный морской разбойник! Авантюрист что виртуозно владеет мечом и акробатическими трюками, используя нечестные приемы, чтобы эффектно перехитрить врагов."
 	outfit = /datum/outfit/job/adventurer/swashbuckler
 	subclass_social_rank = SOCIAL_RANK_PEASANT
 
@@ -243,7 +243,7 @@
 
 /datum/outfit/job/adventurer/swashbuckler/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are a daring rogue of the seas! Swashbucklers wield agile swordplay and acrobatic prowess - fighting dirty to outmaneuver foes with flair."))
+	to_chat(H, span_warning("Ты — отважный морской разбойник! Авантюрист что виртуозно владеет мечом и акробатическими трюками, используя нечестные приемы, чтобы эффектно перехитрить врагов."))
 	head = /obj/item/clothing/head/roguetown/helmet/tricorn
 	pants = /obj/item/clothing/under/roguetown/tights/sailor
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor

@@ -11,7 +11,7 @@
 	)
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_COUNCILLOR
-	tutorial = "You may have inherited this position, bought your way into it, or were appointed to it by merit--perish the thought! Whatever the case though, you work as an assistant and agent of the crown in matters of state. Whether this be aiding the steward, the sheriff, or the crown itself, or simply enjoying the free food of the keep, your duties vary day by day. You may be the lowest rung of the ladder, but that rung still towers over everyone else in town."
+	tutorial = "Возможно, ты унаследовал эту должность, купил её или был назначен по заслугам — не дай боже! Как бы то ни было, ты работаешь как помощник и агент короны в государственных делах. Будь то помощь стюарду, шерифу или самой короне, или просто наслаждение бесплатной едой в замке — твои обязанности меняются изо дня в день. Возможно, ты самая низкая ступенька на лестнице, но эта ступенька всё равно возвышается над всеми остальными в городе."
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/councillor
 	advclass_cat_rolls = list(CTAG_COUNCILLOR = 2)
@@ -32,7 +32,7 @@
 
 /datum/advclass/councillor
 	name = "Councillor"
-	tutorial = "You may have inherited this position, bought your way into it, or were appointed to it by merit--perish the thought! Whatever the case though, you work as an assistant and agent of the crown in matters of state. Whether this be aiding the steward, the sheriff, or the crown itself, or simply enjoying the free food of the keep, your duties vary day by day. You may be the lowest rung of the ladder, but that rung still towers over everyone else in town."
+	tutorial = "Возможно, ты унаследовал эту должность, купил её или был назначен по заслугам — не дай боже! Как бы то ни было, ты работаешь помощником и агентом короны в государственных делах. Будь то помощь стюарду, шерифу или самой короне, или просто наслаждение бесплатной едой в замке — твои обязанности меняются изо дня в день. Ты можешь быть самой низкой ступенькой на лестнице, но эта ступенька всё равно возвышается над всеми остальными в городе."
 	outfit = /datum/outfit/job/councillor/basic
 	category_tags = list(CTAG_COUNCILLOR)
 	subclass_stats = list(

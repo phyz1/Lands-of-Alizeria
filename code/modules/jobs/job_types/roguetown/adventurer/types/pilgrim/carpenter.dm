@@ -1,7 +1,6 @@
 /datum/advclass/carpenter
 	name = "Carpenter"
-	tutorial = "A skilled carpenter, able to manipulate wood to suit their needs \
-	building forts and stores, carpenting floors, putting up crosses. You can do it all with enough logs"
+	tutorial = "Ты умелый плотник, способный управлять деревом по своему усмотрению — строить крепости и склады, настилать полы, устанавливать кресты. Ты можешь сделать всё это, имея достаточно брёвен."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/carpenter

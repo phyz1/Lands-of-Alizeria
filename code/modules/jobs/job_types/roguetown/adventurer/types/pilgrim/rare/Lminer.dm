@@ -2,7 +2,7 @@
 
 /datum/advclass/minermaster
 	name = "Master Miner"
-	tutorial = "A master miner, you are capable of cutting stone like butter, and forging rocks into anything you can think of"
+	tutorial = "Ты мастер-шахтёр, способный резать камень как масло и превращать породы во что угодно, что только придёт в голову."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/minermaster

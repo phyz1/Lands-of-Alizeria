@@ -1,6 +1,6 @@
 /datum/advclass/brigand //Strength class, starts with axe or flails and medium armor training
 	name = "Brigand"
-	tutorial = "Cast from society, you use your powerful physical might and endurance to take from those who are weaker from you."
+	tutorial = "Ты сильный и выносливый. А они слабые и беззащитные. Ты забирёшь у них то, что твоё по праву силы."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/bandit/brigand

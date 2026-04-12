@@ -1,6 +1,6 @@
 /datum/advclass/noble
 	name = "Aristocrat"
-	tutorial = "You are a traveling noble visiting foreign lands. With wealth, come the poor, ready to pilfer you of your hard earned (inherited) coin, so tread lightly unless you want to meet a grizzly end."
+	tutorial = "Ты — странствующий аристократ, посещающий чужие земли. С богатством приходят и бедняки, готовые украсть ваши с трудом заработанные (унаследованные) деньги, поэтому будь осторожен, если не хочешь встретить ужасную смерть."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NO_GOLEM
 	outfit = /datum/outfit/job/adventurer/noble
@@ -31,7 +31,7 @@
 
 /datum/outfit/job/adventurer/noble/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are a traveling noble visiting foreign lands. With wealth, come the poor, ready to pilfer you of your hard earned (inherited) coin, so tread lightly unless you want to meet a grizzly end."))
+	to_chat(H, span_warning("Ты — странствующий аристократ, посещающий чужие земли. С богатством приходят и бедняки, готовые украсть ваши с трудом заработанные (унаследованные) деньги, поэтому будь осторожен, если не хочешь встретить ужасную смерть."))
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltr = /obj/item/flashlight/flare/torch/lantern
@@ -56,7 +56,7 @@
 
 /datum/advclass/noble/knighte
 	name = "Knight Errant"
-	tutorial = "You are a knight from a distant land, a scion of a noble house visiting Scarlet Reach for one reason or another."
+	tutorial = "Ты — рыцарь из далёкой страны, потомок знатного рода, приехавший сюда по той или иной причине."
 	outfit = /datum/outfit/job/adventurer/knighte
 
 	traits_applied = list(TRAIT_NOBLE, TRAIT_HEAVYARMOR)
@@ -89,7 +89,7 @@
 
 /datum/outfit/job/adventurer/knighte/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are a knight from a distant land, a scion of a noble house visiting Scarlet Reach for one reason or another."))
+	to_chat(H, span_warning("Ты — рыцарь из далёкой страны, потомок знатного рода, приехавший сюда по той или иной причине."))
 	var/helmets = list(
 		"Pigface Bascinet" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
 		"Guard Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
@@ -165,7 +165,7 @@
 
 /datum/advclass/noble/squire
 	name = "Squire Errant"
-	tutorial = "You are a squire who has traveled far in search of a master to train you and a lord to knight you."
+	tutorial = "Ты — оруженосец, совершивший долгий путь в поисках учителя, который обучит тебя, и лорда, который посвятит тебя в рыцари."
 	outfit = /datum/outfit/job/adventurer/squire
 	subclass_social_rank = SOCIAL_RANK_PEASANT
 	traits_applied = list(TRAIT_SQUIRE_REPAIR)
@@ -196,7 +196,7 @@
 
 /datum/outfit/job/adventurer/squire/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are a squire who has traveled far in search of a master to train you and a lord to knight you."))
+	to_chat(H, span_warning("Ты — оруженосец, совершивший долгий путь в поисках учителя, который обучит тебя, и лорда, который посвятит тебя в рыцари."))
 	head = /obj/item/clothing/head/roguetown/roguehood
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	cloak = /obj/item/clothing/cloak/stabard

@@ -116,11 +116,11 @@
 /obj/item/book/rogue/secret/ledger/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/paper/scroll/cargo))
 		if(!open)
-			to_chat(user, span_info("Open me first."))
+			to_chat(user, span_info("Сначала открой меня!"))
 			return FALSE
 		var/obj/item/paper/scroll/cargo/C = I
 		if(C.orders.len > 4)
-			to_chat(user, span_warning("Too much order."))
+			to_chat(user, span_warning("Слишком много!"))
 			return
 		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSmerchant.supply_cats)
 		if(!picked_cat)
@@ -141,11 +141,11 @@
 		return
 	if(istype(I, /obj/item/paper/scroll))
 		if(!open)
-			to_chat(user, span_info("Open me first."))
+			to_chat(user, span_info("Сначала открой меня"))
 			return FALSE
 		var/obj/item/paper/scroll/P = I
 		if(P.info)
-			to_chat(user, span_warning("Something is written here already."))
+			to_chat(user, span_warning("Здесь уже написано!"))
 			return
 		var/picked_cat = input(user, "Categories", "Shipping Ledger") as null|anything in sortList(SSmerchant.supply_cats)
 		if(!picked_cat)
@@ -180,7 +180,7 @@
 
 /obj/item/book/rogue/bibble/read(mob/user)
 	if(!open)
-		to_chat(user, span_info("Open me first."))
+		to_chat(user, span_info("Сначала открой меня!"))
 		return FALSE
 	if(!user.client || !user.hud_used)
 		return
@@ -199,7 +199,7 @@
 /obj/item/book/rogue/bibble/attack(atom/M, mob/user)
 	if(user.mind?.assigned_role == "Priest" && user.used_intent?.type == /datum/intent/bless && isliving(M))
 		if(!user.can_read(src))
-			to_chat(user, span_warning("I don't understand these scribbly black lines."))
+			to_chat(user, span_warning("Я не понимаю этих небрежные черные линии."))
 			return
 		var/mob/living/to_bless = M
 		to_bless.apply_status_effect(/datum/status_effect/buff/blessed)
@@ -213,7 +213,7 @@
 	if(user.mind?.assigned_role == "Priest" && isitem(target) && user.used_intent?.type == /datum/intent/bless)
 		var/datum/component/silverbless/CP = target.GetComponent(/datum/component/silverbless)
 		if(!CP)
-			to_chat(user, span_info("\The [target] can not be blessed."))
+			to_chat(user, span_info("\The [target] не может быть благословлён"))
 			return
 		else if(!CP.is_blessed && (CP.silver_type & SILVER_TENNITE))
 			playsound(user, 'sound/magic/censercharging.ogg', 100)
@@ -223,7 +223,7 @@
 				new /obj/effect/temp_visual/censer_dust(get_turf(target))
 			return
 		else
-			to_chat(user, span_info("It has already been blessed."))
+			to_chat(user, span_info("Это уже благословлено."))
 			return
 
 /obj/item/book/rogue/bibble/psy
@@ -505,9 +505,9 @@
 //This needs to check if an input is valid via reject_bad_text, and if not prompt the user again.
 /obj/item/book/rogue/playerbook/proc/prompt_for_contents(var/mob/living/in_round_player_mob)
 	while(!player_book_author_ckey) // doesn't have to be this, but better than defining a bool.
-		player_book_title = capitalize(STRIP_HTML_SIMPLE(input(in_round_player_mob, "What title do you want to give the book? (max 42 characters)", "Title", "Unknown"), MAX_NAME_LEN))
-		player_book_author = STRIP_HTML_SIMPLE(input(in_round_player_mob, "What do you want the author text to be? (max 42 characters)", "Author", ""), MAX_NAME_LEN)
-		player_book_icon = book_icons[input(in_round_player_mob, "Choose a book style", "Book Style") as anything in book_icons]
+		player_book_title = capitalize(STRIP_HTML_SIMPLE(input(in_round_player_mob, "Как хочешь назвать книгу? (максимум 42 символа)", "Title", "Unknown"), MAX_NAME_LEN))
+		player_book_author = STRIP_HTML_SIMPLE(input(in_round_player_mob, "Как вы хотите назвать автора? (максимум 42 символа)", "Author", ""), MAX_NAME_LEN)
+		player_book_icon = book_icons[input(in_round_player_mob, "Выберите стиль книги", "Book Style") as anything in book_icons]
 		player_book_author_ckey = in_round_player_mob.ckey
 		//This gives the icon_state name, not the descriptive name, i. e. "book8", instead of "Sickly green with embossed Bronze"
 		if(alert("Confirm?:\nTitle: [player_book_title]\nAuthor: [player_book_author]\nBook Cover: [player_book_icon]", "", "Yes", "No") == "No")

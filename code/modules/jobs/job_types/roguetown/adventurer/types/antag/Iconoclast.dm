@@ -1,6 +1,6 @@
 /datum/advclass/iconoclast //Support Cleric, Heavy armor, unarmed, miracles.
 	name = "Iconoclast"
-	tutorial = "Trained by an Ecclesial sect, you uphold the Ideological purity of the Matthian Creed. Take from the wealthy, give to the worthless, empower. They will look up to you, in search of the God of Robbery's guidance. Be their light in the dark."
+	tutorial = "Ты, воспитанник, что вырос в секте Маттиоса. Грабь богатых. Отдавай всё бедным. Становись всё сильнее и сильнее. Они будут смотреть на тебя с восхищением, и искать благословление бога разбойничества. Будь для них единственным огоньком во тьме."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/bandit/iconoclast

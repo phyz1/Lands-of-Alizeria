@@ -23,6 +23,7 @@
 "cd" = (/obj/machinery/light/rogue/torchholder/lanternpost{dir = 1},/turf/open/floor/rogue/grassyel,/area/rogue/outdoors/alizeria/most)
 "ce" = (/obj/effect/spawner/roguemap/treeorbush,/turf/open/floor/rogue/snowrough,/area/rogue/outdoors/beach/forest)
 "cf" = (/obj/structure/fluff/railing/border{dir = 1},/turf/open/floor/rogue/cobble,/area/rogue/indoors)
+"cg" = (/obj/structure/fluff/traveltile{aportalid = "ICEMOST"; aportalgoesto = "ICELAND"; name = "На ледяной остров"},/turf/open/floor/rogue/dirt,/area/rogue/outdoors/beach/forest)
 "ch" = (/obj/structure/flora/roguetree/pine,/turf/open/floor/rogue/grass,/area/rogue/outdoors/beach/forest)
 "cq" = (/obj/machinery/light/rogue/firebowl/stump,/turf/open/floor/rogue/cobble,/area/rogue/outdoors/alizeria/most)
 "cz" = (/obj/item/natural/stone,/mob/living/simple_animal/hostile/retaliate/rogue/lamia,/turf/open/floor/rogue/naturalstone,/area/rogue/outdoors/beach)
@@ -112,6 +113,7 @@
 "ih" = (/obj/structure/fluff/railing/wood,/turf/open/floor/rogue/blocks,/area/rogue/outdoors/alizeria/most)
 "ii" = (/obj/structure/stairs{dir = 1; name = "benches"},/turf/open/floor/rogue/ruinedwood/turned,/area/rogue/indoors)
 "ij" = (/turf/open/floor/rogue/twig{dir = 4},/area/rogue/outdoors/alizeria/most)
+"il" = (/obj/structure/fluff/traveltile{aportalid = "ICEMOST"; aportalgoesto = "ICELAND"; name = "На ледяной остров"},/turf/open/floor/rogue/cobble/mossy,/area/rogue/outdoors/beach/forest)
 "im" = (/obj/structure/fluff/statue/alizeriadecor/stolb2,/turf/open/floor/rogue/ruinedwood/spiral,/area/rogue/indoors)
 "iq" = (/turf/closed/wall/mineral/rogue/stonebrick,/area/rogue/outdoors/beach/forest)
 "it" = (/obj/structure/closet/crate/chest/neu,/obj/effect/spawner/lootdrop/general_loot_mid,/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood4,/area/rogue/indoors)
@@ -674,6 +676,7 @@
 "RW" = (/turf/open/floor/rogue/sand,/area/rogue/indoors)
 "Sg" = (/obj/structure/fluff/railing/border{dir = 4},/obj/structure/fluff/railing/border,/turf/open/transparent/openspace,/area/rogue/outdoors/beach/forest)
 "Sl" = (/obj/structure/well,/turf/open/floor/rogue/grassyel,/area/rogue/outdoors/alizeria/most)
+"So" = (/obj/structure/fluff/traveltile{aportalid = "ICEMOST"; aportalgoesto = "ICELAND"; name = "На ледяной остров"},/turf/open/floor/rogue/cobblerock,/area/rogue/outdoors/beach/forest)
 "Sr" = (/obj/structure/flora/roguetree/pine,/turf/open/floor/rogue/dirt,/area/rogue/outdoors/alizeria/most)
 "Ss" = (/obj/machinery/light/roguestreet,/turf/open/floor/rogue/blocks,/area/rogue/outdoors/alizeria/most)
 "SC" = (/turf/closed/wall/mineral/rogue/decostone/fluffstone,/area/rogue/outdoors/beach/forest)
@@ -1056,7 +1059,7 @@ yByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByB
 yByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByByB
 "}
 (1,1,2) = {"
-kdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdxdsWwQxGxdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkd
+kdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdxdSocgilxdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkd
 kdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdawawxdfGwQdKEGawawawkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkd
 kdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdawawawawawawLCxdfGxGwQxdLCawawawawawkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkd
 kdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdawawawawawTBawbdLCxddKxGwQxdLCXVYRawawawawawawawkdkdkdkdkdkdkdkdkdkdkdkdkdawawawawawawawawawawkdkdkdkdkdkdkdkdkdkdkdkdawawCK

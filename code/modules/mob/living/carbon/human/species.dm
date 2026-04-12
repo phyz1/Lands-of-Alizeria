@@ -62,7 +62,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/toxic_food = TOXIC
 	var/list/no_equip = list()	// slots the race can't equip stuff to
 	var/nojumpsuit = 0	// this is sorta... weird. it basically lets you equip stuff that usually needs jumpsuits without one, like belts and pockets and ids
-	var/say_mod = "says"	// affects the speech message
+	var/say_mod = "говорит"	// affects the speech message
 	var/list/default_features = MANDATORY_FEATURE_LIST // Default mutant bodyparts for this species. Don't forget to set one for every mutant bodypart you allow this species to have.
 	var/list/mutant_bodyparts = list() 	// Visible CURRENT bodyparts that are unique to a species. DO NOT USE THIS AS A LIST OF ALL POSSIBLE BODYPARTS AS IT WILL FUCK SHIT UP! Changes to this list for non-species specific bodyparts (ie cat ears and tails) should be assigned at organ level if possible. Layer hiding is handled by handle_mutant_bodyparts() below.
 	var/speedmod = 0	// this affects the race's speed. positive numbers make it move slower, negative numbers make it move faster
@@ -1153,9 +1153,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/proc/grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(target.check_block())
-		target.visible_message(span_warning("[target] blocks [user]'s grab!"), \
-						span_danger("I block [user]'s grab!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, span_warning("My grab at [target] was blocked!"))
+		target.visible_message(span_warning("[target] блокирует захват [user]"), \
+						span_danger("Я блокирую захват [user]"), span_hear("Я слышу свист!"), COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, span_warning("Моя попытка захвата [target] была заблокирована"))
 		return FALSE
 	if(attacker_style && attacker_style.grab_act(user,target))
 		return TRUE
@@ -1184,12 +1184,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 ///This proc handles punching damage. IMPORTANT: Our owner is the TARGET and not the USER in this proc. For whatever reason...
 /datum/species/proc/harm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("I don't want to harm [target]!"))
+		to_chat(user, span_warning("Я не хочу причинять вред [target]!"))
 		return FALSE
 	if(target.check_block())
-		target.visible_message(span_warning("[target] blocks [user]'s attack!"), \
-						span_danger("I block [user]'s attack!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, span_warning("My attack at [target] was blocked!"))
+		target.visible_message(span_warning("[target] блокирует атаку [user]"), \
+						span_danger("Я блокирую атаку [user]"), span_hear("Я слышу свист!"), COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, span_warning("Моя атака [target] была заблокирована"))
 		return FALSE
 	if(attacker_style && attacker_style.harm_act(user,target))
 		return TRUE
@@ -1235,7 +1235,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					user.ignite_mob()
 				else
 					if(prob(30))
-						to_chat(user, span_warning("The foul blessing of the Undermaiden hurts us!"))
+						to_chat(user, span_warning("Мерзкое благословение Некры причиняет нам вред!"))
 				user.adjust_blurriness(2)
 				user.adjustBruteLoss(rand(5, 10))
 				user.apply_status_effect(/datum/status_effect/churned, target)
@@ -1259,7 +1259,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
 
 		if(!affecting)
-			to_chat(user, span_warning("Unfortunately, there's nothing there."))
+			to_chat(user, span_warning("К сожалению, там ничего нет."))
 			return 0
 
 		if(!target.lying_attack_check(user))
@@ -1340,9 +1340,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/proc/disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(target.check_block())
-		target.visible_message(span_warning("[user]'s shove is blocked by [target]!"), \
-						span_danger("I block [user]'s shove!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, span_warning("My shove at [target] was blocked!"))
+		target.visible_message(span_warning("Толчок [user] был заблокирован [target]!"), \
+						span_danger("Я блокирую толчок [user]"), span_hear("Я слышу свист!"), COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, span_warning("Моя попытка толкнуть [target] заблокирована!"))
 		return FALSE
 	if(attacker_style && attacker_style.disarm_act(user,target))
 		return TRUE
@@ -1407,28 +1407,28 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 							break
 			if((!target_table && !target_collateral_mob) || directional_blocked)
 				target.Knockdown(SHOVE_KNOCKDOWN_SOLID)
-				target.visible_message(span_danger("[user.name] shoves [target.name], knocking them down!"),
-								span_danger("You're knocked down from a shove by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-				to_chat(user, span_danger("I shove [target.name], knocking them down!"))
-				log_combat(user, target, "shoved", "knocking them down")
+				target.visible_message(span_danger("[user.name] толкает [target.name], и роняет его на пол!"),
+								span_danger("Тебя сбивает с ног толчок [user.name]!"), span_hear("Я слышу агрессивное шарканье, за которым следует громкий глухой удар!"), COMBAT_MESSAGE_RANGE, user)
+				to_chat(user, span_danger("Я толкаю [target.name], и роняю его на пол!"))
+				log_combat(user, target, "толкает", "роняет на пол")
 			else if(target_table)
 				target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
-				target.visible_message(span_danger("[user.name] shoves [target.name] onto \the [target_table]!"),
-								span_danger("I'm shoved onto \the [target_table] by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-				to_chat(user, span_danger("I shove [target.name] onto \the [target_table]!"))
+				target.visible_message(span_danger("[user.name] толкает [target.name] на [target_table]!"),
+								span_danger("[user.name] толкнул меня на [target_table]!"), span_hear("Я слышу агрессивное шарканье, за которым следует громкий глухой удар!"), COMBAT_MESSAGE_RANGE, user)
+				to_chat(user, span_danger("Я толкаю [target.name] на [target_table]!"))
 				target.throw_at(target_table, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
-				log_combat(user, target, "shoved", "onto [target_table] (table)")
+				log_combat(user, target, "толкает", "на [target_table]")
 			else if(target_collateral_mob)
 				target.Knockdown(SHOVE_KNOCKDOWN_HUMAN)
 				target_collateral_mob.Knockdown(SHOVE_KNOCKDOWN_COLLATERAL)
-				target.visible_message(span_danger("[user.name] shoves [target.name] into [target_collateral_mob.name]!"),
-					span_danger("I'm shoved into [target_collateral_mob.name] by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-				to_chat(user, span_danger("I shove [target.name] into [target_collateral_mob.name]!"))
-				log_combat(user, target, "shoved", "into [target_collateral_mob.name]")
+				target.visible_message(span_danger("[user.name] толкает [target.name] в [target_collateral_mob.name]!"),
+					span_danger("[user.name] толкнул меня в [target_collateral_mob.name]!"), span_hear("Я слышу агрессивное шарканье, за которым следует громкий глухой удар!"), COMBAT_MESSAGE_RANGE, user)
+				to_chat(user, span_danger("Я толкаю [target.name] в [target_collateral_mob.name]!"))
+				log_combat(user, target, "толкает", "в [target_collateral_mob.name]")
 		else
-			target.visible_message(span_danger("[user.name] shoves [target.name]!"),
-							span_danger("I'm shoved by [user.name]!"), span_hear("I hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, user)
-			to_chat(user, span_danger("I shove [target.name]!"))
+			target.visible_message(span_danger("[user.name] толкает [target.name]!"),
+							span_danger("Меня толкает [user.name]!"), span_hear("Я слышу агрессивное шарканье!"), COMBAT_MESSAGE_RANGE, user)
+			to_chat(user, span_danger("Я толкнул [target.name]!"))
 			var/target_held_item = target.get_active_held_item()
 			var/knocked_item = FALSE
 			if(!is_type_in_typecache(target_held_item, GLOB.shove_disarming_types))
@@ -1436,26 +1436,26 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(!target.has_movespeed_modifier(MOVESPEED_ID_SHOVE))
 				target.add_movespeed_modifier(MOVESPEED_ID_SHOVE, multiplicative_slowdown = SHOVE_SLOWDOWN_STRENGTH)
 				if(target_held_item)
-					target.visible_message(span_danger("[target.name]'s grip on \the [target_held_item] loosens!"),
-						span_warning("My grip on \the [target_held_item] loosens!"), null, COMBAT_MESSAGE_RANGE)
+					target.visible_message(span_danger("Хватка [target.name] на [target_held_item] ослабевает!"),
+						span_warning("Моя хватка на [target_held_item] ослабевает!"), null, COMBAT_MESSAGE_RANGE)
 				addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, clear_shove_slowdown)), SHOVE_SLOWDOWN_LENGTH)
 			else if(target_held_item)
 				target.dropItemToGround(target_held_item)
 				knocked_item = TRUE
-				target.visible_message(span_danger("[target.name] drops \the [target_held_item]!"),
-					span_warning("I drop \the [target_held_item]!"), null, COMBAT_MESSAGE_RANGE)
+				target.visible_message(span_danger("[target.name] роняет [target_held_item]!"),
+					span_warning("Я роняю [target_held_item]!"), null, COMBAT_MESSAGE_RANGE)
 			var/append_message = ""
 			if(target_held_item)
 				if(knocked_item)
-					append_message = "causing them to drop [target_held_item]"
+					append_message = "заставляет упасть [target_held_item]"
 				else
-					append_message = "loosening their grip on [target_held_item]"
-			log_combat(user, target, "shoved", append_message)
+					append_message = "ослабляет свою хватку [target_held_item]"
+			log_combat(user, target, "толкает", append_message)
 
 //shameless copypaste
 /datum/species/proc/kicked(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("I don't want to harm [target]!"))
+		to_chat(user, span_warning("Я не желаю причинять вред [target]!"))
 		return FALSE
 	if(user.IsKnockdown())
 		return FALSE
@@ -1464,7 +1464,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	SEND_SIGNAL(user, COMSIG_MOB_KICKED, target)
 	if(!HAS_TRAIT(user, TRAIT_GARROTED))
 		if(user.check_leg_grabbed(1) || user.check_leg_grabbed(2))
-			to_chat(user, span_notice("I can't move my leg!"))
+			to_chat(user, span_notice("Я не могу пошевелить своей ногой!"))
 			return
 	if(user.stamina >= user.max_stamina)
 		return FALSE
@@ -1491,13 +1491,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				if(affecting)
 					affecting.bodypart_attacked_by(BCLASS_BLUNT, damage, user, user.zone_selected, crit_message = TRUE)
 					if(!HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-						target.visible_message(span_danger("[user] stomps [target]![target.next_attack_msg.Join()]"), \
-						span_danger("I'm stomped by [user]![target.next_attack_msg.Join()]"), span_hear("I hear a sickening kick!"), COMBAT_MESSAGE_RANGE, user)
-						to_chat(user, span_danger("I stomp on [target]![target.next_attack_msg.Join()]"))
+						target.visible_message(span_danger("[user] топчет [target]![target.next_attack_msg.Join()]"), \
+						span_danger("Меня топчет [user]![target.next_attack_msg.Join()]"), span_hear("Я слышу удар!"), COMBAT_MESSAGE_RANGE, user)
+						to_chat(user, span_danger("Я топчу [target]![target.next_attack_msg.Join()]"))
 					else
-						target.visible_message(span_danger("[user] crushes [target] underneath them![target.next_attack_msg.Join()]"), \
-						span_danger("[user] crushes me underneath them![target.next_attack_msg.Join()]"), span_hear("I hear a sickening kick!"), COMBAT_MESSAGE_RANGE, user)
-						to_chat(user, span_danger("I crush [target] underneath myself![target.next_attack_msg.Join()]"))
+						target.visible_message(span_danger("[user] раздавливает [target] под собой![target.next_attack_msg.Join()]"), \
+						span_danger("[user] раздавливает меня под собой! [target.next_attack_msg.Join()]"), span_hear("Я слышу удар!"), COMBAT_MESSAGE_RANGE, user)
+						to_chat(user, span_danger("Я раздавливаю [target] под собой![target.next_attack_msg.Join()]"))
 			target.next_attack_msg.Cut()
 			log_combat(user, target, "kicked")
 
@@ -1511,7 +1511,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 			return TRUE
 		else
-			to_chat(user, span_warning("I'm too close to get a good kick in."))
+			to_chat(user, span_warning("Я слишком близко, чтобы как следует пнуть."))
 			return FALSE
 	else
 		if(!target.kick_attack_check(user))
@@ -1552,21 +1552,21 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					target.Knockdown(SHOVE_KNOCKDOWN_HUMAN)
 					var/throwtarget = get_edge_target_turf(user, get_dir(user, get_step_away(target, user)))
 					target.throw_at(throwtarget, 2, 2)
-					target.visible_message(span_danger("[user.name] kicks [target.name], knocking them back!"),
-					span_danger("I'm knocked back from a kick by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-					to_chat(user, span_danger("I kick [target.name], knocking them back!"))
-					log_combat(user, target, "kicked", "knocking them back")
+					target.visible_message(span_danger("[user.name] отпинывает [target.name] назад!"),
+					span_danger("[user.name] отпнул меня назад!"), span_hear("Я слышу агрессивное шарканье, за которым следует громкий глухой удар!"), COMBAT_MESSAGE_RANGE, user)
+					to_chat(user, span_danger("Я пинаю [target.name] назад!"))
+					log_combat(user, target, "пнул", "отпнул назад")
 				else if((stander && target.stamina >= target.max_stamina) || target.IsOffBalanced()) //if you are kicked while fatigued, you are knocked down no matter what
 					target.Knockdown(target.IsOffBalanced() ? SHOVE_KNOCKDOWN_SOLID : 100)
 					if(!HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-						target.visible_message(span_danger("[user.name] kicks [target.name], knocking them down!"),
-						span_danger("I'm knocked down from a kick by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-						to_chat(user, span_danger("I kick [target.name], knocking them down!"))
+						target.visible_message(span_danger("[user.name] пинает [target.name], роняя его на пол!"),
+						span_danger("Я упал на пол от пинка [user.name]!"), span_hear("Я слышу агрессивное шарканье, за которым следует громкий глухой удар!"), COMBAT_MESSAGE_RANGE, user)
+						to_chat(user, span_danger("Я пинаю [target.name] роняя его на пол!"))
 					else
-						target.visible_message(span_danger("[user.name] pulls [target.name] right down onto the ground!"),
-						span_danger("I'm pulled down by [user.name]'s tail!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-						to_chat(user, span_danger("I pull [target.name], right down onto the ground!"))
-					log_combat(user, target, "kicked", "knocking them down")
+						target.visible_message(span_danger("[user.name] прижимает [target.name] к земле!"),
+						span_danger("Меня прижимает к земле [user.name] своим телом!"), span_hear("Я слышу агрессивное шарканье, за которым следует громкий глухой удар!"), COMBAT_MESSAGE_RANGE, user)
+						to_chat(user, span_danger("Я прижимаю [target.name], к земле своим телом!"))
+					log_combat(user, target, "пинает", "роняет на пол")
 
 		if(shove_blocked && !target.is_shove_knockdown_blocked() && !target.buckled)
 			var/directional_blocked = FALSE
@@ -1584,9 +1584,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if((!target_table && !target_collateral_mob) || directional_blocked)
 				target.Knockdown(SHOVE_KNOCKDOWN_SOLID)
 				if(!HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-					target.visible_message(span_danger("[user.name] kicks [target.name], knocking them down!"),
-									span_danger("I'm knocked down from a kick by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-					to_chat(user, span_danger("I kick [target.name], knocking them down!"))
+					target.visible_message(span_danger("[user.name] пинает [target.name], роняя его на пол!"),
+									span_danger("Я упал на пол от пинка [user.name]!"), span_hear("Я слышу агрессивное шарканье, за которым следует громкий глухой удар!"), COMBAT_MESSAGE_RANGE, user)
+					to_chat(user, span_danger("Я пинаю [target.name], роняя его на пол"))
 				else
 					target.visible_message(span_danger("[user.name] tailslams [target.name], knocking them down!"),
 									span_danger("I'm knocked down from a tailslam by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
@@ -1595,9 +1595,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			else if(target_table)
 				target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
 				if(!HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-					target.visible_message(span_danger("[user.name] kicked [target.name] onto \the [target_table]!"),
-									span_danger("I'm kicked onto \the [target_table] by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-					to_chat(user, span_danger("I kick [target.name] onto \the [target_table]!"))
+					target.visible_message(span_danger("[user.name] пнут [target.name] на [target_table]!"),
+									span_danger("Я пнут [user.name] прямо на [target_table]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
+					to_chat(user, span_danger("Я пинаю [target.name] на [target_table]!"))
 					target.throw_at(target_table, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
 				else
 					target.visible_message(span_danger("[user.name]'s tail pushed [target.name] onto \the [target_table]!"),
@@ -1609,9 +1609,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				target.Knockdown(SHOVE_KNOCKDOWN_HUMAN)
 				target_collateral_mob.Knockdown(SHOVE_KNOCKDOWN_COLLATERAL)
 				if(!HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-					target.visible_message(span_danger("[user.name] kicks [target.name] into [target_collateral_mob.name]!"),
-						span_danger("I'm kicked into [target_collateral_mob.name] by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-					to_chat(user, span_danger("I kick [target.name] into [target_collateral_mob.name]!"))
+					target.visible_message(span_danger("[user.name] пинает [target.name] в [target_collateral_mob.name]!"),
+						span_danger("[user.name] пнул меня в [target_collateral_mob.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
+					to_chat(user, span_danger("Я пинаю [target.name] в [target_collateral_mob.name]!"))
 				else
 					target.visible_message(span_danger("[user.name]'s tail slams [target.name] into [target_collateral_mob.name]!"),
 						span_danger("I'm slammed into [target_collateral_mob.name] by [user.name]'s tail!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
@@ -1619,9 +1619,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				log_combat(user, target, "kicked", "into [target_collateral_mob.name]")
 		else
 			if(!HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-				target.visible_message(span_danger("[user.name] kicks [target.name]!"),
-								span_danger("I'm kicked by [user.name]!"), span_hear("I hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, user)
-				to_chat(user, span_danger("I kick [target.name]!"))
+				target.visible_message(span_danger("[user.name] пинает [target.name]!"),
+								span_danger("[user.name] пнул меня!"), span_hear("I hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, user)
+				to_chat(user, span_danger("Я пинаю [target.name]!"))
 			else
 				target.visible_message(span_danger("[user.name] tailslams [target.name]!"),
 								span_danger("I'm tailslammed by [user.name]!"), span_hear("I hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, user)
@@ -1662,10 +1662,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(M.mind)
 		attacker_style = M.mind.martial_art
 	if((M != H) && M.used_intent.type != INTENT_HELP && H.check_shields(M, 0, M.name, attack_type = UNARMED_ATTACK))
-		log_combat(M, H, "attempted to touch")
-		H.visible_message(span_warning("[M] attempts to touch [H]!"), \
-						span_danger("[M] attempts to touch you!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, M)
-		to_chat(M, span_warning("I attempt to touch [H]!"))
+		log_combat(M, H, "пытается прикоснуться")
+		H.visible_message(span_warning("[M] пыткается прикоснуться к [H]!"), \
+						span_danger("[M] пытается прикоснуться к тебе"), span_hear("Я слышу свист!"), COMBAT_MESSAGE_RANGE, M)
+		to_chat(M, span_warning("Я пытаюсь прикоснуться к [H]!"))
 		return 0
 	SEND_SIGNAL(M, COMSIG_MOB_ATTACK_HAND, M, H, attacker_style)
 	if(SEND_SIGNAL(H, COMSIG_MOB_ATTACKED_BY_HAND, M, H, attacker_style) & COMPONENT_HAND_NO_ATTACK)
@@ -1677,7 +1677,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 		if(INTENT_GRAB)
 			if(!M.has_hand_for_held_index(M.active_hand_index, TRUE)) //we obviously have a hadn, but we need to check for fingers/prosthetics
-				to_chat(M, span_warning("I can't move the fingers."))
+				to_chat(M, span_warning("Я не могу пошевелить своими пальцами."))
 				return
 			grab(M, H, attacker_style)
 			return
@@ -1694,8 +1694,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(H.check_shields(I, I.force, "the [I.name]", MELEE_ATTACK, I.armor_penetration))
 			return 0
 	if(H.check_block())
-		H.visible_message(span_warning("[H] blocks [I]!"), \
-						span_danger("I block [I]!"))
+		H.visible_message(span_warning("[H] блокирует [I]!"), \
+						span_danger("Я блокирую [I]!"))
 		return 0
 
 	var/hit_area
@@ -1804,13 +1804,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					H.emote("embed")
 					H.Stun(10)
 					playsound(H.loc, "genblunt", 100, FALSE, -1)
-					user.visible_message(span_notice("[user] embeds [I] within [H]'s [affecting.name]!"), span_notice("I embed my [I] in [H]'s [affecting.name]."))
+					user.visible_message(span_notice("[user] всаживает [I] в [H] [affecting.name]!"), span_notice("Я всадил [I] в [H] [affecting.name]."))
 					var/list/targets = list(H)
 					if(do_after_mob(user,targets, 10, progress = 0, uninterruptible = 1, required_mobility_flags = null))
 						affecting.receive_damage(I.embedding.embedded_unsafe_removal_pain_multiplier*I.w_class) //It hurts to rip it out, get surgery you dingus.
 						H.emote("paincrit", TRUE)
 						playsound(H, 'sound/foley/flesh_rem.ogg', 100, TRUE, -2)
-						user.visible_message(span_notice("[user] rips [I] out of [H]'s [affecting.name]!"), span_notice("I rip [I] from [H]'s [affecting.name]."))
+						user.visible_message(span_notice("[user] вырывает [I] из [H] [affecting.name]!"), span_notice("Я вырываю [I] из [H] [affecting.name]."))
 			I.do_special_attack_effect(user, affecting, intent, H, selzone)
 //		if(H.used_intent.blade_class == BCLASS_BLUNT && I.force >= 15 && affecting.body_zone == "chest")
 //			var/turf/target_shove_turf = get_step(H.loc, get_dir(user.loc,H.loc))

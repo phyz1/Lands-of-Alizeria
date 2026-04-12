@@ -11,10 +11,7 @@
 		/datum/species/lamia,
 	)
 	allowed_ages = ALL_AGES_LIST
-	tutorial = "The Grenzelhofts were known for their Jesters, wisemen with a tongue just as sharp as their wit. \
-		You command a position of a fool, envious of the position your superiors have upon you. \
-		Your cheap tricks and illusions of intelligence will only work for so long, \
-		and someday you'll find yourself at the end of something sharper than you."
+	tutorial = "Ты занимаешь положение дурака, завидуя положению, которое твои начальники имеют над тобой. Твои дешёвые трюки и иллюзии ума будут работать лишь до поры до времени, и однажды ты окажешься на острие чего-то более острого, чем ты сам."
 	outfit = /datum/outfit/job/jester
 	display_order = JDO_JESTER
 	job_traits = list(TRAIT_TEMPO)

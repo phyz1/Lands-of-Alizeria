@@ -7,19 +7,19 @@
 
 /datum/intent/shoot/bow/can_charge()
 	if(mastermob?.get_num_arms(FALSE) < 2 || mastermob.get_inactive_held_item())
-		to_chat(mastermob, span_warning("I need a free hand to draw [masteritem]!"))
+		to_chat(mastermob, span_warning("Мне нужна свободная рука дабы натянуть [masteritem]!"))
 		return FALSE
 
 	if(mastermob.next_move > world.time)
 		if(mastermob.client.last_cooldown_warn + 10 < world.time)
-			to_chat(mastermob, span_warning("I'm not ready to do that yet!"))
+			to_chat(mastermob, span_warning("Я не готов к этому!"))
 			mastermob.client.last_cooldown_warn = world.time
 		return FALSE
 	return TRUE
 
 /datum/intent/shoot/bow/prewarning()
 	if(mastermob)
-		mastermob.visible_message(span_warning("[mastermob] draws [masteritem]!"))
+		mastermob.visible_message(span_warning("[mastermob] натягивает [masteritem]!"))
 		playsound(mastermob, pick('sound/combat/Ranged/bow-draw-01.ogg'), 100, FALSE)
 
 /datum/intent/shoot/bow/get_chargetime() //this handles how long it takes for us to fully aim our bow. damage is handled below in /obj/item/gun/ballistic/revolver/grenadelauncher/bow/process_fire
@@ -51,17 +51,17 @@
 		var/cooldown = (mastermob.active_hand_index == 1) ? mastermob.next_lmove : mastermob.next_rmove
 		if(cooldown > world.time)
 			if(mastermob.client.last_cooldown_warn + 10 < world.time)
-				to_chat(mastermob, span_warning("I'm not ready to do that yet!"))
+				to_chat(mastermob, span_warning("Я не готов к этому!"))
 				mastermob.client.last_cooldown_warn = world.time
 			return FALSE
 		if(mastermob.get_num_arms(FALSE) < 2 || mastermob.get_inactive_held_item())
-			to_chat(mastermob, span_warning("I need a free hand to draw [masteritem]!"))
+			to_chat(mastermob, span_warning("Мне нужна свободная рука дабы натянуть [masteritem]!"))
 			return FALSE
 	return TRUE
 
 /datum/intent/arc/bow/prewarning()
 	if(mastermob)
-		mastermob.visible_message(span_warning("[mastermob] draws [masteritem] in an arc!"))
+		mastermob.visible_message(span_warning("[mastermob] натягивает [masteritem] и поднимает его вверх!"))
 		playsound(mastermob, pick('sound/combat/Ranged/bow-draw-01.ogg'), 100, FALSE)
 
 /datum/intent/arc/bow/get_chargetime() //same calc as above, but with a higher absolute floor for how fast you can shoot
@@ -222,7 +222,7 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	if(user.get_inactive_held_item() || user.get_num_arms(FALSE) < 2)
-		to_chat(user, span_warning("I need a free hand to fire \the [src]!"))
+		to_chat(user, span_warning("Мне нужна свободная рука дабы стрелять \the [src]!"))
 		return FALSE
 	if(user.client)
 		if(user.client.chargedprog >= 100)

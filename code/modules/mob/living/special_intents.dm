@@ -248,7 +248,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 
 /datum/special_intent/proc/_try_doafter()
 	is_doing = TRUE
-	if(do_after(howner, delay, same_direction = FALSE))
+	if(do_after(howner, delay))
 		succeeded = TRUE	//We only want to succeed one do after, cus otherwise it'll try to repeat it per-tile / timer. Glitchy!
 		return TRUE
 	else

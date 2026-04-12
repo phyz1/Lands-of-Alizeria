@@ -1,6 +1,6 @@
 /datum/advclass/mage
 	name = "Sorcerer"
-	tutorial = "You are a learned mage and a scholar, having spent your life studying the arcane and its ways."
+	tutorial = "Ты — маг и ученый, посвятивший свою жизнь изучению арканы и её учений."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ALIZ_ALL_RACES
 	outfit = /datum/outfit/job/adventurer/mage
@@ -31,7 +31,7 @@
 
 /datum/outfit/job/adventurer/mage/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are a learned mage and a scholar, having spent your life studying the arcane and its ways."))
+	to_chat(H, span_warning("Ты — маг и ученый, посвятивший свою жизнь изучению арканы и её учений."))
 	head = /obj/item/clothing/head/roguetown/roguehood/mage
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -64,7 +64,7 @@
 
 /datum/advclass/mage/spellblade
 	name = "Spellblade"
-	tutorial = "You are skilled in both the arcyne art and the art of the blade. But you are not a master of either nor could you channel your magick in armor."
+	tutorial = "Ты искусно владеешь как искусством арканы, так и искусством владения клинком. Но ты не являешься мастером ни в одной из этих дисциплин и не смог бы направлять свою магию, находясь в доспехах."
 	outfit = /datum/outfit/job/adventurer/spellblade
 
 	traits_applied = list(TRAIT_MAGEARMOR, TRAIT_ARCYNE_T2)
@@ -91,7 +91,7 @@
 
 /datum/outfit/job/adventurer/spellblade/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are skilled in both the arcyne art and the art of the blade. But you are not a master of either nor could you channel your magick in armor."))
+	to_chat(H, span_warning("Ты искусно владеешь как искусством арканы, так и искусством владения клинком. Но ты не являешься мастером ни в одной из этих дисциплин и не смог бы направлять свою магию, находясь в доспехах."))
 	head = /obj/item/clothing/head/roguetown/bucklehat
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -139,7 +139,7 @@
 
 /datum/advclass/mage/spellsinger
 	name = "Spellsinger"
-	tutorial = "You belong to a school of bards renowned for their study of both the arcane and the arts."
+	tutorial = "Ты принадлежишь к школе бардов, известной своим изучением как арканы, так и искусства."
 	outfit = /datum/outfit/job/adventurer/spellsinger
 
 	traits_applied = list(TRAIT_MAGEARMOR, TRAIT_ARCYNE_T2, TRAIT_EMPATH, TRAIT_GOODLOVER)
@@ -165,7 +165,7 @@
 
 /datum/outfit/job/adventurer/spellsinger/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You belong to a school of bards renowned for their study of both the arcane and the arts."))
+	to_chat(H, span_warning("Ты принадлежишь к школе бардов, известной своим изучением как арканы, так и искусства."))
 	head = /obj/item/clothing/head/roguetown/spellcasterhat
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -221,7 +221,7 @@
 
 /datum/advclass/mage/spellthief
 	name = "Arcane Trickster"
-	tutorial = "Some Rogues enhance their fine-honed skills of stealth and agility with spells, learning magical tricks to aid them in their trade. Some use their talents as pickpockets and burglars, while others are pranksters."
+	tutorial = "Некоторые ловкачи оттачивают свои навыки скрытности и ловкости с помощью заклинаний, изучая магические трюки. Одни используют свои таланты как карманники и грабители, другие — как шутники."
 	outfit = /datum/outfit/job/adventurer/spellthief
 	subclass_social_rank = SOCIAL_RANK_PEASANT
 
@@ -255,7 +255,7 @@
 
 /datum/outfit/job/adventurer/spellthief/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("Some Rogues enhance their fine-honed skills of stealth and agility with spells, learning magical tricks to aid them in their trade. Some use their talents as pickpockets and burglars, while others are pranksters."))
+	to_chat(H, span_warning("Некоторые ловкачи оттачивают свои навыки скрытности и ловкости с помощью заклинаний, изучая магические трюки. Одни используют свои таланты как карманники и грабители, другие — как шутники."))
 	head = /obj/item/clothing/head/roguetown/witchhat //you can tell they're a spellthief by the pointy hat!
 	mask = /obj/item/clothing/mask/rogue/shepherd //to stay sneaky while wearing a pointy hat
 	armor = /obj/item/clothing/suit/roguetown/armor/leather

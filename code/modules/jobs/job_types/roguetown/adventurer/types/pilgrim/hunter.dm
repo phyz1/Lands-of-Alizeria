@@ -1,6 +1,6 @@
 /datum/advclass/hunter
 	name = "Bow-Hunter"
-	tutorial = "You are a hunter. With your bow you hunt the fauna of the glade, skinning what you kill and cooking any meat left over. The job is dangerous but important in the circulation of clothing and light armor."
+	tutorial = "Ты охотник. Со своим луком ты охотишься на зверей, снимаешь шкуры с убитых и готовишь оставшееся мясо. Работа опасная, но важная в том числе и для создания одежды и лёгких доспехов."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/hunter

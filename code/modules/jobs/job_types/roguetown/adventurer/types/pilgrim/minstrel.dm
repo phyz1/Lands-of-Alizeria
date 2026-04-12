@@ -1,6 +1,6 @@
 /datum/advclass/minstrel
 	name = "Minstrel"
-	tutorial = "Unlike those so-called 'bards' who traipse around in fancy cloth and swordfight in the woods, you follow the calling of a true musician. You've simply... yet to find a receptive audience."
+	tutorial = "В отличие от тех так называемых «бардов», которые расхаживают в нарядных одеждах и фехтуют в лесах, ты следуешь призванию истинного музыканта. Тебе просто... ещё предстоит найти благодарную аудиторию."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/minstrel

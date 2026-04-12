@@ -354,6 +354,70 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	converted_type = /area/rogue/indoors/shelter/woods
 	threat_region = THREAT_REGION_SCARLET_GROVE
 
+/////////////////////////////////////
+
+/area/rogue/outdoors/alizeria/zport
+	name = "zport"
+	icon = 'icons/roguetown/alizeria/areas.dmi'
+	icon_state = "zport"
+	ambientsounds = AMB_FORESTDAY
+	ambientnight = AMB_FORESTNIGHT
+	spookysounds = SPOOKY_CROWS
+	spookynight = SPOOKY_FOREST
+	droning_sound = 'sound/music/area/forest.ogg'
+	droning_sound_dusk = 'sound/music/area/septimus.ogg'
+	droning_sound_night = 'sound/music/area/forestnight.ogg'
+	soundenv = 15
+	warden_area = TRUE
+	ambush_times = list("night","dawn","dusk","day")
+	ambush_types = list(
+				/turf/open/floor/rogue/dirt,
+				/turf/open/floor/rogue/grass)
+	ambush_mobs = list(
+				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 40,
+				/mob/living/carbon/human/species/skeleton/npc/easy = 10,
+				/mob/living/carbon/human/species/goblin/npc/ambush = 30,
+				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 30)
+	first_time_text = "ЗАХВАЧЕННЫЙ ПОРТ"
+	converted_type = /area/rogue/indoors/shelter/woods
+	threat_region = THREAT_REGION_SCARLET_GROVE
+
+/area/rogue/indoors/shelter/alizeria/zport
+	icon = 'icons/roguetown/alizeria/areas.dmi'
+	icon_state = "zport_in"
+	droning_sound = 'sound/music/area/forest.ogg'
+	droning_sound_dusk = 'sound/music/area/septimus.ogg'
+	droning_sound_night = 'sound/music/area/forestnight.ogg'
+
+/area/rogue/outdoors/woods/alizeria/iceland
+	name = "iceland"
+	icon = 'icons/roguetown/alizeria/areas.dmi'
+	icon_state = "ice"
+	icon_state = "ice"
+	ambientsounds = AMB_FORESTDAY
+	ambientnight = AMB_FORESTNIGHT
+	spookysounds = SPOOKY_CROWS
+	spookynight = SPOOKY_FOREST
+	droning_sound = 'sound/music/area/forest.ogg'
+	droning_sound_dusk = 'sound/alizeria/areas/iceland.ogg'
+	droning_sound_night = 'sound/music/area/sleeping.ogg'
+	soundenv = 15
+	first_time_text = "ОСТРОВ ЛЬДА"
+	ambush_times = list("night","dawn","dusk","day")
+	ambush_types = list(
+				/turf/open/floor/rogue/dirt,
+				/turf/open/floor/rogue/snow,
+				/turf/open/floor/rogue/grasscold)
+	ambush_mobs = list(
+				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 30,
+				/mob/living/carbon/human/species/skeleton/npc/hard = 20,
+				/mob/living/carbon/human/species/skeleton/npc/medium = 20,
+				/mob/living/simple_animal/hostile/retaliate/rogue/wolf_undead = 35)
+	converted_type = /area/rogue/indoors/shelter/alizeria/iceland
+	threat_region = THREAT_REGION_SCARLET_GROVE
+
+//////////////////////////////////////////////
+
 /area/rogue/indoors/shelter/woods
 	icon_state = "woods"
 	droning_sound = 'sound/music/area/forest.ogg'

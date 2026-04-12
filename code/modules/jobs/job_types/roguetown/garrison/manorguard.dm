@@ -13,9 +13,7 @@
 	)
 	allowed_patrons = ALL_PATRONS
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
-	tutorial = "Having proven yourself loyal and capable, you are entrusted to defend the town and enforce its laws. \
-				Trained regularly in combat and siege warfare, you deal with threats - both within and without. \
-				Obey your Sergeant-at-Arms, the Marshal, and the Crown. Show the nobles and knights your respect, so that you may earn it in turn. Not as a commoner, but as a soldier.."
+	tutorial = "Доказав свою преданность и способности, ты получил право защищать чертог. Регулярно обучаясь ведению боя и осадному делу, ты имеешь дело с угрозами — как изнутри, так и снаружи. Подчиняйся своему сержанту, маршалу и короне. Выказывай уважение дворянам и рыцарям, чтобы и они уважали тебя в ответ. Не как простолюдин, а как солдат."
 	display_order = JDO_CASTLEGUARD
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/manorguard

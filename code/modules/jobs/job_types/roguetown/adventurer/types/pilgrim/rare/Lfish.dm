@@ -2,7 +2,7 @@
 
 /datum/advclass/fishermaster
 	name = "Master Fisher"
-	tutorial = "You are a Master Fisher, you cast your rod with might, and are able to pull fish larger than Eoras Bosom."
+	tutorial = "Ты мастер-рыбак, ты забрасываешь удочку с силой и способен вытащить рыбу крупнее человека."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/fishermaster

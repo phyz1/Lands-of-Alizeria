@@ -1,6 +1,6 @@
 /datum/advclass/towndoctor
 	name = "Barber Surgeon"
-	tutorial = "Wielding crude tools and accumulated knowledge, you are something of a 'freelance physician' even if the local apothecary declined your application, and over the yils have probably cut into more people than the average knight."
+	tutorial = "Владея грубыми инструментами и накопленными знаниями, ты что-то вроде «вольного лекаря», даже если местный аптекарь отклонил твою заявку. И за эти годы ты, вероятно, перерезал больше людей, чем средний рыцарь."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/doctor

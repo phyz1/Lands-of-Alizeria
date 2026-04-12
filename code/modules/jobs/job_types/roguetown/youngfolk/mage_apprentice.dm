@@ -11,7 +11,6 @@
 	social_rank = SOCIAL_RANK_YEOMAN
 
 	tutorial = "Your master once saw potential in you, although you are uncertain if they still do, given how rigorous and difficult your studies have been. The path to using magic is a treacherous and untamed one, and you are still decades away from calling yourself even a journeyman in the field. Listen and serve, and someday you will earn your hat."
-
 	outfit = /datum/outfit/job/wapprentice
 
 	display_order = JDO_MAGEAPPRENTICE

@@ -12,7 +12,7 @@
 
 /mob/living/proc/jump_action(atom/A)
 	if(istype(get_turf(src), /turf/open/water))
-		to_chat(src, span_warning("I can't jump while floating."))
+		to_chat(src, span_warning("Я не могу прыгать будучи в воде."))
 		return
 
 	if(!A || QDELETED(A) || !A.loc)
@@ -25,18 +25,18 @@
 		return
 
 	if(pulledby && pulledby != src)
-		to_chat(src, span_warning("I'm being grabbed."))
+		to_chat(src, span_warning("Меня держут!"))
 		changeNext_move(mmb_intent.clickcd)
 		resist_grab()
 		return
 
 	if(IsOffBalanced())
-		to_chat(src, span_warning("I haven't regained my balance yet."))
+		to_chat(src, span_warning("Я ещё не восстановил равновесие"))
 		return
 
 	if(!(mobility_flags & MOBILITY_STAND))
 		if(!HAS_TRAIT(src, TRAIT_LEAPER))// The Jester cares not for such social convention.
-			to_chat(src, span_warning("I should stand up first."))
+			to_chat(src, span_warning("Мне следует сначала встать."))
 			return
 
 	if(!isatom(A))
@@ -44,7 +44,7 @@
 
 	if(A.z != z)
 		if(!HAS_TRAIT(src, TRAIT_ZJUMP))
-			to_chat(src, span_warning("That's too high for me..."))
+			to_chat(src, span_warning("Это слишком высоко для меня.."))
 			return
 
 	SEND_SIGNAL(src, COMSIG_LIVING_ONJUMP, A)
@@ -156,7 +156,7 @@
 /mob/living/proc/can_jump(atom/A)
 	var/turf/our_turf = get_turf(src)
 	if(istype(our_turf, /turf/open/water))
-		to_chat(src, span_warning("I'm floating in [our_turf]."))
+		to_chat(src, span_warning("Я плаваю в [our_turf]."))
 		return FALSE
 	if(!A || QDELETED(A) || !A.loc)
 		return FALSE
@@ -165,13 +165,13 @@
 	if(get_num_legs() < 2)
 		return FALSE
 	if(pulledby && pulledby != src)
-		to_chat(src, span_warning("I'm being grabbed."))
+		to_chat(src, span_warning("Меня держут!"))
 		return FALSE
 	if(IsOffBalanced())
-		to_chat(src, span_warning("I haven't regained my balance yet."))
+		to_chat(src, span_warning("Я ещё не восстановил равновесие"))
 		return FALSE
 	if(!(mobility_flags & MOBILITY_STAND) && !HAS_TRAIT(src, TRAIT_LEAPER))// The Jester cares not for such social convention.
-		to_chat(src, span_warning("I should stand up first."))
+		to_chat(src, span_warning("Я должен сначала встать"))
 		return FALSE
 	if(A.z != z && !HAS_TRAIT(src, TRAIT_ZJUMP))
 		return FALSE

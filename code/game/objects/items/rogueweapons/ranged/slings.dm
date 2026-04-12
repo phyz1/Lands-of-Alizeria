@@ -8,7 +8,7 @@
 /datum/intent/swing/sling/can_charge()
 	if(mastermob?.next_move > world.time)
 		if(mastermob.client.last_cooldown_warn + 10 < world.time)
-			to_chat(mastermob, span_warning("I'm not ready to do that yet!"))
+			to_chat(mastermob, span_warning("Я ещё не готов к этому!"))
 			mastermob.client.last_cooldown_warn = world.time
 			return FALSE
 	return TRUE
@@ -40,7 +40,7 @@
 /datum/intent/arc/sling/can_charge()
 	if(mastermob?.next_move > world.time)
 		if(mastermob.client.last_cooldown_warn + 10 < world.time)
-			to_chat(mastermob, span_warning("I'm not ready to do that yet!"))
+			to_chat(mastermob, span_warning("Я ещё не готов к этому!"))
 			mastermob.client.last_cooldown_warn = world.time
 			return FALSE
 	return TRUE

@@ -9,7 +9,7 @@
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	tutorial = "How does it feel to be the rat in the cage? You're alone and at the mercy of your captors, kept around as a hostage. You spend your days waiting for the oft chance someone comes to pay your ransom. Might as well start praying to whatever god you find solace in."
+	tutorial = "Каково это — быть крысой в клетке? Ты один и полностью во власти своих похитителей, которых держат как заложника. Ты проводишь свои дни в ожидании того единственного шанса, когда кто-нибудь придет заплатить за тебя выкуп. Можешь начинать молиться любому богу, в котором находишь утешение."
 
 	outfit = /datum/outfit/job/prisonerb
 	bypass_jobban = TRUE

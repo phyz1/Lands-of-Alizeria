@@ -3,7 +3,7 @@
 /datum/intent/mace/strike
 	name = "strike"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("strikes", "hits")
+	attack_verb = list("ударяет", "попадает")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	chargetime = 0
 	penfactor = BLUNT_DEFAULT_PENFACTOR
@@ -18,7 +18,7 @@
 /datum/intent/mace/smash
 	name = "smash"
 	blade_class = BCLASS_SMASH
-	attack_verb = list("smashes")
+	attack_verb = list("разносит")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	damfactor = 1.5
@@ -37,7 +37,7 @@
 /datum/intent/mace/rangedthrust
 	name = "thrust"
 	blade_class = BCLASS_STAB
-	attack_verb = list("thrusts")
+	attack_verb = list("тычет")
 	animname = "stab"
 	icon_state = "instab"
 	reach = 2

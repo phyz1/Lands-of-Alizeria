@@ -43,7 +43,7 @@
 
 
 /obj/item/rogueweapon/scabbard/attack_turf(turf/T, mob/living/user)
-	to_chat(user, span_notice("I search for my sword..."))
+	to_chat(user, span_notice("Я ищу свой меч..."))
 	for(var/obj/item/rogueweapon/sword/sword in T.contents)
 		if(eat_sword(user, sword))
 			break
@@ -53,18 +53,18 @@
 
 /obj/item/rogueweapon/scabbard/proc/weapon_check(mob/living/user, obj/A)
 	if(sheathed)
-		to_chat(user, span_warning("The sheath is occupied!"))
+		to_chat(user, span_warning("Ножны заняты"))
 		return FALSE
 	if(valid_blade && !istype(A, valid_blade))
-		to_chat(user, span_warning("[A] won't fit in there.."))
+		to_chat(user, span_warning("[A] туда не поместится."))
 		return FALSE
 	if(valid_blades)
 		if(!(A.type in valid_blades))
-			to_chat(user, span_warning("[A] won't fit in there."))
+			to_chat(user, span_warning("[A] туда не поместится."))
 			return FALSE
 	if(invalid_blades)
 		if(A.type in invalid_blades)
-			to_chat(user, span_warning("[A] won't fit in there.."))
+			to_chat(user, span_warning("[A] туда не поместится."))
 			return FALSE
 	return TRUE
 
@@ -74,8 +74,8 @@
 		return FALSE
 	if(obj_broken)
 		user.visible_message(
-			span_warning("[user] begins to force [A] into [src]!"),
-			span_warningbig("I begin to force [A] into [src].")
+			span_warning("[user] начинает помещать [A] в [src]!"),
+			span_warningbig("Я начинаю помещать [A] в [src].")
 		)
 		if(!move_after(user, 2 SECONDS, target = user))
 			return FALSE
@@ -88,8 +88,8 @@
 	update_icon(user)
 
 	user.visible_message(
-		span_notice("[user] sheathes [A] into [src]."),
-		span_notice("I sheathe [A] into [src].")
+		span_notice("[user] прячет [A] в [src]."),
+		span_notice("Я прячу [A] в [src].")
 	)
 
 	playsound(src, sheathe_sound, 100, TRUE)
@@ -102,8 +102,8 @@
 
 	if(obj_broken)
 		user.visible_message(
-			span_warning("[user] begins to force [sheathed] out of [src]!"),
-			span_warningbig("I begin to force [sheathed] out of [src].")
+			span_warning("[user] начинает доставать [sheathed] из [src]!"),
+			span_warningbig("Я начинаю доставать [sheathed] из [src].")
 		)
 		if(!move_after(user, 2 SECONDS, target = user))
 			return FALSE
@@ -117,8 +117,8 @@
 	update_icon(user)
 
 	user.visible_message(
-		span_warning("[user] draws out of [src]!"),
-		span_notice("I draw out of [src].")
+		span_warning("[user] достаёт из [src]!"),
+		span_notice("Я достаю из [src].")
 	)
 	return TRUE
 
@@ -149,7 +149,7 @@
 	. = ..()
 
 	if(sheathed)
-		. += span_notice("The sheath is occupied by [sheathed]. Left-click to pull it out.")
+		. += span_notice("Ножны заняты [sheathed]. Левый клик чтобы достать.")
 
 
 /obj/item/rogueweapon/scabbard/update_icon(mob/living/user)

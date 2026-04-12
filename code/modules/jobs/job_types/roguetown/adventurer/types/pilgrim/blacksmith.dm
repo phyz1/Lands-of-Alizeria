@@ -1,7 +1,6 @@
 /datum/advclass/blacksmith
 	name = "Blacksmith"
-	tutorial = "A skilled blacksmith, able to forge capable weapons for warriors in the bog, \
-	only after building a forge for themselves of course"
+	tutorial = "Ты умелый кузнец, способный ковать надёжное оружие для воинов в болотах, но только после того, как построишь себе кузницу, разумеется."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/adventurer/blacksmith

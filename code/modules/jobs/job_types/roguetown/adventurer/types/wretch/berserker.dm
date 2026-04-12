@@ -1,6 +1,6 @@
 /datum/advclass/wretch/berserker
 	name = "Berserker"
-	tutorial = "You are a warrior feared for your brutality, dedicated to using your might for your own gain. Might equals right, and you are the reminder of such a saying."
+	tutorial = "Ты воин, которого боятся за его жестокость, посвятивший свою силу собственной выгоде. Сила равна праву, и ты — живое напоминание об этой поговорке."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/wretch/berserker
