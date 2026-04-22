@@ -656,7 +656,8 @@ GLOBAL_LIST_EMPTY(round_join_times)
 #define SOCIAL_RANK_YEOMAN 3
 #define SOCIAL_RANK_MINOR_NOBLE 4
 #define SOCIAL_RANK_NOBLE 5
-#define SOCIAL_RANK_ROYAL 6
+#define SOCIAL_RANK_SPYMASTER 6
+#define SOCIAL_RANK_ROYAL 7
 
 /*
 	Defines for the triumph buy datum categories

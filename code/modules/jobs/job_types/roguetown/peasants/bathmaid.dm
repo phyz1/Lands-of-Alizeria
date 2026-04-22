@@ -1,18 +1,18 @@
 /datum/job/roguetown/nightmaiden
-	title = "Slave Whore"
-	f_title = "Slave Whore"
+	title = "Artist"
+	f_title = "Artist"
 	flag = WENCH
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 4
+	spawn_positions = 4
 
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ALIZ_ALL_RACES
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 
-	tutorial = "Работорговлю относительно давно запретили, но какую силу запреты имеют в криминальном мире, темболее в вольном городе? Когда-то давно тебя похитили и заставили подписать рабский контракт, по которому ты вечно обязан работать на своего хозяина ради уплаты долга. Возможно тебя когда-нибудь освободят, но до этого момента - ты просто вещь и лёгкий способ исполнить низменные желания люда."
+	tutorial = "Когда-то давно, в тяге за творчеством, либо же желая заработать деньги далеко не самым благородным путём - ты устроился работать в кабаре. Твоя работа подразумевает выступление на сцене, однако в тяжёлой жизненной ситуации, либо просто ради собственного удовольствия - ты также можешь подрабатывать в игорном клубе. Однако помни, что последний вариант - несовсем законен."
 
 	outfit = /datum/outfit/job/nightmaiden
 	advclass_cat_rolls = list(CTAG_NIGHTMAIDEN = 20)
@@ -24,129 +24,22 @@
 	round_contrib_points = 2
 	advjob_examine = TRUE
 
+	virtue_restrictions = list(
+		/datum/virtue/utility/noble,
+		/datum/virtue/utility/blueblooded,
+	)
+
 	job_traits = list(TRAIT_EMPATH, TRAIT_GOODLOVER)
 	job_subclasses = list(
-		/datum/advclass/nightmaiden,
-		/datum/advclass/nightmaiden/harlot,
 		/datum/advclass/nightmaiden/courtesan
 	)
 
 /datum/outfit/job/nightmaiden
-	name = "Nightmaiden"
+	name = "Artist"
 	// This is just a base outfit, the actual outfits are defined in the advclasses
 
-/datum/advclass/nightmaiden
-	name = "Bathmaid"
-	tutorial = "A fresh initiate, most would decry the humble bath maid as a desperate fool tempting others into bedsheets for money--only sometimes, you say! You work underneath your betters in the communal bathhouse, keeping it and the guests in turn as tidy as they please. Wash laundry, tend mild wounds, and deftly wash your patrons with soap, for this is your craft."
-	outfit = /datum/outfit/job/nightmaiden/attendant
-	category_tags = list(CTAG_NIGHTMAIDEN)
-
-	traits_applied = list(TRAIT_NUTCRACKER, TRAIT_CICERONE)
-	subclass_stats = list(
-		STATKEY_CON = 3,
-		STATKEY_END = 2,
-		STATKEY_INT = -2,
-		STATKEY_STR = -4
-	)
-
-	subclass_skills = list(
-		/datum/skill/misc/sneaking = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/stealing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/music = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/riding = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/whipsflails = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/knives = SKILL_LEVEL_NOVICE,
-		/datum/skill/craft/cooking = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/craft/crafting = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/lockpicking = SKILL_LEVEL_NOVICE,
-	)
-	subclass_languages = list(
-		/datum/language/thievescant,
-	)
-
-/datum/outfit/job/nightmaiden/attendant/pre_equip(mob/living/carbon/human/H)
-	..()
-	head = /obj/item/clothing/head/roguetown/armingcap
-	neck = /obj/item/clothing/neck/roguetown/collar/leather
-	beltl = /obj/item/roguekey/alizeria/courtesan
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	backl = /obj/item/storage/backpack/rogue/satchel
-	shoes = /obj/item/clothing/shoes/roguetown/sandals
-	backpack_contents = list(
-		/obj/item/soap/bath = 1
-	)
-	if(should_wear_femme_clothes(H))
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/random
-		pants = /obj/item/clothing/under/roguetown/skirt/brown
-		belt =	/obj/item/storage/belt/rogue/leather/cloth/lady
-	else
-		belt = /obj/item/storage/belt/rogue/leather
-		pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
-
-
-/datum/advclass/nightmaiden/harlot
-	name = "Harlot"
-	tutorial = "You're no stranger to selling your flesh, a veteran whore who's done your business in back alleys and brothels long enough to know the game. Yours has been a hard life, and you've learned a few things doing what you've needed to survive. You may not be fit for a noble's bed, but the workers and soldiers pay well enough."
-	outfit = /datum/outfit/job/nightmaiden/harlot
-	category_tags = list(CTAG_NIGHTMAIDEN)
-
-	traits_applied = list(TRAIT_LIGHT_STEP, TRAIT_NUTCRACKER)
-	subclass_stats = list(
-		STATKEY_PER = 2,
-		STATKEY_END = 2,
-		STATKEY_INT = -2,
-		STATKEY_STR = -4
-	)
-
-	subclass_skills = list(
-		/datum/skill/misc/sneaking = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/stealing = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/music = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/riding = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/whipsflails = SKILL_LEVEL_NOVICE,
-		/datum/skill/craft/crafting = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/lockpicking = SKILL_LEVEL_JOURNEYMAN,
-	)
-	subclass_languages = list(
-		/datum/language/thievescant,
-	)
-
-/datum/outfit/job/nightmaiden/harlot/pre_equip(mob/living/carbon/human/H)
-	..()
-	head = /obj/item/clothing/head/roguetown/armingcap
-	neck = /obj/item/clothing/neck/roguetown/collar/leather
-	beltl = /obj/item/roguekey/alizeria/courtesan
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	backl = /obj/item/storage/backpack/rogue/satchel
-	shoes = /obj/item/clothing/shoes/roguetown/sandals
-	backpack_contents = list(
-		/obj/item/soap/bath = 1,
-		/obj/item/lockpickring/mundane = 1
-	)
-	if(should_wear_femme_clothes(H))
-		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/random
-		armor = /obj/item/clothing/suit/roguetown/shirt/undershirt/corset
-		pants = /obj/item/clothing/under/roguetown/skirt/brown
-		belt =	/obj/item/storage/belt/rogue/leather/cloth/lady
-	else
-		belt = /obj/item/storage/belt/rogue/leather
-		pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
-
-
-
-
 /datum/advclass/nightmaiden/courtesan
-	name = "Courtesan"
+	name = "Artist"
 	tutorial = "Overcoming mind games, deceit and competition, you came into your own as one of the bathhouse's most prized moneymakers and socialites. Dressed in lavish gifts left behind by your patrons, not just anyone can have you. Under the matron, you do most of the social heavylifting and provide entertainment of all forms - behind a heavy price tag. "
 	outfit = /datum/outfit/job/nightmaiden/courtesan
 	category_tags = list(CTAG_NIGHTMAIDEN)
@@ -174,9 +67,6 @@
 		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
 		/datum/skill/craft/cooking = SKILL_LEVEL_NOVICE,
 	)
-	subclass_languages = list(
-		/datum/language/thievescant,
-	)
 
 /datum/outfit/job/nightmaiden/courtesan/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -198,7 +88,7 @@
 			id = /obj/item/clothing/ring/silver
 		if(96 to 100)
 			id = /obj/item/clothing/ring/diamond
-	beltl = /obj/item/roguekey/alizeria/courtesan
+	beltl = /obj/item/storage/keyring/alizeria/whore
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(

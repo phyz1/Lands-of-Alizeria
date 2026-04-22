@@ -9,6 +9,7 @@
 	desc = "A pair of sturdy riding boots with an iron heel and brass spurs."
 	icon_state = "kumieboots"
 	item_state = "kumieboots"
+	allowed_race = NON_DWARVEN_RACE_TYPES
 	icon = 'modular_scarletreach/icons/clothing/donor_clothes.dmi'
 	mob_overlay_icon = 'modular_scarletreach/icons/clothing/onmob/donor_clothes.dmi'
 
@@ -17,6 +18,7 @@
 	desc = "placeholder."
 	icon_state = "kumiegloves"
 	item_state = "kumiegloves"
+	allowed_race = NON_DWARVEN_RACE_TYPES
 	icon = 'modular_scarletreach/icons/clothing/donor_clothes.dmi'
 	mob_overlay_icon = 'modular_scarletreach/icons/clothing/onmob/donor_clothes.dmi'
 
@@ -25,6 +27,7 @@
 	desc = "placeholder."
 	icon_state = "kumieshirt"
 	item_state = "kumieshirt"
+	allowed_race = NON_DWARVEN_RACE_TYPES
 	icon = 'modular_scarletreach/icons/clothing/donor_clothes.dmi'
 	mob_overlay_icon = 'modular_scarletreach/icons/clothing/onmob/donor_clothes.dmi'
 	sleeved = 'modular_scarletreach/icons/clothing/onmob/donor_sleeves_armor.dmi'
@@ -35,6 +38,7 @@
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/aristocratic
 	name = "Aristocratic coat"
 	desc = "placeholder."
+	allowed_race = NON_DWARVEN_RACE_TYPES
 	icon_state = "kumiecoat"
 	item_state = "kumiecoat"
 	icon = 'modular_scarletreach/icons/clothing/donor_clothes.dmi'
@@ -46,6 +50,7 @@
 	desc = "Runes and wards, meant for daemons; the gold has somehow rusted in unnatural, impossibly agony. Unlike typical Warscholar's masks, this one is mostly flat - though has a noticeable gouge taken out of its left eye."
 	item_state = "vizmask"
 	icon_state = "vizmask"
+	allowed_race = NON_DWARVEN_RACE_TYPES
 	icon = 'modular_scarletreach/icons/clothing/donor_clothes.dmi'
 	mob_overlay_icon = 'modular_scarletreach/icons/clothing/onmob/donor_clothes.dmi'
 	adjustable = CANT_CADJUST
@@ -55,6 +60,7 @@
 	desc = "A form-fitting weave of silks, into a seamless bodysuit. It smells vaguely like lavender and candle wax."
 	icon_state = "bodysuit"
 	item_state = "bodysuit"
+	allowed_race = NON_DWARVEN_RACE_TYPES
 	icon = 'modular_scarletreach/icons/clothing/donor_clothes.dmi'
 	mob_overlay_icon = 'modular_scarletreach/icons/clothing/onmob/donor_clothes.dmi'
 	sleeved = 'modular_scarletreach/icons/clothing/onmob/donor_sleeves_armor.dmi'

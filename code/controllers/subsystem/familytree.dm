@@ -31,8 +31,8 @@ SUBSYSTEM_DEF(familytree)
 	var/list/viable_spouses = list()
 	//These jobs are excluded from AddLocal()
 	var/list/excluded_jobs = list(
-		"Grand Duke",
-		"Grand Duchess",
+		"Landowner",
+		"Lady of Crown",
 		"Consort",
 		"Suitor",
 		"Hand",
@@ -216,7 +216,7 @@ SUBSYSTEM_DEF(familytree)
 /datum/controller/subsystem/familytree/proc/GetCurrentMonarch()
 	// Find the monarch at generation 12 (current ruling generation)
 	for(var/datum/family_member/member in ruling_family.members)
-		if(member.generation == 12 && (member.person.job == "Grand Duke" || member.person.job == "Grand Duchess"))
+		if(member.generation == 12 && (member.person.job == "Landowner" || member.person.job == "Landowner"))
 			return member
 	return null
 
@@ -477,7 +477,10 @@ SUBSYSTEM_DEF(familytree)
 							continue
 						if(member.person.mind?.assigned_role in nomarry_jobs)
 							continue
-						if(ok_gender_H && ok_gender_M && abs(H.social_rank - member.person.social_rank) <= 1)
+						var/real_rank = H.social_rank
+						if(HAS_TRAIT(H, TRAIT_DISGUISER))
+							real_rank = SOCIAL_RANK_SPYMASTER
+						if(ok_gender_H && ok_gender_M && abs(real_rank - member.person.social_rank) <= 1)
 							eligible_houses += house
 							has_single_adult = TRUE
 							break

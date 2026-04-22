@@ -1,7 +1,7 @@
 /datum/job/roguetown/blackknight
 	title = "Blackguard"
 	flag = BLACKKNIGHT
-	department_flag = NOBLEMEN
+	department_flag = COURTIERS
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -20,10 +20,25 @@
 
 	cmode_music = 'sound/music/combat_guard.ogg'
 
+	virtue_restrictions = list(
+		/datum/virtue/utility/noble,
+		/datum/virtue/utility/blueblooded,
+	)
+
 	job_traits = list(TRAIT_STEELHEARTED, TRAIT_HEAVYARMOR, TRAIT_BAD_MOOD, TRAIT_CRITICAL_RESISTANCE, TRAIT_BIGGUY, TRAIT_STRONGKICK)
 	job_subclasses = list(
 		/datum/advclass/blackkguard
 	)
+
+/datum/job/roguetown/blackknight/special_job_check(mob/dead/new_player/player)
+	if(!player)
+		return
+	if(!player.ckey)
+		return
+	for(var/mob/dead/new_player/N in GLOB.player_list)
+		if(N.mind.assigned_role == "Prince" || N.mind.assigned_role == "Princess")
+			return TRUE
+	return FALSE
 
 /datum/job/roguetown/blackknight/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
@@ -38,10 +53,10 @@
 	tutorial = "Tales speak of the Gatemaster's legendary ability to stand still at a gate and ask people questions."
 	category_tags = list(CTAG_BLACKKNIGHT)
 	subclass_stats = list(
-		STATKEY_STR = 5,
+		STATKEY_STR = 3,
 		STATKEY_INT = -3,
-		STATKEY_CON = 1,
-		STATKEY_PER = 2,
+		STATKEY_CON = 2,
+		STATKEY_PER = -1,
 		STATKEY_END = 3,
 		STATKEY_FOR = -2,
 	)

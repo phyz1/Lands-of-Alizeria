@@ -22,7 +22,7 @@
 
 	cmode_music = 'sound/music/combat_guard.ogg'
 
-	job_traits = list(TRAIT_STEELHEARTED, TRAIT_HEAVYARMOR, TRAIT_NOBLE, TRAIT_JUSTICARSIGHT)
+	job_traits = list(TRAIT_STEELHEARTED, TRAIT_NOBLE, TRAIT_JUSTICARSIGHT)
 	job_subclasses = list(
 		/datum/advclass/jandarme
 	)

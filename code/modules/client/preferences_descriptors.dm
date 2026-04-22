@@ -43,24 +43,30 @@
 		var/datum/custom_descriptor_entry/custom_entry = new /datum/custom_descriptor_entry()
 		custom_descriptors += custom_entry
 
+/datum/preferences/proc/pick_descriptor(choice_type, mob/user)
+	var/datum/descriptor_choice/choice = DESCRIPTOR_CHOICE(choice_type)
+	if(!choice)
+		return
+	var/list/picklist = list()
+	for(var/desc_type in choice.descriptors)
+		var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(desc_type)
+		picklist[descriptor.name] = desc_type
+	var/picked_descriptor_name = input(user, "Describe my [lowertext(choice.name)]", "Describe myself") as null|anything in picklist
+
+	if(!picked_descriptor_name)
+		return
+
+	return picklist[picked_descriptor_name]
+
 /datum/preferences/proc/handle_descriptors_topic(mob/user, href_list)
 	switch(href_list["preference"])
 		if("choose_descriptor")
 			var/choice_type = text2path(href_list["descriptor_choice"])
 			if(!(choice_type in pref_species.descriptor_choices))
 				return
-			var/datum/descriptor_choice/choice = DESCRIPTOR_CHOICE(choice_type)
-			if(!choice)
+			var/picked_type = pick_descriptor(choice_type, user)
+			if(!picked_type)
 				return
-			var/list/picklist = list()
-			for(var/desc_type in choice.descriptors)
-				var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(desc_type)
-				picklist[descriptor.name] = desc_type
-			var/picked_descriptor_name = input(user, "Describe my [lowertext(choice.name)]", "Describe myself") as null|anything in picklist
-
-			if(!picked_descriptor_name)
-				return
-			var/picked_type = picklist[picked_descriptor_name]
 			var/datum/descriptor_entry/entry = get_descriptor_entry_for_choice(choice_type)
 			entry.descriptor_type = picked_type
 		if("custom_descriptor_prefix")

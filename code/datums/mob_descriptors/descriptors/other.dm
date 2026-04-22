@@ -10,9 +10,12 @@
 
 /datum/mob_descriptor/age/get_description(mob/living/described)
 	var/mob/living/carbon/human/H = described
-	if(H.age == AGE_OLD)
+	var/used_age = H.age
+	if(HAS_TRAIT(H, TRAIT_DISGUISED) && H.fake_age)
+		used_age = H.fake_age
+	if(used_age == AGE_OLD)
 		return "old"
-	else if (H.age == AGE_MIDDLEAGED)
+	else if (used_age == AGE_MIDDLEAGED)
 		return "middle-aged"
 	else
 		return "adult"

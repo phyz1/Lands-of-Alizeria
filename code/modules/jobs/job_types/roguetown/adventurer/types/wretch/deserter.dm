@@ -56,7 +56,7 @@
 		"Estoc",
 		"Mace + Shield",
 		"Flail + Shield",
-		"Longsword + Shield", 
+		"Longsword + Shield",
 		"Lucerne",
 		"Battle Axe",
 		"Lance + Kite Shield",
@@ -107,13 +107,13 @@
 	var/armors = list(
 		"Brigandine"		= /obj/item/clothing/suit/roguetown/armor/brigandine,
 		"Coat of Plates"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
-		"Steel Cuirass"		= /obj/item/clothing/suit/roguetown/armor/plate/half,				
+		"Steel Cuirass"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
 		"Fluted Cuirass"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
 		"Scalemail"		= /obj/item/clothing/suit/roguetown/armor/plate/scale,
 	)
 	var/armorchoice = input(H, "Choose your armor.", "TAKE UP ARMOR") as anything in armors
 	armor = armors[armorchoice]
-	gloves = /obj/item/clothing/gloves/roguetown/plate 
+	gloves = /obj/item/clothing/gloves/roguetown/plate
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	neck = /obj/item/clothing/neck/roguetown/bevor
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
@@ -187,7 +187,7 @@
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 			backl = /obj/item/rogueweapon/shield/iron
 		if("Billhook")
-			r_hand = /obj/item/rogueweapon/spear/billhook 
+			r_hand = /obj/item/rogueweapon/spear/billhook
 		if("Halberd")
 			r_hand = /obj/item/rogueweapon/halberd
 		if("Greataxe")
@@ -202,13 +202,13 @@
 
 
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk	
+	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	cloak = /obj/item/clothing/cloak/stabard/surcoat 
+	cloak = /obj/item/clothing/cloak/stabard/surcoat
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
-	gloves = /obj/item/clothing/gloves/roguetown/chain 
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron 
+	gloves = /obj/item/clothing/gloves/roguetown/chain
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	belt = /obj/item/storage/belt/rogue/leather
 	backr = /obj/item/storage/backpack/rogue/satchel
@@ -241,7 +241,7 @@
 	)
 	var/maskchoice = input(H, "Choose your Mask.", "MASK MASK MASK") as anything in masks // Run from it. MASK. MASK. MASK.
 	if(maskchoice != "None")
-		mask = masks[maskchoice]	
+		mask = masks[maskchoice]
 
 	wretch_select_bounty(H)
 
@@ -252,7 +252,7 @@
 	devotion_cost = 0
 	chargedrain = 1
 	chargetime = 15
-	releasedrain = 80 // 
+	releasedrain = 80 //
 	recharge_time = 2 MINUTES
 	miracle = FALSE
 	sound = 'sound/magic/inspire_02.ogg'
@@ -273,7 +273,7 @@
 		if(user.job == "Deserter")
 			if(!(target.job in list("Brotherhood")))
 				to_chat(user, span_alert("I cannot order one not of the brotherhood cause!"))
-				return		
+				return
 		if(target == user)
 			to_chat(user, span_alert("I cannot order myself!"))
 			return
@@ -331,7 +331,7 @@
 		if(user.job == "Deserter")
 			if(!(target.job in list("Brotherhood")))
 				to_chat(user, span_alert("I cannot order one not of the brotherhood cause!"))
-				return		
+				return
 		if(target == user)
 			to_chat(user, span_alert("I cannot order myself!"))
 			return
@@ -356,7 +356,7 @@
 		if(user.job == "Deserter")
 			if(!(target.job in list("Brotherhood")))
 				to_chat(user, span_alert("I cannot order one not of the brotherhood cause!"))
-				return		
+				return
 		if(target == user)
 			to_chat(user, span_alert("I cannot order myself!"))
 			return
@@ -410,7 +410,7 @@
 		if(user.job == "Deserter")
 			if(!(target.job in list("Brotherhood")))
 				to_chat(user, span_alert("I cannot order one not of the brotherhood cause!"))
-				return		
+				return
 		if(target == user)
 			to_chat(user, span_alert("I cannot order myself!"))
 			return
@@ -440,7 +440,7 @@
 
 /mob/living/carbon/human/mind/proc/setorderswretch()
 	set name = "Rehearse Orders"
-	set category = "Voice of Command"
+	set category = "SHERIFF"
 	mind.retreattext = input("Send a message.", "Tactical Retreat!!") as text|null
 	if(!mind.retreattext)
 		to_chat(src, "I must rehearse something for this order...")

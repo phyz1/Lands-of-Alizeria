@@ -12,8 +12,7 @@
 	selection_color = JCOLOR_SOLDIER
 	allowed_patrons = CODEX
 	tutorial = "Управляющий городской стражей. Когда-то давно ты служил лично короне, и именно тебе по справедливости должны были отдать земли Ализерии. Однако либо из-за твоей неверности, либо по какой-то иной прихоти короны - земли были отданы иному наместнику. Как к этому относиться - решать тебе. Морские штормы помогут тебе в случае проведения мятежа, однако жандармы будут явно против подобного действия. Впрочем, можно и отказаться от подобной идеи. Какое тебе дело до лорда, пока городом по факту всё ещё правишь ты?"
-	whitelist_req = FALSE
-	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard) // /obj/effect/proc_holder/spell/self/convertrole/bog
+	whitelist_req = FALSE // /obj/effect/proc_holder/spell/self/convertrole/bog
 	outfit = /datum/outfit/job/marshal
 	give_bank_account = 40
 	noble_income = 20
@@ -26,8 +25,8 @@
 
 	job_traits = list(TRAIT_NOBLE, TRAIT_HEAVYARMOR, TRAIT_STEELHEARTED, TRAIT_PERFECT_TRACKER, TRAIT_PEASANTMILITIA, TRAIT_TEMPO, TRAIT_JUSTICARSIGHT, TRAIT_SHARPER_BLADES)
 	job_subclasses = list(
-		/datum/advclass/marshal/classic,
-		/datum/advclass/marshal/kcommander
+		/datum/advclass/marshal/classic
+	//	/datum/advclass/marshal/kcommander
 	)
 
 /datum/outfit/job/marshal
@@ -44,7 +43,7 @@
 	id = /obj/item/scomstone/garrison
 
 	H.verbs |= /mob/proc/haltyell
-	H.verbs |= list(/mob/living/carbon/human/proc/request_outlaw, /mob/living/carbon/human/proc/request_law, /mob/living/carbon/human/proc/request_law_removal, /mob/living/carbon/human/proc/request_purge, /mob/living/carbon/human/proc/fire_guard)
+	H.verbs |= list(/mob/living/carbon/human/proc/request_outlaw, /mob/living/carbon/human/proc/request_law, /mob/living/carbon/human/proc/request_law_removal, /mob/living/carbon/human/proc/fire_guard)
 
 /datum/advclass/marshal/classic
 	name = "Sheriff of Town"
@@ -54,13 +53,12 @@
 	category_tags = list(CTAG_MARSHAL)
 
 	subclass_stats = list(
-		STATKEY_INT = 3,
 		STATKEY_PER = 2,
-		STATKEY_LCK = 1,
-		STATKEY_CON = 1,
-		STATKEY_END = 1,
-		STATKEY_SPD = 1,
-		STATKEY_STR = 2,
+		STATKEY_LCK = -1,
+		STATKEY_CON = 2,
+		STATKEY_END = 2,
+		STATKEY_SPD = -1,
+		STATKEY_STR = 3,
 	)
 
 	subclass_skills = list(
@@ -73,7 +71,11 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/riding = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/tracking = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/maces = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/maces = SKILL_LEVEL_MASTER,
+		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/bows = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
 	)
 
 /datum/outfit/job/marshal/classic/pre_equip(mob/living/carbon/human/H)
@@ -95,7 +97,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/militia/forthetown)
 		H.verbs |= list(/mob/living/carbon/human/proc/elder_announcement, /mob/living/carbon/human/mind/proc/setordersmilitia)
 
-/datum/advclass/marshal/kcommander
+/*/datum/advclass/marshal/kcommander
 	name = "Knight Commander"
 	tutorial = "You spent your daes as a dutiful knight in the service of the crown. Earning your accolades through military tactics and victories, you're reknown for your warfaring. Now retired from your days afield, you enforce the same iron law you once practiced at war in your home. You run the garrison, knights and the town's laws with a military strictness, and no-one can claim you are weaker on crime than any of those weak Marshals."
 	outfit = /datum/outfit/job/marshal/kcommander
@@ -142,13 +144,13 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/militia/charge)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/militia/forthetown)
 		H.verbs |= list(/mob/living/carbon/human/proc/elder_announcement, /mob/living/carbon/human/mind/proc/setordersmilitia)
-
+*/
 /mob/living/carbon/human/proc/request_law()
 	set name = "Request Law"
-	set category = "Voice of Command"
+	set category = "SHERIFF"
 	if(stat)
 		return
-	var/inputty = input("Write a new law", "MARSHAL") as text|null
+	var/inputty = input("Write a new law", "SHERIFF") as text|null
 	if(inputty)
 		if(hasomen(OMEN_NOLORD))
 			make_law(inputty)
@@ -161,10 +163,10 @@
 
 /mob/living/carbon/human/proc/request_law_removal()
 	set name = "Request Law Removal"
-	set category = "Voice of Command"
+	set category = "SHERIFF"
 	if(stat)
 		return
-	var/inputty = input("Remove a law", "MARSHAL") as text|null
+	var/inputty = input("Remove a law", "SHERIFF") as text|null
 	var/law_index = text2num(inputty) || 0
 	if(law_index && GLOB.laws_of_the_land[law_index])
 		if(hasomen(OMEN_NOLORD))
@@ -176,6 +178,7 @@
 			else
 				remove_law(law_index)
 
+/*
 /mob/living/carbon/human/proc/request_purge()
 	set name = "Request Purge"
 	set category = "Voice of Command"
@@ -189,13 +192,13 @@
 			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(lord_purge_requested), src, lord)
 		else
 			purge_laws()
-
+*/
 /mob/living/carbon/human/proc/request_outlaw()
 	set name = "Request Outlaw"
-	set category = "Voice of Command"
+	set category = "SHERIFF"
 	if(stat)
 		return
-	var/inputty = input("Outlaw a person", "MARSHAL") as text|null
+	var/inputty = input("Outlaw a person", "SHERIFF") as text|null
 	if(inputty)
 		if(hasomen(OMEN_NOLORD))
 			make_outlaw(inputty)

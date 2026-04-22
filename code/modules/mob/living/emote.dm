@@ -541,10 +541,10 @@
 				var/mob/living/carbon/human/O = target
 				if(iself(O) || ishalfelf(O) || isdarkelf(O))
 					if(!O.cmode)
-						if (O.has_flaw(/datum/charflaw/addiction/lovefiend))
+					/*	if (O.has_flaw(/datum/charflaw/addiction/lovefiend))
 							to_chat(target, span_love("That feels... <b>good</b>..."))
-						else
-							to_chat(target, span_love("That tickles..."))
+						else*/
+						to_chat(target, span_love("That tickles..."))
 			else if(J.zone_selected == BODY_ZONE_PRECISE_GROIN)
 				message_param = "licks %t between the legs."
 				to_chat(target, span_love("It is somewhat stimulating..."))
@@ -1412,7 +1412,7 @@
 /mob/living/carbon/human/verb/emote_meow()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "(Ж) Мяу"
-		set category = "Noises"
+		set category = "Animal"
 		emote("meow", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1431,7 +1431,7 @@
 /mob/living/carbon/human/verb/emote_caw()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "(Ж) Каркать"
-		set category = "Noises"
+		set category = "Animal"
 		emote("caw", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1450,7 +1450,7 @@
 /mob/living/carbon/human/verb/emote_peep()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "(Ж) Пищать"
-		set category = "Noises"
+		set category = "Animal"
 		emote("peep", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1469,7 +1469,7 @@
 /mob/living/carbon/human/verb/emote_hoot()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "(Ж) Ухать"
-		set category = "Noises"
+		set category = "Animal"
 		emote("hoot", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1488,7 +1488,7 @@
 /mob/living/carbon/human/verb/emote_squeak()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "(Ж) Писк"
-		set category = "Noises"
+		set category = "Animal"
 		emote("squeak", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1507,7 +1507,7 @@
 /mob/living/carbon/human/verb/emote_hiss()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "(Ж) Шипеть"
-		set category = "Noises"
+		set category = "Animal"
 		emote("hiss", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1526,7 +1526,7 @@
 /mob/living/carbon/human/verb/emote_phiss()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "(Ж) Шипеть2"
-		set category = "Noises"
+		set category = "Animal"
 		emote("phiss", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1544,7 +1544,7 @@
 /mob/living/carbon/human/verb/emote_roar()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "(Ж) Рычать2"
-		set category = "Noises"
+		set category = "Animal"
 		emote("roar", intentional = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1563,7 +1563,7 @@
 /mob/living/carbon/human/verb/emote_howl()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "(Ж) Выть"
-		set category = "Noises"
+		set category = "Animal"
 		emote("howl", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1582,7 +1582,7 @@
 /mob/living/carbon/human/verb/emote_cackle()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "(Ж) Кудахтать"
-		set category = "Noises"
+		set category = "Animal"
 		emote("cackle", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1653,7 +1653,7 @@
 /mob/living/carbon/human/verb/emote_purr()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "(Ж) Мурлыкать"
-		set category = "Noises"
+		set category = "Animal"
 		emote("purr", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1672,7 +1672,7 @@
 /mob/living/carbon/human/verb/emote_moo()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "(Ж) Му-у"
-		set category = "Noises"
+		set category = "Animal"
 		emote("moo", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1691,7 +1691,7 @@
 /mob/living/carbon/human/verb/emote_bark()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "(Ж) Лаять"
-		set category = "Noises"
+		set category = "Animal"
 		emote("bark", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1710,7 +1710,7 @@
 /mob/living/carbon/human/verb/emote_growl()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "(Ж) Рычать"
-		set category = "Noises"
+		set category = "Animal"
 		emote("growl", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1729,7 +1729,7 @@
 /mob/living/carbon/human/verb/emote_bleat()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "(Ж) Мычать"
-		set category = "Noises"
+		set category = "Animal"
 		emote("bleat", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1748,7 +1748,7 @@
 /mob/living/carbon/human/verb/emote_chitter()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/moth))
 		set name = "(Ж) Щебетать"
-		set category = "Noises"
+		set category = "Animal"
 		emote("chitter", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
@@ -1764,7 +1764,7 @@
 /mob/living/carbon/human/verb/emote_flutter()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/moth))
 		set name = "(Ж) Трепетать"
-		set category = "Noises"
+		set category = "Animal"
 		emote("flutter", intentional = TRUE)
 	else
 		to_chat(usr, span_warning("Your back doesn't do that"))

@@ -3,8 +3,8 @@
 	flag = SHOPHAND
 	department_flag = YEOMEN
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ALIZ_ALL_RACES
 	tutorial = "Ты - один из главных конкурентов городского торговца. У тебя имеется собственная лавка, однако меньше размером, а ещё она находится в весьма проходимом месте. Вопрос лишь в том, когда твоё 'удачное' вложение даст о себе знать?"

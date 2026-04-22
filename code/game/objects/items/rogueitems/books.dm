@@ -174,7 +174,7 @@
 	title = "bible"
 	dat = "gott.json"
 	possible_item_intents = list(
-		/datum/intent/use, 
+		/datum/intent/use,
 		/datum/intent/bless,
 	)
 
@@ -260,7 +260,7 @@
 					user.say("PSY 23:4... And so, ZEZUS wept; for he had been struck down by the silvered javelin of JVDAS, PSYDON's most devout.")
 					user.psydo_nyte()
 				else
-					user.say(m)	
+					user.say(m)
 
 /obj/item/book/rogue/bibble/psy/MiddleClick(mob/user, params)
 	. = ..()
@@ -566,8 +566,8 @@
 	if(!(P.info))
 		to_chat(user, "the paper needs to contain text to be added to a manuscript!")
 		return
-	if(number_of_pages == 8)
-		to_chat(user, "The manuscript pile cannot surpass 8 pages!")
+	if(number_of_pages == 25)
+		to_chat(user, "The manuscript pile cannot surpass 25 pages!")
 		return
 
 	++number_of_pages

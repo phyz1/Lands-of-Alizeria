@@ -136,7 +136,7 @@
 ////////////////////////////
 
 /obj/item/storage/keyring/alizeria/sherifft
-	keys = list(/obj/item/roguekey/alizeria/town, /obj/item/roguekey/alizeria/townh, /obj/item/roguekey/steward)
+	keys = list(/obj/item/roguekey/alizeria/town, /obj/item/roguekey/alizeria/townh)
 
 /obj/item/storage/keyring/alizeria/townguard
 	keys = list(/obj/item/roguekey/alizeria/town)
@@ -198,6 +198,21 @@
 
 /obj/item/storage/keyring/alizeria/innkeep
 	keys = list(/obj/item/roguekey/tavern)
+
+/obj/item/roguekey/alizeria/bar
+	name = "ключ от бара"
+	icon_state = "brownkey"
+	desc = "Ключ, открывающий дверь в бар нижнего порта."
+	lockid = "bar"
+
+/obj/item/roguekey/alizeria/miner
+	name = "ключ шахтёра"
+	icon_state = "brownkey"
+	desc = "Ключ, помещения шахтёров в порту."
+	lockid = "towner_miner"
+
+/obj/item/storage/keyring/alizeria/guildmaster
+	keys = list(/obj/item/roguekey/tavern, /obj/item/roguekey/alizeria/bar, /obj/item/roguekey/tailor, /obj/item/roguekey/alizeria/pblacksmith, /obj/item/roguekey/alizeria/miner, /obj/item/roguekey/physician)
 
 ////////////////////////////
 
@@ -342,9 +357,21 @@
 /////////////////////////
 
 /obj/item/roguekey/alizeria/pblacksmith
-	name = "ключ портового кузнеца"
-	desc = "Ключ, открывающий портовую кузню."
+	name = "ключ кузнеца"
+	desc = "Ключ, открывающий кузню."
 	icon_state = "brownkey"
 	lockid = "portblacksmith"
 
 /////////////////////////
+
+/obj/item/roguekey/alizeria/hcaffe
+	name = "ключ главы кабаре"
+	desc = "Ключ, открывающий некоторые двери в кабаре."
+	icon_state = "brownkey"
+	lockid = "hcafe"
+
+/obj/item/storage/keyring/alizeria/whore
+	keys = list(/obj/item/roguekey/alizeria/courtesan, /obj/item/roguekey/alizeria/caffe)
+
+/obj/item/storage/keyring/alizeria/hcafe
+	keys = list(/obj/item/roguekey/alizeria/hcaffe, /obj/item/roguekey/alizeria/caffe, /obj/item/roguekey/alizeria/courtesan)

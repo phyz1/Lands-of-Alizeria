@@ -21,6 +21,11 @@
 	round_contrib_points = 2
 	social_rank = SOCIAL_RANK_NOBLE
 
+	virtue_restrictions = list(
+		/datum/virtue/utility/noble,
+		/datum/virtue/utility/blueblooded,
+	)
+
 /datum/outfit/job/jester/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/jester

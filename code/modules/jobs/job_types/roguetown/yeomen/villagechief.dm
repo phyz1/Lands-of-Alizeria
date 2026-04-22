@@ -89,7 +89,7 @@ GLOBAL_VAR_INIT(last_elder_announcement, -50000) // Inits variable for later, co
 
 /mob/living/carbon/human/proc/elder_announcement()
 	set name = "Announcement"
-	set category = "ELDER"
+	set category = "SHERIFF"
 	if(stat)
 		return
 	if(!src.can_speak_vocal())
@@ -103,7 +103,7 @@ GLOBAL_VAR_INIT(last_elder_announcement, -50000) // Inits variable for later, co
 		visible_message(span_warning("[src] takes a deep breath, preparing to make an announcement.."))
 		if(do_after(src, 15 SECONDS, target = src)) // Reduced to 15 seconds from 30 on the original Herald PR. 15 is well enough time for sm1 to shove you.
 			say(announcementinput)
-			priority_announce("[announcementinput]", "The Elder Speaks", 'sound/misc/bell.ogg', sender = src)
+			priority_announce("[announcementinput]", "Sheriff of Town Speaks", 'sound/misc/bell.ogg', sender = src)
 			GLOB.last_elder_announcement = world.time
 			spawn(450 SECONDS)
 			to_chat(src, span_notice("I can make an announcement again!"))
@@ -121,18 +121,15 @@ GLOBAL_VAR_INIT(last_elder_announcement, -50000) // Inits variable for later, co
 
 
 /obj/effect/proc_holder/spell/self/convertrole/militia
-	name = "Recruit Militia"
-	new_role = "Town Militiaman"
+	name = "Завербовать стражника"
+	new_role = "Town Guard"
 	overlay_state = "recruit_brother"
 	recruitment_faction = "Militia"
-	recruitment_message = "Let's protect our town, %RECRUIT!"
-	accept_message = "For the Reach!"
-	refuse_message = "I refuse."
+	recruitment_message = "Храбро защищай наши земли, %RECRUIT!"
+	accept_message = "За Ализерию!"
+	refuse_message = "Я отказываюсь."
 
 /obj/effect/proc_holder/spell/self/convertrole/militia/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
-	if(HAS_TRAIT(recruit, TRAIT_OUTLANDER))
-		to_chat(recruiter, span_warning("You can't recruit foreigners to the militia!"))
-		return FALSE
 	if(HAS_TRAIT(recruit, TRAIT_NOBLE))
 		to_chat(recruiter, span_warning("A noble in the militia?! Absurd!"))
 		return FALSE
@@ -312,15 +309,15 @@ GLOBAL_VAR_INIT(last_elder_announcement, -50000) // Inits variable for later, co
 
 /mob/living/carbon/human/mind/proc/setordersmilitia()
     set name = "Rehearse Orders"
-    set category = "Voice of Command"
+    set category = "SHERIFF"
 
     #define ORDER_INPUT(varname, prompt) \
         mind.varname = input("Send a message.", prompt) as text|null; \
         if(!mind.varname) { to_chat(src, "I must rehearse something for this order..."); return }
 
-    ORDER_INPUT(retreattext, "Run away!!")
-    ORDER_INPUT(chargetext, "Get 'em!!")
-    ORDER_INPUT(bolstertext, "Hold the line!!")
-    ORDER_INPUT(onfeettext, "For the Reach!!")
+    ORDER_INPUT(retreattext, "Бежим!!")
+    ORDER_INPUT(chargetext, "Наступаем!!")
+    ORDER_INPUT(bolstertext, "Держать линию!!")
+    ORDER_INPUT(onfeettext, "За Ализерию!!")
 
     #undef ORDER_INPUT

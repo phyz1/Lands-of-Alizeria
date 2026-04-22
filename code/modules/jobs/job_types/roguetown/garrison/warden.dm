@@ -24,8 +24,10 @@
 	always_show_on_latechoices = TRUE
 
 	virtue_restrictions = list(
-		/datum/virtue/utility/blacksmith, // we don't want you repairing your stuff in combat, sorry...
+		/datum/virtue/utility/noble,
+		/datum/virtue/utility/blueblooded,
 	)
+
 	job_traits = list(TRAIT_OUTDOORSMAN, TRAIT_WOODSMAN, TRAIT_WOODWALKER)
 	job_subclasses = list(
 		/datum/advclass/warden/ranger,

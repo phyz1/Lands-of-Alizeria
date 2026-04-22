@@ -21,6 +21,11 @@
 	cmode_music = 'sound/music/combat_bard.ogg'
 	social_rank = SOCIAL_RANK_PEASANT
 
+	virtue_restrictions = list(
+		/datum/virtue/utility/noble,
+		/datum/virtue/utility/blueblooded,
+	)
+
 	job_subclasses = list(
 		/datum/advclass/servant/servant,
 		/datum/advclass/servant/maid,

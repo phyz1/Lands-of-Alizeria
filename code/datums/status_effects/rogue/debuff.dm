@@ -80,7 +80,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/sleepytime
 	needs_processing = FALSE
 	duration = 25
-	effectedstats = list("strength" = -1, "speed" = -1, "endurance" = -1)
+	effectedstats = list("endurance" = -1, "constitution" = -1)
 
 /atom/movable/screen/alert/status_effect/debuff/sleepytime
 	name = "Tired"

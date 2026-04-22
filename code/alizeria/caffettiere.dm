@@ -72,7 +72,7 @@
 	pants = /obj/item/clothing/under/roguetown/trou/leather/eastern
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/black
-	beltl = /obj/item/roguekey/alizeria/caffe
+	beltl = /obj/item/storage/keyring/alizeria/hcafe
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	backr = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/clothing/ring/topaz

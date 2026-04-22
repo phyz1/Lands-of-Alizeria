@@ -309,7 +309,7 @@
 
 	var/data = {"
 	<!DOCTYPE html>
-	<html lang='en'>	
+	<html lang='en'>
 	<html>
 		<head>
 			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>

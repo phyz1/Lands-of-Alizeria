@@ -81,10 +81,10 @@
 	name = "most"
 	icon = 'icons/roguetown/alizeria/areas.dmi'
 	icon_state = "most"
-	soundenv = 7
-	droning_sound = 'sound/music/area/most.ogg'
-	droning_sound_dusk = 'sound/music/area/most.ogg'
-	droning_sound_night = 'sound/music/area/most.ogg'
+	soundenv = 5
+	droning_sound = 'sound/alizeria/areas/most.ogg'
+	droning_sound_dusk = 'sound/alizeria/areas/most.ogg'
+	droning_sound_night = 'sound/alizeria/areas/most.ogg'
 	first_time_text = "оюбьхи лняр"
 
 /area/rogue/outdoors/alizeria/yshel

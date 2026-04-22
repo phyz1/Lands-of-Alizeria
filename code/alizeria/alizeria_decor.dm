@@ -221,6 +221,12 @@
 	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
 	icon_state = "sign2"
 
+/obj/structure/fluff/walldeco/alizeria/decor/sign3
+	name = "табличка кабаре"
+	desc = "Роскошная, позолоченная табличка с надписью 'Кабаре'."
+	icon = 'icons/roguetown/alizeria/decor64x32.dmi'
+	icon_state = "sign3"
+
 
 
 // ЛИСТЬЯ
@@ -466,6 +472,72 @@
 /turf/open/floor/rogue/tile/alizeria/tiles/stonefloor4
 	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
 	icon_state = "tile18"
+
+/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood19
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "tile19"
+	name = "floor"
+	desc = "Interlocking wooden floorboards scratched with thousands of steps."
+
+/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood20
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "tile20"
+	name = "floor"
+	desc = "Interlocking wooden floorboards scratched with thousands of steps."
+
+/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood21
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "tile21"
+	name = "floor"
+	desc = "Interlocking wooden floorboards scratched with thousands of steps."
+
+/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood22
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "tile22"
+	name = "floor"
+	desc = "Interlocking wooden floorboards scratched with thousands of steps."
+
+/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood23
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "tile23"
+	name = "floor"
+	desc = "Interlocking wooden floorboards scratched with thousands of steps."
+
+/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood24
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "tile24"
+	name = "floor"
+	desc = "Interlocking wooden floorboards scratched with thousands of steps."
+
+/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood25
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "tile25"
+	name = "floor"
+	desc = "Interlocking wooden floorboards scratched with thousands of steps."
+
+/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood26
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "tile26"
+	name = "floor"
+	desc = "Interlocking wooden floorboards scratched with thousands of steps."
+
+/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood27
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "tile27"
+	name = "floor"
+	desc = "Interlocking wooden floorboards scratched with thousands of steps."
+
+/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood28
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "tile28"
+	name = "floor"
+	desc = "Interlocking wooden floorboards scratched with thousands of steps."
+
+/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood29
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "tile29"
+	name = "floor"
+	desc = "Interlocking wooden floorboards scratched with thousands of steps."
 
 
 
@@ -855,3 +927,258 @@
 
 /obj/structure/roguecratesal/alizeria/decor/crates24
 	icon_state = "stack-yashik2-broken"
+
+// БАРРИКАДЫ
+/obj/structure/alizeria/decor/barricade1
+	name = "barricade"
+	desc = ""
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "barik1"
+	alpha = 255 // Mappers can set this to 200 if they want it slightly see-through
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	anchored = TRUE
+	opacity = 0
+	density = 1
+	max_integrity = 100
+	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
+
+/obj/structure/alizeria/decor/barricade2
+	name = "barricade"
+	desc = ""
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "barik2"
+	alpha = 255 // Mappers can set this to 200 if they want it slightly see-through
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	anchored = TRUE
+	opacity = 0
+	density = 1
+	max_integrity = 100
+	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
+
+/obj/structure/alizeria/decor/barricade3
+	name = "barricade"
+	desc = ""
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "barik3"
+	alpha = 255 // Mappers can set this to 200 if they want it slightly see-through
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	anchored = TRUE
+	opacity = 0
+	density = 1
+	max_integrity = 100
+	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
+
+/obj/structure/alizeria/decor/barricade4
+	name = "barricade"
+	desc = ""
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "barik4"
+	alpha = 255 // Mappers can set this to 200 if they want it slightly see-through
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	anchored = TRUE
+	opacity = 0
+	density = 1
+	max_integrity = 100
+	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
+
+/obj/structure/alizeria/decor/barricade5
+	name = "barricade"
+	desc = ""
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "barik5"
+	alpha = 255 // Mappers can set this to 200 if they want it slightly see-through
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	anchored = TRUE
+	opacity = 0
+	density = 1
+	max_integrity = 100
+	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
+
+
+// УКАЗАТЕЛИ
+/obj/structure/fluff/statue/alizeria/decor/ykaz1
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	name = "указатель"
+	desc = "Указатель, который на что-то указывает."
+	icon_state = "yknone"
+	density = 1
+	max_integrity = 1000
+
+/obj/structure/fluff/statue/alizeria/decor/ykaz2
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	name = "указатель храма"
+	desc = "Указатель, показывающий направление к храму."
+	icon_state = "ykhram"
+	density = 1
+	max_integrity = 1000
+
+/obj/structure/fluff/statue/alizeria/decor/ykaz3
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	name = "указатель дворца"
+	desc = "Указатель, показывающий направление к дворцу."
+	icon_state = "ykcrown"
+	density = 1
+	max_integrity = 1000
+
+/obj/structure/fluff/statue/alizeria/decor/ykaz4
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	name = "указатель жандармерии"
+	desc = "Указатель, показывающий направление к жандармерии."
+	icon_state = "ykjan"
+	density = 1
+	max_integrity = 1000
+
+/obj/structure/fluff/statue/alizeria/decor/ykaz5
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	name = "указатель кабаре"
+	desc = "Указатель, показывающий направление к кабаре."
+	icon_state = "ykkab"
+	density = 1
+	max_integrity = 1000
+
+/obj/structure/fluff/statue/alizeria/decor/ykaz6
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	name = "указатель игорного дома"
+	desc = "Указатель, показывающий направление к игорному дому."
+	icon_state = "ykigdom"
+	density = 1
+	max_integrity = 1000
+
+/obj/structure/fluff/statue/alizeria/decor/ykaz7
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	name = "указатель таверны"
+	desc = "Указатель, показывающий направление к таверне."
+	icon_state = "yktav"
+	density = 1
+	max_integrity = 1000
+
+/obj/structure/fluff/statue/alizeria/decor/ykaz8
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	name = "указатель кузни"
+	desc = "Указатель, показывающий направление к кузне."
+	icon_state = "ykkyzn"
+	density = 1
+	max_integrity = 1000
+
+/obj/structure/fluff/statue/alizeria/decor/ykaz9
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	name = "указатель портного"
+	desc = "Указатель, показывающий направление к лавке портного."
+	icon_state = "yktailor"
+	density = 1
+	max_integrity = 1000
+
+/obj/structure/fluff/statue/alizeria/decor/ykaz10
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	name = "указатель торговца"
+	desc = "Указатель, показывающий направление к торговой лавке."
+	icon_state = "ykshop"
+	density = 1
+	max_integrity = 1000
+
+/obj/structure/fluff/statue/alizeria/decor/ykaz11
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	name = "указатель стражи"
+	desc = "Указатель, показывающий направление к городской страже."
+	icon_state = "ykstraja"
+	density = 1
+	max_integrity = 1000
+
+// НАСТЕННЫЕ ГАЗЕТЫ И ПЛАКАТЫ
+/obj/structure/fluff/walldeco/alizeria/decor/plakat1
+	name = "настенная газета"
+	desc = "Кучка газет, собранных на одной стене. Они полны бесполезной и неактуальной информацией."
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "plakat1"
+
+/obj/structure/fluff/walldeco/alizeria/decor/plakat2
+	name = "настенная газета"
+	desc = "Кучка газет, собранных на одной стене. Они полны бесполезной и неактуальной информацией."
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "plakat2"
+
+/obj/structure/fluff/walldeco/alizeria/decor/plakat3
+	name = "настенная газета"
+	desc = "Кучка газет, собранных на одной стене. Они полны бесполезной и неактуальной информацией."
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "plakat3"
+
+/obj/structure/fluff/walldeco/alizeria/decor/plakat4
+	name = "настенная газета"
+	desc = "Кучка газет, собранных на одной стене. Они полны бесполезной и неактуальной информацией."
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "plakat4"
+
+/obj/structure/fluff/walldeco/alizeria/decor/plakat5
+	name = "настенная газета"
+	desc = "Кучка газет, собранных на одной стене. Они полны бесполезной и неактуальной информацией."
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "plakat5"
+
+/obj/structure/fluff/walldeco/alizeria/decor/plakat6
+	name = "настенная газета"
+	desc = "Кучка газет, собранных на одной стене. Они полны бесполезной и неактуальной информацией."
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "plakat6"
+
+/obj/structure/fluff/walldeco/alizeria/decor/plakat7
+	name = "плакат"
+	desc = "<b>Указ Короны!</b> <br><br>Любое распространение слухов о слабости короны, гибели флота или бунте карается арестом. <br><br>Монфор не пал. <br>Монфор не отступил. <br>Монфор всё контролирует. <br><br>Если вам кажется обратное, значит у вас слишком хорошие глаза."
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "plakat7"
+
+/obj/structure/fluff/walldeco/alizeria/decor/plakat8
+	name = "плакат"
+	desc = "<b>Напоминание о Кодексе.</b> <br><br>Власть дана не для пира. <br>Меч дан не для грабежа. <br>Суд дан не для мести. <br><br>Тем, кто считает иначе, напоминаем: могилы роются одинаково для всех. <br><br>Пожертвования, как всегда, справа от входа. Святость любит порядок."
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "plakat8"
+
+/obj/structure/fluff/walldeco/alizeria/decor/plakat9
+	name = "плакат"
+	desc = "<b>ОСТРОВ — ЭТО ВСЁ, ЧТО У НАС ОСТАЛОСЬ!</b>"
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "plakat9"
+
+/obj/structure/fluff/walldeco/alizeria/decor/plakat10
+	name = "плакат"
+	desc = "<b>УСИЛЕНИЕ ПОРЯДКА</b> <br><br>В связи с нестабильной обстановкой на острове Ализерия <br>патрулирование жилых и портовых районов усиливается. <br><br>- введены дополнительные ночные обходы   <br>- увеличено число стационарных постов   <br>- ограничено перемещение после заката   <br><br><i>Любое скопление граждан будет расценено как потенциальная угроза.</i>"
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "plakat10"
+
+/obj/structure/fluff/walldeco/alizeria/decor/plakat11
+	name = "плакат"
+	desc = "<b>СЛУЖБА ЖАНДАРМЕРИИ — ЭТО НЕ ПРАВО, А ОБЯЗАННОСТЬ!</b> <br><br>Каждый жандарм обязан помнить: <br>порядок не существует сам по себе — он поддерживается рукой, которая не дрожит. <br><br>Исполняй приказ без промедления. <br>Не допускай сомнений в присутствии гражданских. <br>Сила применяется только во имя стабильности. <br><br>Нарушение Кодекса карается разжалованием или судом бургомистра."
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "plakat11"
+
+/obj/structure/fluff/walldeco/alizeria/decor/plakat12
+	name = "плакат"
+	desc = "<b>ЖАНДАРМЕРИЯ АЛИЗЕРИИ — ЩИТ ОСТРОВА</b> <br><br>После Катаклизма остров Ализерия находится в изоляции. <br>Любое нарушение порядка рассматривается как угроза выживанию всех жителей острова!  <br><br>Ночные сборища запрещены. <br>Слухи о «свете за горизонтом» не подлежат обсуждению. <br><br>Жандармерия действует от имени нашего монарха."
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "plakat12"
+
+/obj/structure/fluff/walldeco/alizeria/decor/plakatspawner
+	icon = 'icons/roguetown/alizeria/vladegeg_decor.dmi'
+	icon_state = "plakatspawner"
+	name = "plakat spawner"
+	desc = "Haha, im in danger."
+
+/obj/structure/fluff/walldeco/alizeria/decor/plakatspawner/Initialize()
+	var/type = pick(list(/obj/structure/fluff/walldeco/alizeria/decor/plakat1,/obj/structure/fluff/walldeco/alizeria/decor/plakat2,
+	/obj/structure/fluff/walldeco/alizeria/decor/plakat3,/obj/structure/fluff/walldeco/alizeria/decor/plakat4,
+	/obj/structure/fluff/walldeco/alizeria/decor/plakat5,/obj/structure/fluff/walldeco/alizeria/decor/plakat6,
+	/obj/structure/fluff/walldeco/alizeria/decor/plakat7,/obj/structure/fluff/walldeco/alizeria/decor/plakat8,
+	/obj/structure/fluff/walldeco/alizeria/decor/plakat9,/obj/structure/fluff/walldeco/alizeria/decor/plakat10,
+	/obj/structure/fluff/walldeco/alizeria/decor/plakat11,/obj/structure/fluff/walldeco/alizeria/decor/plakat12))
+
+	var/obj/structure/fluff/walldeco/alizeria/decor/plakatspawner/boi = new type
+	boi.forceMove(get_turf(src))
+	boi.pixel_x += rand(-3,3)
+	. = ..()
+
+	return INITIALIZE_HINT_QDEL

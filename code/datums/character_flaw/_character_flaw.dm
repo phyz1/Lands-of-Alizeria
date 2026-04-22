@@ -7,7 +7,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Зависимый"=/datum/charflaw/addiction/junkie,
 	"Жадный"=/datum/charflaw/greedy,
 	"Нарколепсия"=/datum/charflaw/narcoleptic,
-	"Любвеобильный"=/datum/charflaw/addiction/lovefiend,
+/*	"Любвеобильный"=/datum/charflaw/addiction/lovefiend, */
 	"Садист"=/datum/charflaw/addiction/sadist,
 	"Мазохист"=/datum/charflaw/masochist,
 	"Параноик"=/datum/charflaw/paranoid,

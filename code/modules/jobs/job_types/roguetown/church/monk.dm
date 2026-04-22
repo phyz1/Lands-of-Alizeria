@@ -17,7 +17,7 @@
 	min_pq = 0 //A step above Churchling, should funnel new players to the churchling role to learn miracles at a more sedate pace
 	max_pq = null
 	round_contrib_points = 2
-	social_rank = SOCIAL_RANK_MINOR_NOBLE
+	social_rank = SOCIAL_RANK_PEASANT
 
 	var/church_favor = 0
 

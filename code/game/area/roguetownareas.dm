@@ -375,6 +375,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/turf/open/floor/rogue/grass)
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 40,
+				/mob/living/carbon/human/species/human/northern/nkraider/ambush = 40,
 				/mob/living/carbon/human/species/skeleton/npc/easy = 10,
 				/mob/living/carbon/human/species/goblin/npc/ambush = 30,
 				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 30)
@@ -394,14 +395,15 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	icon = 'icons/roguetown/alizeria/areas.dmi'
 	icon_state = "ice"
 	icon_state = "ice"
-	ambientsounds = AMB_FORESTDAY
-	ambientnight = AMB_FORESTNIGHT
-	spookysounds = SPOOKY_CROWS
+	ambientsounds = null
+	ambientnight = null
+	spookysounds = null
 	spookynight = SPOOKY_FOREST
-	droning_sound = 'sound/music/area/forest.ogg'
-	droning_sound_dusk = 'sound/alizeria/areas/iceland.ogg'
-	droning_sound_night = 'sound/music/area/sleeping.ogg'
-	soundenv = 15
+	droning_sound = 'sound/alizeria/areas/icelandmorning.ogg'
+	droning_sound_dawn = 'sound/alizeria/areas/iceland.ogg'
+	droning_sound_dusk = 'sound/alizeria/areas/icelandevening.ogg'
+	droning_sound_night = 'sound/alizeria/areas/icelandnight.ogg'
+	soundenv = 30
 	first_time_text = "ОСТРОВ ЛЬДА"
 	ambush_times = list("night","dawn","dusk","day")
 	ambush_types = list(

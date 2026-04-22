@@ -242,27 +242,27 @@
 // Nobles
 #define JDO_LORD 1
 #define JDO_LADY 1.1
-#define JDO_PRINCE 1.2
-#define JDO_KNIGHT 1.3
-#define JDO_SQUIRE 1.4
-#define JDO_BLACKKNIGHT 1.5
+#define JDO_HAND 1.2
+#define JDO_PRINCE 1.3
+#define JDO_KNIGHT 1.4
+#define JDO_SQUIRE 1.5
+#define JDO_STEWARD 1.6
+#define JDO_BLACKKNIGHT 1.7
 #define JDO_SUITOR 0
-#define JDO_JESTER 1.6
-#define JDO_BUTLER 1.7
-#define JDO_SERVANT 1.8
-#define JDO_HAND 0
+#define JDO_JESTER 1.8
+#define JDO_BUTLER 1.9
+#define JDO_SERVANT 2
 #define JDO_COUNCILLOR 0
 
-#define JDO_MARSHGEN 2
-#define JDO_INS 2.1
-#define JDO_OJAN 2.2
-#define JDO_JAN 2.3
-#define JDO_ACADEM 2.4
+#define JDO_MARSHGEN 2.1
+#define JDO_INS 2.2
+#define JDO_OJAN 2.3
+#define JDO_JAN 2.4
+#define JDO_ACADEM 2.5
 
 // TOWN
 #define JDO_MARSHAL 3
 #define JDO_TOWNGUARD 3.1
-#define JDO_STEWARD 3.2
 #define JDO_CLERK 3.3
 
 // CHURCH
@@ -274,6 +274,11 @@
 #define JDO_CHURCHLING 0
 #define JDO_GRAVEMAN 0
 
+#define JDO_NITEMASTER 4.4
+#define JDO_CAPO 4.5
+#define JDO_CAFE 4.6
+#define JDO_WENCH 4.7
+
 // CITIZENS
 #define JDO_MERCHANT 5
 #define JDO_SHOPHAND 5.1
@@ -284,9 +289,7 @@
 #define JDO_ARCHIVIST 5.4
 #define JDO_CHIEF 0
 #define JDO_GUILDMASTER 5.5
-#define JDO_NITEMASTER 5.6
 #define JDO_NECROMIST 5.7
-#define JDO_CAFE 5.8
 
 #define JDO_SERGEANT 0
 #define JDO_CASTLEGUARD 0
@@ -301,12 +304,10 @@
 #define JDO_LOUDMOUTH 6
 #define JDO_BARKEEP 6.1
 #define JDO_TAILOR 6.2
-#define JDO_CAPO 6.3
 #define JDO_PBLACKSMITH 6.7
 
 #define JDO_COOK 27
 #define JDO_KNAVEWENCH 27.2
-#define JDO_WENCH 27.3
 
 #define JDO_SOILSON 28
 

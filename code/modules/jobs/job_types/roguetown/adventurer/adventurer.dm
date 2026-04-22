@@ -14,6 +14,11 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 	disallowed_races = /datum/species/ogre
 	tutorial = "Ты - путешественник. Один из многих, что возможно найдёт свою кончину в пьяной драке или на опасных дорогах. Мало кто ценит твоё ремесло, но есть один плюс - ты полностью предоставлен сам себе."
 
+	virtue_restrictions = list(
+		/datum/virtue/utility/noble,
+		/datum/virtue/utility/blueblooded,
+	)
+
 	class_categories = TRUE
 
 	outfit = null

@@ -228,7 +228,15 @@
 	landsound = 'sound/foley/jumpland/grassland.wav'
 	slowdown = 0
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/turf/open/floor/rogue/snow,)
+	canSmoothWith = list(/turf/open/floor/rogue/grass,
+						/turf/open/floor/rogue/grassred,
+						/turf/open/floor/rogue/grassyel,
+						/turf/open/floor/rogue/grasscold,
+						/turf/open/floor/rogue/snowpatchy,
+						/turf/open/floor/rogue/snowrough,
+						/turf/open/floor/rogue/dirt,
+						/turf/open/floor/rogue/dirt/road,
+						/turf/open/floor/rogue/AzureSand)
 	neighborlay = "snowedge"
 	spread_chance = 0
 
@@ -251,7 +259,10 @@
 	landsound = 'sound/foley/jumpland/grassland.wav'
 	slowdown = 0
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/turf/open/floor/rogue/snowrough,)
+	canSmoothWith = list(/turf/open/floor/rogue/snowrough,
+						/turf/open/floor/rogue/grasscold,
+						/turf/open/floor/rogue/dirt,
+						/turf/open/floor/rogue/dirt/road)
 	neighborlay = "snowroughedge"
 	spread_chance = 0
 
@@ -274,8 +285,7 @@
 	landsound = 'sound/foley/jumpland/grassland.wav'
 	slowdown = 0
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/turf/open/floor/rogue/snow,
-						/turf/open/floor/rogue/snowrough,)
+	canSmoothWith = list(/turf/open/floor/rogue/snowrough)
 	neighborlay = "snowpatchy_grassedge"
 
 /turf/open/floor/rogue/snowpatchy/cardinal_smooth(adjacencies)
@@ -293,9 +303,6 @@
 	landsound = 'sound/foley/jumpland/grassland.wav'
 	slowdown = 0
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/turf/open/floor/rogue/snowpatchy,
-						/turf/open/floor/rogue/snow,
-						/turf/open/floor/rogue/snowrough,)
 	neighborlay = "grass_coldedge"
 
 /turf/open/floor/rogue/grasscold/Initialize()
@@ -403,10 +410,7 @@
 	canSmoothWith = list(/turf/open/floor/rogue/grass,
 						/turf/open/floor/rogue/grassred,
 						/turf/open/floor/rogue/grassyel,
-						/turf/open/floor/rogue/grasscold,
-						/turf/open/floor/rogue/snowpatchy,
-						/turf/open/floor/rogue/snow,
-						/turf/open/floor/rogue/snowrough,)
+						/turf/open/floor/rogue/grasscold)
 	neighborlay = "dirtedge"
 	muddy = FALSE
 	bloodiness = 20
@@ -429,9 +433,6 @@
 						/turf/open/floor/rogue/grassred,
 						/turf/open/floor/rogue/grassyel,
 						/turf/open/floor/rogue/grasscold,
-						/turf/open/floor/rogue/snowpatchy,
-						/turf/open/floor/rogue/snow,
-						/turf/open/floor/rogue/snowrough,
 						/turf/open/floor/rogue/AzureSand)
 	neighborlay = "dirtedge"
 	var/muddy = FALSE
@@ -570,9 +571,6 @@
 						/turf/open/floor/rogue/grassred,
 						/turf/open/floor/rogue/grassyel,
 						/turf/open/floor/rogue/grasscold,
-						/turf/open/floor/rogue/snowpatchy,
-						/turf/open/floor/rogue/snow,
-						/turf/open/floor/rogue/snowrough,
 						/turf/open/floor/rogue/AzureSand,)
 	neighborlay = "roadedge"
 	slowdown = 0

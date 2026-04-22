@@ -41,6 +41,8 @@
 	if(face_name)
 		if(id_name && (id_name != face_name))
 			return "Unknown [(gender == FEMALE) ? "Woman" : "Man"]"
+		if(HAS_TRAIT(src, TRAIT_DISGUISED) && fake_identity_name && face_name != "Unknown")
+			return fake_identity_name
 		return face_name
 	if(id_name)
 		return id_name

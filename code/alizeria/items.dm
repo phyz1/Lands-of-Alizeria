@@ -498,3 +498,35 @@
 
 /obj/item/storage/belt/rogue/leather/battleskirt/nk
 	color = "#414143"
+
+/obj/item/clothing/head/roguetown/helmet/otavan/nk
+	color = "#414143"
+	detail_color = "#c1b144"
+
+/obj/item/clothing/cloak/championt/nk
+	name = "champion's cape"
+	desc = "A cape with a gold embroided heraldry of Scarlet Reach, worn by the realm's champion."
+	icon = 'icons/roguetown/clothing/special/champion.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/champion.dmi'
+	sleeved = 'icons/roguetown/clothing/special/onmob/champion.dmi'
+	sleevetype = "shirt"
+	icon_state = "champcloak"
+	detail_tag = "_detail"
+	detail_color = "#414143"
+	alternate_worn_layer = CLOAK_BEHIND_LAYER
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ornate/nk
+	color = "#414143"
+
+/obj/item/clothing/under/roguetown/platelegs/nk
+	color = "#414143"
+
+/obj/item/clothing/wrists/roguetown/bracers/nk
+	color = "#414143"
+
+/obj/item/clothing/cloak/raincloak/furcloak/nk
+	color = "#414143"
+
+/obj/item/clothing/cloak/tstabard/townguard/nk
+	color = "#414143"
+	detail_color = "#c1b144"

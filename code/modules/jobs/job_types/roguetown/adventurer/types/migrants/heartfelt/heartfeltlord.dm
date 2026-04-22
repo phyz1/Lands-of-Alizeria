@@ -525,7 +525,7 @@
 
 /mob/living/carbon/human/mind/proc/setordersheartfelt()
     set name = "Rehearse Orders"
-    set category = "Voice of Command"
+    set category = "SHERIFF"
 
     #define ORDER_INPUT(varname, prompt) \
         mind.varname = input("Send a message.", prompt) as text|null; \

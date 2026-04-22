@@ -16,6 +16,9 @@
 #define TRAIT_SEEPRICES_SHITTY "Appraiser"
 #define TRAIT_STRONGBITE "Strong Bite"
 #define TRAIT_NOBLE "Noble Blooded"
+#define TRAIT_DISGUISER "Disguiser"
+#define TRAIT_DISGUISED "Disguised"
+#define TRAIT_DISGUISED_SOCIAL "Disguised Social"
 #define TRAIT_DISGRACED_NOBLE "Formerly Noble Blooded"
 #define TRAIT_EMPATH "Empath"
 #define TRAIT_BREADY "Battleready"
@@ -272,6 +275,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SEEPRICES_SHITTY = "Я могу определить цены на вещи... <i>Почти</i>.",
 	TRAIT_STRONGBITE = span_info("У меня более сильные укусы и критические атаки."),
 	TRAIT_NOBLE = span_blue("Я голубых кровей."),
+	TRAIT_DISGUISER = span_info("Я владею тайным искусством искажения облика, позволяющим менять свою форму."),
+	TRAIT_DISGUISED = span_info("Моя истинная сущность скрыта."),
+	TRAIT_DISGUISED_SOCIAL = span_info("Магия скрывает моё истинное положение в обществе."),
 	TRAIT_DISGRACED_NOBLE = span_warning("Когда-то давно я был признанным дворянином..."),
 	TRAIT_EMPATH = span_info("Я могу заметить, когда людям больно, и чувствую умиротворение, когда они счастливы."),
 	TRAIT_BREADY = span_info("Защитная позиция меня не утомляет."),
@@ -751,6 +757,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TIMESTOP_TRAIT "timestop"
 #define HUGBOX_TRAIT "hugbox"
 #define ADVENTURER_TRAIT "adventurer"
+#define SPYMASTER_TRAIT "spymaster"
 
 #define TRAIT_I_AM_INVISIBLE_ON_A_BOAT "invisible_on_tram"
 

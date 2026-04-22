@@ -744,6 +744,7 @@
 "Mi" = (/obj/item/clothing/head/roguetown/helmet/heavy/astratan,/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood5,/area/rogue/outdoors)
 "Mk" = (/obj/item/clothing/neck/roguetown/carved/shellamulet,/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood5,/area/rogue/outdoors)
 "Mn" = (/obj/item/clothing/suit/roguetown/shirt/robe/necromancer,/obj/effect/decal/alizeria/decals/wooddecal1,/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood5,/area/rogue/outdoors)
+"Mt" = (/obj/structure/fluff/walldeco/alizeria/decor/plakatspawner,/turf/closed/wall/mineral/rogue/decowood/vert,/area/rogue/outdoors)
 "Mx" = (/obj/item/clothing/suit/roguetown/shirt/undershirt/priest,/obj/effect/decal/alizeria/decals/wooddecal1,/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood5,/area/rogue/outdoors)
 "Mz" = (/obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat/armored,/turf/open/floor/rogue/ruinedwood/alizeria/tiles/wood5,/area/rogue/outdoors)
 "MA" = (/obj/structure/table/wood{dir = 1; icon_state = "longtable"},/obj/item/rogueweapon/woodstaff,/obj/item/rogueweapon/woodstaff,/obj/item/rogueweapon/woodstaff,/obj/item/rogueweapon/mace/wsword,/obj/item/rogueweapon/mace/wsword,/obj/item/rogueweapon/mace/wsword,/turf/open/floor/rogue/dirt/road,/area/rogue/indoors)
@@ -1015,9 +1016,9 @@ ozozozozozThOgOgLqOgOgdALqLqLqxaxaOgLofzfzfzLoLoOgtPtPBJBJalalalDmlsMXUMzHDmgYPp
 ozozozozozThOgEplRDWXXvmvmhacdalalalalalalalalalFnalalalalalalBJDmDmDmDmDmDmDmDmDmDmDmOgThozozozozoz
 ozozozozozThOglWnwhuQSaYaYaYKWalalBJtZtZtZtZtZBJalalalalalalalBJDmJQaPpHnPDmRRwobQdHsyOgThozozozozoz
 ozozozozozThOgFPFPVFHAaYaYaYIAEABJBJLFLFLFLFLFHAHABRBRBRBJalalalBJVfVfVfVfDmDmDmDmDmDmOgThozozozozoz
-ozozozozozThOgCkWQhuHAaYaYwnCNalBJBJLFLFLFLFLFHAzpZMZMZMHABJalalBJkmfLYwjpDmIiBFNgOIEuOgThozozozozoz
+ozozozozozThOgCkWQhuHAaYaYwnCNalBJBJLFLFLFLFLFHAzpZMZMZMMtMtMtalBJkmfLYwjpDmIiBFNgOIEuOgThozozozozoz
 ozozozozozThOgNxTdhuHAclclUWalalBJHALFLFvGLFvGHAHAHAzZBJBJBJBJBJBJBJzZHAVfDmDmDmDmDmDmOgThozozozozoz
-ozozRNozozThOgbpbpOgHAHAHABJalalBJHAclclclclclHAHAHABJBJBJBJBJBJBJBJBJHAVfDmsLZLwMMRWyOgThozozozozoz
+ozozRNozozThOgbpbpOgHAHAHABJalalBJHAclclclclclHAHAHABJBJMtMtMtBJBJBJBJHAVfDmsLZLwMMRWyOgThozozozozoz
 ozozozozozThOgTdTdgmHAHAHAzpalalBJzpHAHAHAHAHAHAzZBJBJBJUIBJBJBJBJBJBJBJzZHADmDmDmDmDmOgThozozozozoz
 ozozozozozThOgQMTdhuHAHAHAHAalalBJHAPWjMjMjhjhHABJBJBJBJBJBJBJBJBJBJBJBJBJHAVfVfDmDmCLOgThozozozozoz
 ozozozozozThOgTdTdOgqQqQOgBJalalBJHACcCcCcCcCcHABJBJBJBJBJBJBJBJBJBJBJBJBJBJHAHAhphphpThThozozozozoz

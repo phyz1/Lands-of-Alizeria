@@ -7,7 +7,7 @@
 	spawn_positions = 1
 
 	allowed_sexes = list(FEMALE)
-	allowed_races = ALIZ_NOBLE_RACES_W_DWARF
+	allowed_races = ALIZ_ONLY_HUMAN
 	allowed_patrons = CODEX
 	allowed_ages = list(AGE_MIDDLEAGED)
 	tutorial = "Ты - леди наместника земель Ализерии. Будь то женой, либо верной фрейлиной - тебе предстоит во всём поддерживать своего лорда. Возможно, тебе даже предстоит заниматься воспитанием принца или принцессы, как ты это делала в их детстве. Во всём остальном - ты свободна, если твой лорд не скажет тебе обратного."

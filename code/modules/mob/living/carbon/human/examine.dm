@@ -3,8 +3,9 @@
 		return
 	if(user.mind)
 		user.mind.i_know_person(src)
+	var/datum/species/S = get_effective_species()
 	if(user.has_flaw(/datum/charflaw/paranoid))	//We hate different species, that are stronger than us, and aren't racist themselves
-		if(dna.species.name != user.dna.species.name && (STASTR - user.STASTR) > 1 && !has_flaw(/datum/charflaw/paranoid))
+		if(S.name != user.dna.species.name && (STASTR - user.STASTR) > 1 && !has_flaw(/datum/charflaw/paranoid))
 			user.add_stress(/datum/stressevent/parastr)
 	if(HAS_TRAIT(user, TRAIT_JESTERPHOBIA) && job == "Jester")
 		user.add_stress(/datum/stressevent/jesterphobia)
@@ -18,6 +19,26 @@
 		if(!HAS_TRAIT(user, TRAIT_UNSEEMLY))
 			user.add_stress(/datum/stressevent/unseemly)
 
+/mob/living/carbon/human/proc/get_effective_species()
+	if(HAS_TRAIT(src, TRAIT_DISGUISED) && fake_species)
+		var/type = GLOB.species_list[fake_species]
+		if(type)
+			return new type
+	return dna?.species
+
+/mob/living/carbon/human/proc/is_noble_visible()
+	if(HAS_TRAIT(src, TRAIT_DISGUISED))
+		return social_rank >= 4
+	return HAS_TRAIT(src, TRAIT_NOBLE)
+
+/mob/living/carbon/human/proc/get_effective_identity()
+	var/list/output = list()
+	var/disguised = HAS_TRAIT(src, TRAIT_DISGUISED)
+	output["name"] = (disguised && fake_identity_name) ? fake_identity_name : real_name
+	output["species"] = get_effective_species()
+	output["social_rank"] = social_rank
+	return output
+
 /mob/living/carbon/human/examine(mob/user)
 	var/observer_privilege = isobserver(user)
 	var/aghost_privilege = isadminobserver(user)
@@ -27,7 +48,10 @@
 	var/t_has = p_have()
 	var/t_is = p_are()
 	var/obscure_name = FALSE
-	var/race_name = "<a href='?src=[REF(src)];species_lore=1'><u>[dna.species.name]</u></A>"
+	var/list/identity = get_effective_identity()
+	var/used_name = identity["name"]
+	var/datum/species/S = get_effective_species()
+	var/race_name = "<a href='?src=[REF(src)];species_lore=1'><u>[S.name]</u></A>"
 	var/datum/antagonist/maniac/maniac = user.mind?.has_antag_datum(/datum/antagonist/maniac)
 	var/datum/antagonist/skeleton/skeleton = user.mind?.has_antag_datum(/datum/antagonist/skeleton)
 	if(maniac && (user != src))
@@ -60,13 +84,15 @@
 		obscure_name = FALSE
 
 	if(name in unknown_names)
-		. = list(span_info("ø ------------ ø\nЭто <EM>[name]</EM>."))
+		. = list(span_info("ø ------------ ø\nЭто <EM>[used_name]</EM>."))
 	else if(obscure_name)
 		. = list(span_info("ø ------------ ø\nЭто неизвестный <EM>[name]</EM>."))
 	else
 		on_examine_face(user)
-		var/used_name = name
 		var/used_title = get_role_title()
+		if(HAS_TRAIT(src, TRAIT_DISGUISED))
+			if(fake_job)
+				used_title = fake_job
 		if(SSticker.regentmob == src)
 			used_title = "[used_title]" + " Regent"
 		var/display_as_wanderer = FALSE
@@ -84,7 +110,7 @@
 			if(islatejoin)
 				is_returning = TRUE
 		var/rank_color = "725D4C"
-		if(HAS_TRAIT(src, TRAIT_NOBLE) && social_rank < 4)
+		if(HAS_TRAIT(src, TRAIT_NOBLE) && social_rank < 4 && !HAS_TRAIT(src, TRAIT_DISGUISED))
 			social_rank = SOCIAL_RANK_MINOR_NOBLE
 		switch(social_rank)
 			if(SOCIAL_RANK_PEASANT)
@@ -95,9 +121,18 @@
 				rank_color = "D09F19"
 			if(SOCIAL_RANK_NOBLE)
 				rank_color = "ECB20A"
+			if(SOCIAL_RANK_SPYMASTER)
+				rank_color = "FFBF00"
 			if(SOCIAL_RANK_ROYAL)
 				rank_color = "FFBF00"
-		var/strata_icon = family_datum ? "⛯" : "⛭"
+		var/strata_icon = "⛭"
+		if(family_datum)
+			strata_icon = "⛯"
+		if(HAS_TRAIT(src, TRAIT_DISGUISED))
+			if(hide_house)
+				strata_icon = "⛭"
+			else if(fake_house)
+				strata_icon = "⛯"
 		var/social_strata = SPAN_TOOLTIP_DANGEROUS_HTML(generate_strata(user), "<font color='#[rank_color]'>[strata_icon]</font></A>")
 		var/display1
 		var/display2 = "[!HAS_TRAIT(usr, TRAIT_OUTLANDER) ? "[social_strata]" : " "]"
@@ -108,12 +143,27 @@
 		else
 			display1 = span_info("ø ------------ ø\nЭто <EM>[used_name]</EM>, [race_name].")
 		. = list("[display1] [display2]")
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			if(H.dna.species.origin == dna.species.origin && dna.species.region)
-				. += span_info("[capitalize(m2)] [dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "оттенок кожи"] происходит из [dna.species.region] в [dna.species.origin].")
+
+		var/origin_to_use = null
+		if(S.origin)
+			origin_to_use = S.origin
+		else if(S.origin_default)
+			var/datum/virtue/origin/O = new S.origin_default
+			origin_to_use = O.name
+		var/region_to_use = S.region
+		if(HAS_TRAIT(src, TRAIT_DISGUISED))
+			if(fake_origin)
+				origin_to_use = fake_origin
+			if(fake_region)
+				region_to_use = fake_region
+		if(region_to_use == origin_to_use)
+			region_to_use = null
+
+		if(origin_to_use)
+			if(region_to_use)
+				. += span_info("[capitalize(m2)] [S.skin_tone_wording ? lowertext(S.skin_tone_wording) : "оттенок кожи"] намекает на [region_to_use].")
 			else
-				. += span_info("[capitalize(m2)] [dna.species.skin_tone_wording ? lowertext(dna.species.skin_tone_wording) : "оттенок кожи"] происходит из [dna.species.origin].")
+				. += span_info("[capitalize(m2)] [S.skin_tone_wording ? lowertext(S.skin_tone_wording) : "оттенок кожи"] намекает на.")
 
 		if(HAS_TRAIT(src, TRAIT_WITCH))
 			if(HAS_TRAIT(user, TRAIT_NOBLE) || HAS_TRAIT(user, TRAIT_INQUISITION) || HAS_TRAIT(user, TRAIT_WITCH))
@@ -129,10 +179,10 @@
 		if(HAS_TRAIT(src, TRAIT_DISGRACED_KNIGHT))
 			. += "<span class='big' style='color: #8B4513;'>DISGRACED KNIGHT!</span>"
 
-		if(GLOB.lord_titles[name])
-			. += span_notice("[m3] получил титул \"[GLOB.lord_titles[name]]\".")
+		if(GLOB.lord_titles[used_name])
+			. += span_notice("[m3] получил титул \"[GLOB.lord_titles[used_name]]\".")
 
-		if(HAS_TRAIT(src, TRAIT_NOBLE))
+		if(is_noble_visible())
 			if(HAS_TRAIT(user, TRAIT_NOBLE))
 				. += span_notice("Ещё один дворянин")
 			else
@@ -191,12 +241,12 @@
 
 		//For tennite schism god-event
 		if(length(GLOB.tennite_schisms))
-			var/datum/tennite_schism/S = GLOB.tennite_schisms[1]
-			var/user_side = (WEAKREF(user) in S.supporters_astrata) ? "astrata" : (WEAKREF(user) in S.supporters_challenger) ? "challenger" : null
-			var/mob_side = (WEAKREF(src) in S.supporters_astrata) ? "astrata" : (WEAKREF(src) in S.supporters_challenger) ? "challenger" : null
+			var/datum/tennite_schism/schism = GLOB.tennite_schisms[1]
+			var/user_side = (WEAKREF(user) in schism.supporters_astrata) ? "astrata" : (WEAKREF(user) in schism.supporters_challenger) ? "challenger" : null
+			var/mob_side = (WEAKREF(src) in schism.supporters_astrata) ? "astrata" : (WEAKREF(src) in schism.supporters_challenger) ? "challenger" : null
 
 			if(user_side && mob_side)
-				var/datum/patron/their_god = (mob_side == "astrata") ? S.astrata_god.resolve() : S.challenger_god.resolve()
+				var/datum/patron/their_god = (mob_side == "astrata") ? schism.astrata_god.resolve() : schism.challenger_god.resolve()
 				if(their_god)
 					. += (user_side == mob_side) ? span_notice("Fellow [their_god.name] supporter!") : span_userdanger("Vile [their_god.name] supporter!")
 
@@ -218,11 +268,11 @@
 				. += span_greentext("<b>[m1] агент дворца!</b>")
 
 		if(user != src && !HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
-			if(has_flaw(/datum/charflaw/addiction/lovefiend) && user.has_flaw(/datum/charflaw/addiction/lovefiend))
-				. += span_aiprivradio("[m1] такой же любвеобильный, как и я..")
+		/*	if(has_flaw(/datum/charflaw/addiction/lovefiend) && user.has_flaw(/datum/charflaw/addiction/lovefiend))
+				. += span_aiprivradio("[m1] такой же любвеобильный, как и я..")*/
 
 			if(has_flaw(/datum/charflaw/addiction/junkie) && user.has_flaw(/datum/charflaw/addiction/junkie))
-				. += span_deadsay("На носу [m1] такие же следы пыли, как и у меня.")
+				. += span_deadsay("На [m2] носу такие же следы пыли, как и у меня.")
 
 			if(has_flaw(/datum/charflaw/addiction/smoker) && user.has_flaw(/datum/charflaw/addiction/smoker))
 				. += span_suppradio("[m1] окутан знакомым, едва уловимым запахом дыма. Я его хорошо знаю.")
@@ -233,7 +283,7 @@
 			if(has_flaw(/datum/charflaw/paranoid) && user.has_flaw(/datum/charflaw/paranoid))
 				if(ishuman(user))
 					var/mob/living/carbon/human/H = user
-					if(dna.species.name == H.dna.species.name)
+					if(S.name == H.dna.species.name)
 						. += span_nicegreen("[m1] осведомлены об опасностях, исходящих от всех этих незнакомцев вокруг нас. [m1] боится также как и я.")
 					else
 						. += span_nicegreen("[m1] один из хороших. [m1] боится также как и я!")
@@ -378,7 +428,7 @@
 
 	//head
 	if(head && !(SLOT_HEAD in obscured))
-		var/str = "[m3] [head.generate_tooltip(head.get_examine_string(user), showcrits = (is_normal || is_smart))] on [m2] head. "
+		var/str = "[m3] [head.generate_tooltip(head.get_examine_string(user), showcrits = (is_normal || is_smart))] на голове. "
 		str += head.integrity_check(is_smart)
 		if(is_stupid)
 			if(istype(head,/obj/item/clothing/head/roguetown/helmet))
@@ -420,7 +470,7 @@
 			var/obj/item/clothing/CL = cloak
 			str = "[m3] [CL.generate_tooltip(CL.get_examine_string(user), showcrits = (is_normal || is_smart))] on [m2] shoulders. "
 		else
-			str = "[m3] [cloak.get_examine_string(user)] on [m2] shoulders. "
+			str = "[m3] [cloak.get_examine_string(user)] на спине. "
 		str += cloak.integrity_check(is_smart)
 		if (is_stupid)					//So they can tell the named RG tabards. If they can read them, anyway.
 			if(!istype(cloak, /obj/item/clothing/cloak/stabard) && user.get_skill_level(/datum/skill/misc/reading) == 0)
@@ -429,27 +479,27 @@
 
 	//right back
 	if(backr && !(SLOT_BACK_R in obscured))
-		var/str = "[m3] [backr.get_examine_string(user)] on [m2] back. "
+		var/str = "[m3] виднеется [backr.get_examine_string(user)] на правом плече. "
 		str += backr.integrity_check(is_smart)
 		. += str
 
 	//left back
 	if(backl && !(SLOT_BACK_L in obscured))
-		var/str = "[m3] [backl.get_examine_string(user)] on [m2] back. "
+		var/str = "[m3] виднеется [backl.get_examine_string(user)] на левом плече. "
 		str += backl.integrity_check(is_smart)
 		. += str
 
 	//Hands
 	for(var/obj/item/I in held_items)
 		if(!(I.item_flags & ABSTRACT))
-			var/str = "[m1] holding [I.get_examine_string(user)] in [m2] [get_held_index_name(get_held_index_of_item(I))]. "
+			var/str = "[m1] удерживает [I.get_examine_string(user)] в [get_held_index_name(get_held_index_of_item(I))]. "
 			str += I.integrity_check(is_smart)
 			. += str
 
 	var/datum/component/forensics/FR = GetComponent(/datum/component/forensics)
 	//gloves
 	if(gloves && !(SLOT_GLOVES in obscured))
-		var/str = "[m3] [gloves.generate_tooltip(gloves.get_examine_string(user), showcrits = (is_normal || is_smart))] on [m2] hands. "
+		var/str = "[m3] [gloves.generate_tooltip(gloves.get_examine_string(user), showcrits = (is_normal || is_smart))] на ладонях. "
 		str += gloves.integrity_check(is_smart)
 		if(is_stupid)
 			str = "[m3] a pair of gloves of some kind!"
@@ -464,26 +514,26 @@
 
 	//belt
 	if(belt && !(SLOT_BELT in obscured))
-		var/str = "[m3] [belt.get_examine_string(user)] about [m2] waist. "
+		var/str = "[m3] [belt.get_examine_string(user)] в виде пояса. "
 		str += belt.integrity_check(is_smart)
 		. += str
 
 
 	//right belt
 	if(beltr && !(SLOT_BELT_R in obscured))
-		var/str = "[m3] [beltr.get_examine_string(user)] on [m2] belt. "
+		var/str = "[m3] виднеется [beltr.get_examine_string(user)] на поясе. "
 		str += beltr.integrity_check(is_smart)
 		. += str
 
 	//left belt
 	if(beltl && !(SLOT_BELT_L in obscured))
-		var/str = "[m3] [beltl.get_examine_string(user)] on [m2] belt. "
+		var/str = "[m3] виднеется [beltl.get_examine_string(user)] на поясе. "
 		str += beltl.integrity_check(is_smart)
 		. += str
 
 	//shoes
 	if(shoes && !(SLOT_SHOES in obscured))
-		var/str = "[m3] [shoes.generate_tooltip(shoes.get_examine_string(user), showcrits = (is_normal || is_smart))] on [m2] feet. "
+		var/str = "[m3] [shoes.generate_tooltip(shoes.get_examine_string(user), showcrits = (is_normal || is_smart))] на ногах. "
 		str += shoes.integrity_check(is_smart)
 		if(is_stupid)
 			str = "[m3] some shoes on [m2] feet!"
@@ -491,7 +541,7 @@
 
 	//mask
 	if(wear_mask && !(SLOT_WEAR_MASK in obscured))
-		var/str = "[m3] [wear_mask.generate_tooltip(wear_mask.get_examine_string(user), showcrits = (is_normal || is_smart))] on [m2] face. "
+		var/str = "[m3] [wear_mask.generate_tooltip(wear_mask.get_examine_string(user), showcrits = (is_normal || is_smart))] на лице. "
 		str += wear_mask.integrity_check(is_smart)
 		if(is_stupid)
 			str = "[m3] some kinda thing on [m2] face!"
@@ -502,9 +552,9 @@
 		var/str
 		if(istype(mouth, /obj/item/clothing))
 			var/obj/item/clothing/CM = mouth
-			str = "[m3] [CM.generate_tooltip(CM.get_examine_string(user), showcrits = (is_normal || is_smart))] in [m2] mouth. "
+			str = "[m3] [CM.generate_tooltip(CM.get_examine_string(user), showcrits = (is_normal || is_smart))] во рту. "
 		else
-			"[m3] [mouth.get_examine_string(user)] in [m2] mouth. "
+			"[m3] [mouth.get_examine_string(user)] во рту. "
 		str += mouth.integrity_check(is_smart)
 		if(is_stupid)
 			str = "[m3] some kinda thing on [m2] mouth!"
@@ -512,7 +562,7 @@
 
 	//neck
 	if(wear_neck && !(SLOT_NECK in obscured))
-		var/str = "[m3] [wear_neck.generate_tooltip(wear_neck.get_examine_string(user), showcrits = (is_normal || is_smart))] around [m2] neck. "
+		var/str = "[m3] [wear_neck.generate_tooltip(wear_neck.get_examine_string(user), showcrits = (is_normal || is_smart))] на шее. "
 		str += wear_neck.integrity_check(is_smart)
 		if (is_stupid)
 			str = "[m3] something on [m2] neck!"
@@ -521,7 +571,7 @@
 	//eyes
 	if(!(SLOT_GLASSES in obscured))
 		if(glasses)
-			. += "[m3] [glasses.get_examine_string(user)] covering [m2] eyes."
+			. += "[m3] [glasses.get_examine_string(user)] на глазах."
 		else if(eye_color == BLOODCULT_EYE)
 			. += span_warning("<B>[m2] eyes are glowing an unnatural red!</B>")
 
@@ -531,7 +581,7 @@
 
 	//ID
 	if(wear_ring && !(SLOT_RING in obscured))
-		var/str = "[wear_ring.generate_tooltip(wear_ring.get_examine_string(user), showcrits = (is_normal || is_smart))] on [m2] hands. "
+		var/str = "[wear_ring.generate_tooltip(wear_ring.get_examine_string(user), showcrits = (is_normal || is_smart))] на пальце. "
 		if(is_smart && istype(wear_ring, /obj/item/clothing/ring/active))
 			var/obj/item/clothing/ring/active/AR = wear_ring
 			if(AR.cooldowny)
@@ -545,7 +595,7 @@
 
 	//wrists
 	if(wear_wrists && !(SLOT_WRISTS in obscured))
-		var/str = "[m3] [wear_wrists.generate_tooltip(wear_wrists.get_examine_string(user), showcrits = (is_normal || is_smart))] on [m2] wrists."
+		var/str = "[m3] [wear_wrists.generate_tooltip(wear_wrists.get_examine_string(user), showcrits = (is_normal || is_smart))] на руках."
 		str += wear_wrists.integrity_check(is_smart)
 		if (is_stupid)
 			str = "[m3] something on [m2] wrists!"
@@ -598,7 +648,7 @@
 		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 			msg += span_artery("[m1] бледный.")
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
-			msg += span_artery("[m1] чуть бледный.")
+			msg += span_artery("[m1] немного бледный.")
 
 	// Bleeding
 	var/bleed_rate = get_bleed_rate()
@@ -607,13 +657,13 @@
 			var/bleed_wording = "bleeding"
 			switch(bleed_rate)
 				if(0 to 1)
-					bleed_wording = "чуть кровоточит"
+					bleed_wording = "[m1] немного кровоточит."
 				if(1 to 5)
-					bleed_wording = "кровоточит"
+					bleed_wording = "[m1] кровоточит."
 				if(5 to 10)
-					bleed_wording = "сильно кровоточит"
+					bleed_wording = "[m1] сильно кровоточит."
 				if(10 to INFINITY)
-					bleed_wording = "очень сильно кровоточит"
+					bleed_wording = "[m1] очень сильно кровоточит."
 			var/list/bleeding_limbs = list()
 			var/list/bleed_zones = list( //static removed, bad?
 				BODY_ZONE_HEAD,
@@ -681,7 +731,7 @@
 	if(HAS_TRAIT(user, TRAIT_EXTEROCEPTION))
 		switch(nutrition)
 			if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
-				msg += "[m1] выглядит чуть голодным"
+				msg += "[m1] выглядит немного голодным"
 			if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
 				msg += "[m1] выглядит голодным"
 			if(NUTRITION_LEVEL_STARVING-50 to NUTRITION_LEVEL_STARVING)
@@ -727,7 +777,7 @@
 			//Drunkenness
 			switch(drunkenness)
 				if(11 to 21)
-					msg += "[m1] чуть красен."
+					msg += "[m1] покрасневший."
 				if(21.01 to 41) //.01s are used in case drunkenness ends up to be a small decimal
 					msg += "[m1] красен."
 				if(41.01 to 51)
@@ -748,7 +798,7 @@
 					if(10 to 19)
 						msg += "[m1] под сильным стрессом"
 					if(1 to 9)
-						msg += "[m1] чуть напрёжен"
+						msg += "[m1] немного напряжён"
 					if(-9 to 0)
 						msg += "[m1] нормальный."
 					if(-19 to -10)
@@ -810,7 +860,7 @@
 		var/mob/living/carbon/human/H = user
 		var/stress = H.get_stress_amount()//stress check for racism
 		if(H.has_flaw(/datum/charflaw/paranoid) || (!HAS_TRAIT(H, TRAIT_EMPATH) && stress >= 4))//if you have paranoid flaw or you're stressed while not being an empath
-			if(H.dna.species.name != dna.species.name)
+			if(S.name != dna.species.name)
 				if(dna.species.stress_examine)//some species don't have a stress desc
 					. += dna.species.stress_desc
 
@@ -822,15 +872,15 @@
 		var/strength_diff = final_str - L.STASTR
 		switch(strength_diff)
 			if(5 to INFINITY)
-				. += span_warning("<B>Он выглядит намного сильнее чем я.</B>")
+				. += span_warning("<B>[m1] выглядит намного сильнее чем я.</B>")
 			if(1 to 5)
-				. += span_warning("Он выглядит сильнее чем я.")
+				. += span_warning("[m1] выглядит сильнее чем я.")
 			if(0)
-				. += "Он выглядит таким же сильным как я"
+				. += "[m1] выглядит таким же сильным как я"
 			if(-5 to -1)
-				. += span_warning("Он выглядит слабее меня")
+				. += span_warning("[m1] выглядит слабее меня")
 			if(-INFINITY to -5)
-				. += span_warning("<B>Он выглядит намного слабее меня.</B>")
+				. += span_warning("<B>[m1] выглядит намного слабее меня.</B>")
 
 	if((HAS_TRAIT(user,TRAIT_INTELLECTUAL)))
 		var/mob/living/L = user
@@ -840,20 +890,20 @@
 		var/int_diff = final_int - L.STAINT
 		switch(int_diff)
 			if(5 to INFINITY)
-				. += span_revenwarning("Он выглядит намного умнее меня.")
+				. += span_revenwarning("[m1] выглядит намного умнее меня.")
 			if(2 to 5)
-				. += span_revenminor("Он выглядит умнее меня.")
+				. += span_revenminor("[m1] выглядит умнее меня.")
 			if(-1 to 1)
-				. += "Оне выглядит[p_s()] таким же умным как я."
+				. += "[m1] не выглядит таким же умным как я."
 			if(-5 to -2)
-				. += span_revennotice("Он выглядит тупее меня.")
+				. += span_revennotice("[m1] выглядит тупее меня.")
 			if(-INFINITY to -5)
-				. += span_revennotice("Он выглядит как тупой камен по сравнению со мной.")
+				. += span_revennotice("[m1] выглядит как тупой камень по сравнению со мной.")
 
 	if(maniac)
 		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
 		if(heart?.inscryption && (heart.inscryption_key in maniac.key_nums))
-			. += span_danger("ОН знает[p_s()] [heart.inscryption_key], Я УВЕРЕН В ЭТОМ!")
+			. += span_danger("[m1] знает [p_s()] [heart.inscryption_key], Я УВЕРЕН В ЭТОМ!")
 
 /* includes nsfw preview
 	if(!obscure_name || client?.prefs.masked_examine)
@@ -919,21 +969,21 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(get_dist(src, H) <= ((2 + clamp(floor(((H.STAPER - 10))),-1, 4)) + HAS_TRAIT(user, TRAIT_INTELLECTUAL)))
-			showassess = TRUE
-
+			if(get_face_name() == real_name)
+				showassess = TRUE
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(get_dist(src, H) <= ((2 + clamp(floor(((H.STAPER - 10))),-1, 4)) + HAS_TRAIT(user, TRAIT_INTELLECTUAL)))
+		if(showassess && get_dist(src, H) <= ((2 + clamp(floor(((H.STAPER - 10))),-1, 4)) + HAS_TRAIT(user, TRAIT_INTELLECTUAL)))
 			. += "<a href='?src=[REF(src)];task=assess;'>Оценить</a>"
 
 	var/flavorcheck = FALSE // to avoid duplicating the below checks a little later
 	if((!obscure_name || client?.prefs.masked_examine) && (flavortext || headshot_link || ooc_notes))
 		flavorcheck = TRUE
 	if(flavorcheck)
-		. += "<a href='?src=[REF(src)];task=view_headshot;'>Приглядеться</a> [showassess ? " | <a href='?src=[REF(src)];task=assess;'>Assess</a>" : ""]"
+		. += "<a href='?src=[REF(src)];task=view_headshot;'>Приглядеться</a> [showassess ? " | <a href='?src=[REF(src)];task=assess;'>Оценить</a>" : ""]"
 		//tiny picture when you are not examining closer, shouldnt take too much space.
 	/// Rumours & Gossip
-	if((!obscure_name) && (length(rumour)) || ((HAS_TRAIT(user, TRAIT_NOBLE) || HAS_TRAIT(user, TRAIT_ROYALSERVANT)) || observer_privilege && length(gossip)))
+	if(!HAS_TRAIT(user, TRAIT_DISGUISED) && !obscure_name && (length(rumour) || length(gossip)))
 		. += "<a href='?src=[REF(src)];task=view_rumours_gossip;'>Вспомнить сплетни и слухи</a>"
 
 	var/list/lines
@@ -1086,6 +1136,8 @@
 	var/is_clergy = FALSE
 	var/is_jester = FALSE
 	var/is_druid = FALSE
+	var/is_hand = HAS_TRAIT(src, TRAIT_DISGUISER)
+	var/user_is_landowner = FALSE
 	var/output = ""
 	if(job)
 		var/datum/job/J = SSjob.GetJob(job)
@@ -1095,10 +1147,15 @@
 			is_jester = TRUE
 		if(J.title == "Druid")
 			is_druid = TRUE
+	if(user.job)
+		var/datum/job/J_user = SSjob.GetJob(user.job)
+		if(J_user.title == "Landowner")
+			user_is_landowner = TRUE
 	if(social_rank && !HAS_TRAIT(user, TRAIT_OUTLANDER))
 		var/examiner_rank = user.social_rank
 		var/rank_name
-		if(HAS_TRAIT(src, TRAIT_NOBLE) && social_rank < 4) //anyone with the noble trait that wasn't a noble is now at least a minor noble
+		var/display_rank = social_rank
+		if(HAS_TRAIT(src, TRAIT_NOBLE) && social_rank < 4 && !HAS_TRAIT(src, TRAIT_DISGUISED)) //anyone with the noble trait that wasn't a noble is now at least a minor noble
 			social_rank = SOCIAL_RANK_MINOR_NOBLE
 		switch(social_rank)
 			if(SOCIAL_RANK_DIRT)
@@ -1111,20 +1168,31 @@
 				rank_name = is_clergy ? "low clergy" : "lower nobility"
 			if(SOCIAL_RANK_NOBLE)
 				rank_name = is_clergy ? "clergy" : "nobility"
+			if(SOCIAL_RANK_SPYMASTER)
+				rank_name = "royal advisor"
 			if(SOCIAL_RANK_ROYAL)
 				rank_name = is_clergy ? "head of the clergy" : "upper nobility"
-		if(HAS_TRAIT(src, TRAIT_DISGRACED_NOBLE))
+		if(HAS_TRAIT(src, TRAIT_DISGRACED_NOBLE) && !HAS_TRAIT(src, TRAIT_DISGUISED))
 			rank_name = "a disgraced noble"
 			social_rank = 3
 		if(is_jester)
 			rank_name = "the jester"
 		if(is_druid)
 			rank_name = "a druid"
-		if(social_rank > examiner_rank)
+		if(is_hand && !HAS_TRAIT(src, TRAIT_DISGUISED_SOCIAL))
+			var/datum/job/J = SSjob.GetJob(job)
+			rank_name = "royal advisor"
+			display_rank = J.social_rank
+		else if(is_hand && HAS_TRAIT(src, TRAIT_DISGUISED_SOCIAL))
+			if(user_is_landowner)
+				var/datum/job/J = SSjob.GetJob(job)
+				rank_name = "royal advisor"
+				display_rank = J.social_rank
+		if(display_rank > examiner_rank)
 			output = "This person is <EM>[rank_name]</EM>, they are my better."
-		if(social_rank == examiner_rank)
+		if(display_rank == examiner_rank)
 			output = "This person is <EM>[rank_name]</EM>, they are my equal."
-		if(social_rank < examiner_rank)
+		if(display_rank < examiner_rank)
 			output = "This person is <EM>[rank_name]</EM>, they are my lesser."
 	if(family_datum)
 		var/datum/family_member/FM = family_datum.GetMemberForPerson(src)
@@ -1137,6 +1205,9 @@
 					spouse_list += the_person.real_name
 			if(spouse_list.len)
 				spousetext = jointext(spouse_list, ", ")
-		output += "<BR>They are a member of house [family_datum.housename][spousetext ? ", and are married to [spousetext]." : "."]"
+		if(HAS_TRAIT(src, TRAIT_DISGUISED) && fake_house && !hide_house)
+			output += "<BR>They are a member of house [fake_house]."
+		else if(!hide_house)
+			output += "<BR>They are a member of house [family_datum.housename][spousetext ? ", and are married to [spousetext]." : "."]"
 
 	return output

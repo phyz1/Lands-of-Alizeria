@@ -10,6 +10,11 @@
 	selection_color = JCOLOR_PEASANT
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ALIZ_ALL_RACES
+	virtue_restrictions = list(
+		/datum/virtue/utility/noble,
+		/datum/virtue/utility/blueblooded,
+	)
+
 	disallowed_races = list(
 		/datum/species/lamia,
 	)

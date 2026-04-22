@@ -134,7 +134,7 @@
 /obj/structure/chair/wood/rogue/chair5
 	icon_state = "chair5"
 	icon = 'icons/roguetown/misc/structure.dmi'
-	item_chair = /obj/item/chair/rogue
+	item_chair = /obj/item/chair/chair5
 	blade_dulling = DULLING_BASHCHOP
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
@@ -152,6 +152,19 @@
 	icon = 'icons/roguetown/items/chairs.dmi'
 	icon_state = "chair2"
 	origin_type = /obj/structure/chair/wood/rogue
+	blade_dulling = DULLING_BASHCHOP
+	can_parry = TRUE
+	gripped_intents = list(/datum/intent/hit)
+	obj_flags = CAN_BE_HIT
+	max_integrity = 100
+	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
+	attacked_sound = "woodimpact"
+
+/obj/item/chair/chair5
+	name = "chair"
+	icon = 'icons/roguetown/items/chairs.dmi'
+	icon_state = "chair3"
+	origin_type = /obj/structure/chair/wood/rogue/chair5
 	blade_dulling = DULLING_BASHCHOP
 	can_parry = TRUE
 	gripped_intents = list(/datum/intent/hit)

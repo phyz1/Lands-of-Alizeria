@@ -212,8 +212,8 @@
 	..()
 
 /obj/structure/fluff/walldeco/customflag
-	name = "Scarlet Reach flag"
-	desc = "A banner flutters in the breeze in the proud heraldic colors of the Duchy."
+	name = "флаг наместника"
+	desc = "Флаг истинного правителя этих земель. Либо почти истинного..."
 	icon_state = "wallflag"
 
 /obj/structure/fluff/walldeco/customflag/Initialize()

@@ -61,14 +61,16 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 
 GLOBAL_LIST_INIT(noble_positions, list(
 	"Landowner",
+	"Spymaster",
 	"Lady of Crown",
 	"Prince",
 	"Royal Knight",
 	"Squire",
-	"Blackguard",
 ))
 
 GLOBAL_LIST_INIT(courtier_positions, list(
+	"Burgomaster",
+	"Blackguard",
 	"Jester",
 	"Governess",
 	"Servant",
@@ -86,7 +88,6 @@ GLOBAL_LIST_INIT(garrison_positions, list(
 	"Sheriff of Town",
 	"Town Guard",
 	"Town Ranger",
-	"Master of Coin",
 	"Clerk",
 ))
 
@@ -105,7 +106,7 @@ GLOBAL_LIST_INIT(inquisition_positions, list(
 
 
 GLOBAL_LIST_INIT(yeoman_positions, list(
-	"Town Merchant",
+	"Merchant",
 	"Port Merchant",
 	"Magician",
 	"Physician",
@@ -113,7 +114,7 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Guildmaster",
 	"Caïd",
 	"Necromist",
-	"Port Blacksmith",
+	"Blacksmith",
 	"Caffettiere",
 ))
 
@@ -124,7 +125,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Caporegime",
 	"Soilson",
 	"Cook",
-	"Slave Whore",
+	"Artist",
 	"Towner",
 ))
 

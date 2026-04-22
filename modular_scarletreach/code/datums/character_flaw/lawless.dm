@@ -26,9 +26,9 @@
 		face_known = alert(user, "Известно ли властям ваше лицо?", "", "Да", "Нет")
 		if (!face_known)
 			face_known = "Да"
-		bounty_poster = input(user, "Кто именно вас разыскивает?", "Награда за голову от:") as anything in list("Жандармерия Фиертона", "Гильдия свободных наёмников", "Святой орден")
+		bounty_poster = input(user, "Кто именно вас разыскивает?", "Награда за голову от:") as anything in list("Жандармерия Монфора", "Гильдия Авантюристов", "Церковь Кодекса")
 		if (!bounty_poster)
-			bounty_poster = "Жандармерия Фиертона"
+			bounty_poster = "Жандармерия Монфора"
 		my_crime = input(user, "За что вас разыскивают?", "Преступление") as text|null
 		if (!my_crime)
 			my_crime = "Преступления против Короны"

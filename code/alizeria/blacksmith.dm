@@ -1,12 +1,12 @@
 /datum/job/roguetown/pblacksmith
-	title = "Port Blacksmith"
+	title = "Blacksmith"
 	flag = PBLACKSMITH
 	department_flag = PEASANTS
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	allowed_races = RACES_ALL_KINDS
-	tutorial = " огда-то давно кузнецы ценились почти также, как и пленники-лорды. “еперь же их времена прошли. ћногие доспехи возможно пробить болтом или пулей, так что выбор многих стал уходить в кожанное снар€жение. Ѕывают и исключени€, например городска€ стража, что €вл€ютс€ твоими частыми клиентами несмотр€ на то, что ты работаешь в порту."
+	tutorial = " огда-то давно кузнецы ценились почти также, как и пленники-лорды. “еперь же их времена прошли. ћногие доспехи возможно пробить болтом или пулей, так что выбор многих стал уходить в кожанное снар€жение. Ѕывают и исключени€, например городска€ стража, что €вл€ютс€ твоими частыми клиентами."
 	advclass_cat_rolls = list(CTAG_PBLACKSMITH = 20)
 	outfit = null
 	outfit_female = null
@@ -30,7 +30,7 @@
 	)
 
 /datum/advclass/pblacksmith
-	name = "Port Blacksmith"
+	name = "Blacksmith"
 	tutorial = "A skilled blacksmith, able to forge capable weapons for warriors in the bog, \
 	only after building a forge for themselves of course"
 	allowed_sexes = list(MALE, FEMALE)

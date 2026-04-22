@@ -1,29 +1,29 @@
 /datum/job/roguetown/steward
-	title = "Master of Coin"
+	title = "Burgomaster"
 	flag = STEWARD
-	department_flag = GARRISON
+	department_flag = COURTIERS
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	allowed_races = ALIZ_NOBLE_RACES
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_STEWARD
-	tutorial = "Ты - мастер над монетой относительно вольного города. Именно благодаря тебе, либо благодаря твоему прошлому мастеру - город обзавёлся личным кораблём и хорошими торговыми связями, благодаря которым власть короны стала ощущаться гораздо меньше. Тем не менее, благодаря ней всё ещё имеется возможность значительно расширить казну, однако что тебе придётся отдать взамен?"
+	tutorial = "Порой правителю крайне не хочется править и порой это происходит настолько часто, что тот нанимает Бургомистра. Будучи им - тебе предстоит следить за казной и фактически управлять городом от лица своего правителя. Это весьма неблагодарная работа, возможно тебе даже захочется самому сесть на трон, вопрос лишь в том, кто будет готов тебя в этом поддержать?"
 	outfit = /datum/outfit/job/steward
 	give_bank_account = 22
-	noble_income = 16
+	noble_income = 40
 	min_pq = 0 //Please don't give the vault keys to somebody that's going to lock themselves in on accident
 	max_pq = null
 	always_show_on_latechoices = TRUE
 	round_contrib_points = 3
 	cmode_music = 'sound/music/combat_noble.ogg'
-	social_rank = SOCIAL_RANK_YEOMAN
+	social_rank = SOCIAL_RANK_NOBLE
 
 	advclass_cat_rolls = list(CTAG_STEWARD = 2)
 
 	virtue_restrictions = list(/datum/virtue/utility/blacksmith)
 
-	job_traits = list(TRAIT_SEEPRICES)
+	job_traits = list(TRAIT_SEEPRICES, TRAIT_NOBLE)
 	job_subclasses = list(
 		/datum/advclass/steward
 	)
@@ -33,7 +33,7 @@
 
 /datum/advclass/steward
 	name = "Steward"
-	tutorial = "Ты - мастер над монетой относительно вольного города. Именно благодаря тебе, либо благодаря твоему прошлому мастеру - город обзавёлся личным кораблём и хорошими торговыми связями, благодаря которым власть короны стала ощущаться гораздо меньше. Тем не менее, благодаря ней всё ещё имеется возможность значительно расширить казну, однако что тебе придётся отдать взамен?"
+	tutorial = "Порой правителю крайне не хочется править и порой это происходит настолько часто, что тот нанимает Бургомистра. Будучи им - тебе предстоит следить за казной и фактически управлять городом от лица своего правителя. Это весьма неблагодарная работа, возможно тебе даже захочется самому сесть на трон, вопрос лишь в том, кто будет готов тебя в этом поддержать?"
 	outfit = /datum/outfit/job/steward/basic
 
 	category_tags = list(CTAG_STEWARD)
@@ -56,6 +56,7 @@
 		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/cooking = SKILL_LEVEL_NOVICE,
+		/datum/skill/combat/swords = SKILL_LEVEL_APPRENTICE,
 	)
 
 /datum/outfit/job/steward
@@ -65,15 +66,17 @@
 	..()
 	H.adjust_blindness(-3)
 	cloak = /obj/item/clothing/cloak/half
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/aristocratic/steward
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/artificer
 	shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot
-	belt = /obj/item/storage/belt/rogue/leather/plaquegold/steward
-	beltr = /obj/item/storage/keyring/alizeria/sherifft
-	beltl = /obj/item/rogueweapon/sword/cutlass
-	pants = /obj/item/clothing/under/roguetown/trou/leather
-	backr = /obj/item/storage/backpack/rogue/satchel
+	belt = /obj/item/storage/belt/rogue/leather/black
+	wrists = /obj/item/storage/keyring/alizeria/sherifft
+	beltl = /obj/item/rogueweapon/sword/sabre/dec
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan
+	backl = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/scomstone
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather/aristocratic
+	neck = /obj/item/clothing/neck/roguetown/horus
 
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/appraise/secular)
@@ -101,5 +104,5 @@ GLOBAL_VAR_INIT(steward_tax_cooldown, -50000) // Antispam
 		if(stat)
 			return
 		SStreasury.tax_value = newtax / 100
-		priority_announce("The new tax in Scarlet Reach shall be [newtax] percent.", "The Steward Meddles", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
+		priority_announce("Новый налог отныне составляет [newtax]%.", "Burgomaster Speaks", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
 		GLOB.steward_tax_cooldown = world.time

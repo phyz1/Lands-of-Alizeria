@@ -14,6 +14,10 @@
 	name = "Royal Knight"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/alizeria/spymaster
+	name = "Spymaster"
+	icon_state = "arrow"
+
 /obj/effect/landmark/start/alizeria/squire
 	name = "Squire"
 	icon_state = "arrow"
@@ -47,7 +51,7 @@
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/alizeria/mcoin
-	name = "Master of Coin"
+	name = "Burgomaster"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/alizeria/clerk
@@ -71,7 +75,7 @@
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/alizeria/tmerch
-	name = "Town Merchant"
+	name = "Merchant"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/alizeria/pmerch
@@ -123,7 +127,7 @@
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/alizeria/whore
-	name = "Slave Whore"
+	name = "Artist"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/alizeria/towner
@@ -163,7 +167,7 @@
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/alizeria/pblacksmith
-	name = "Port Blacksmith"
+	name = "Blacksmith"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/alizeria/caffe

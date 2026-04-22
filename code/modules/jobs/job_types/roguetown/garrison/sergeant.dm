@@ -401,7 +401,7 @@
 
 /mob/living/carbon/human/mind/proc/setorders()
 	set name = "Rehearse Orders"
-	set category = "Voice of Command"
+	set category = "SHERIFF"
 	mind.movemovemovetext = input("Send a message.", "Move! Move! Move!") as text|null
 	if(!mind.movemovemovetext)
 		to_chat(src, "I must rehearse something for this order...")

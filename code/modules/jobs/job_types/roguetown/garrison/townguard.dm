@@ -17,6 +17,11 @@
 	outfit = /datum/outfit/job/guardsman
 	advclass_cat_rolls = list(CTAG_WATCH = 20)
 
+	virtue_restrictions = list(
+		/datum/virtue/utility/noble,
+		/datum/virtue/utility/blueblooded,
+	)
+
 	give_bank_account = 16
 	min_pq = 0 //Introductory guard role, but still requires knowledge of escalation.
 	max_pq = null

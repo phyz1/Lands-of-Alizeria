@@ -168,13 +168,18 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		person = M.current
 	if(ishuman(person))
 		var/mob/living/carbon/human/H = person
-		if(!known_people[H.real_name])
-			known_people[H.real_name] = list()
-		known_people[H.real_name]["VCOLOR"] = H.voice_color
+		var/displayed_name = H.real_name
+		if( HAS_TRAIT(H, TRAIT_DISGUISED))
+			displayed_name = H.fake_identity_name
+		if(!known_people[displayed_name])
+			known_people[displayed_name] = list()
+		known_people[displayed_name]["VCOLOR"] = H.voice_color
 		var/used_title = H.get_role_title()
 		if(!used_title)
 			used_title = "unknown"
-		known_people[H.real_name]["FJOB"] = used_title
+		if(HAS_TRAIT(H, TRAIT_DISGUISED) && H.fake_job)
+			used_title = H.fake_job
+		known_people[displayed_name]["FJOB"] = used_title
 		var/referred_gender
 		switch(H.pronouns)
 			if(HE_HIM)
@@ -183,12 +188,19 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 				referred_gender = "Female"
 			else
 				referred_gender = "Androgynous"
-		known_people[H.real_name]["FGENDER"] = referred_gender
+		known_people[displayed_name]["FGENDER"] = referred_gender
 		if(H.dna && H.dna.species)
-			known_people[H.real_name]["FSPECIES"] = H.dna.species.name
-		known_people[H.real_name]["FAGE"] = H.age
+			var/species_name = H.dna.species.name
+			if(HAS_TRAIT(H, TRAIT_DISGUISER) && HAS_TRAIT(H, TRAIT_DISGUISED) && H.fake_species)
+				species_name = H.fake_species
+			known_people[displayed_name]["FSPECIES"] = species_name
+		known_people[displayed_name]["FAGE"] = H.age
 		if(H.family_datum)
-			known_people[H.real_name]["FHOUSE"] = H.family_datum.housename
+			var/house_name = H.family_datum.housename
+			if(HAS_TRAIT(H, TRAIT_DISGUISER) && HAS_TRAIT(H, TRAIT_DISGUISED) && H.fake_house)
+				house_name = H.fake_house
+			known_people[displayed_name]["FHOUSE"] = house_name
+
 		if (ishuman(current))
 			var/mob/living/carbon/human/C = current
 			var/heretic_text = H.get_heretic_symbol(C)
@@ -277,10 +289,26 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		var/fage = known_people[P]["FAGE"]
 		var/fhouse = known_people[P]["FHOUSE"]
 		var/fheresy = known_people[P]["FHERESY"]
+
+		var/display_name = P
+		var/display_job = fjob
+		var/display_species = fspecies
+		var/display_house = fhouse
+		var/display_age = fage
+
+		if(ishuman(P))
+			var/mob/living/carbon/human/human_P = P
+			if(HAS_TRAIT(human_P, TRAIT_DISGUISER))
+				display_name = HAS_TRAIT(human_P, TRAIT_DISGUISED) ? human_P.fake_identity_name : P
+				display_job = HAS_TRAIT(human_P, TRAIT_DISGUISED) ? human_P.fake_job : fjob
+				display_species = HAS_TRAIT(human_P, TRAIT_DISGUISED) ? human_P.fake_species : fspecies
+				display_house = HAS_TRAIT(human_P, TRAIT_DISGUISED) ? human_P.fake_house : fhouse
+				display_age = HAS_TRAIT(human_P, TRAIT_DISGUISED) ? human_P.fake_age : fage
+
 		if(fcolor && fjob)
 			if (fheresy)
 				contents +="<B><font color=#f1d669>[fheresy]</font></B> "
-			contents += "<B><font color=#[fcolor];text-shadow:0 0 10px #8d5958, 0 0 20px #8d5958, 0 0 30px #8d5958, 0 0 40px #8d5958, 0 0 50px #e60073, 0 0 60px #8d5958, 0 0 70px #8d5958;>[P]</font></B><BR>[fjob], [fspecies], [capitalize(fgender)], [fage][fhouse ? "<br><b>House [fhouse]</b>" : ""]"
+			contents += "<B><font color=#[fcolor];text-shadow:0 0 10px #8d5958, 0 0 20px #8d5958, 0 0 30px #8d5958, 0 0 40px #8d5958, 0 0 50px #e60073, 0 0 60px #8d5958, 0 0 70px #8d5958;>[display_name]</font></B><BR>[display_job], [display_species], [capitalize(fgender)], [display_age][display_house ? "<br><b>House [display_house]</b>" : ""]"
 			contents += "<BR>"
 
 	var/datum/browser/popup = new(user, "PEOPLEIKNOW", "", 260, 400)
