@@ -790,7 +790,7 @@
 					msg += "[m1] пьяная, слюнёвая, бухая развалина."
 
 			//Stress
-			var/stress = get_stress_amou	nt()
+			var/stress = get_stress_amount()
 			if(HAS_TRAIT(user, TRAIT_EMPATH))
 				switch(stress)
 					if(20 to INFINITY)
@@ -800,7 +800,7 @@
 					if(1 to 9)
 						msg += "[m1] немного напряжён"
 					if(-9 to 0)
-						msg += "[m1] ненормальный."
+						msg += "[m1] нормальный."
 					if(-19 to -10)
 						msg += "[m1] пребываю в некотором спокойствии."
 						if(user != src)
