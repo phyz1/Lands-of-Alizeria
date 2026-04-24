@@ -17,8 +17,8 @@
 	name = "tympanosectomy"
 	check_name = span_danger("EARS")
 	crit_message = list(
-		"The eardrums are gored!",
-		"The eardrums are ruptured!",
+		"Барабанные перепонки разорваны!",
+		"Барабанные перепонки лопнули!",
 	)
 	can_sew = FALSE
 	can_cauterize = FALSE
@@ -43,9 +43,9 @@
 	name = "eye evisceration"
 	check_name = span_warning("EYE")
 	crit_message = list(
-		"The eye is poked!",
-		"The eye is gouged!",
-		"The eye is destroyed!",
+		"Глаз проткнут!",
+		"Глаз выбит!",
+		"Глаз уничтожен!",
 	)
 	woundpain = 30
 	can_sew = FALSE
@@ -69,9 +69,9 @@
 	name = "right eye evisceration"
 	check_name = span_danger("RIGHT EYE")
 	crit_message = list(
-		"The right eye is poked!",
-		"The right eye is gouged!",
-		"The right eye is destroyed!",
+		"Правый глаз выколот!",
+		"Правый глаз выбит!",
+		"Правый глаз уничтожен!",
 	)
 
 /datum/wound/facial/eyes/right/can_stack_with(datum/wound/other)
@@ -104,9 +104,9 @@
 	name = "left eye evisceration"
 	check_name = span_danger("LEFT EYE")
 	crit_message = list(
-		"The left eye is poked!",
-		"The left eye is gouged!",
-		"The left eye is destroyed!",
+		"Левый глаз выколот!",
+		"Левый глаз выбит!",
+		"Левый глаз уничтожен!",
 	)
 
 /datum/wound/facial/eyes/left/can_stack_with(datum/wound/other)
@@ -139,9 +139,9 @@
 	name = "glossectomy"
 	check_name = span_danger("TONGUE")
 	crit_message = list(
-		"The tongue is cut!",
-		"The tongue is severed!",
-		"The tongue flies off in an arc!"
+		"Язык порезан!",
+		"Язык отсечен!",
+		"Язык вылетает по дуге!"
 	)
 	woundpain = 20
 	can_sew = FALSE
@@ -166,7 +166,7 @@
 	name = "disfigurement"
 	check_name = span_warning("FACE")
 	severity = 0
-	crit_message = "The face is mangled beyond recognition!"
+	crit_message = "Лицо изуродовано так, что родная мать не узнает!"
 	whp = null
 	woundpain = 20
 	mob_overlay = "cut"
@@ -186,8 +186,8 @@
 	name = "rhinotomy"
 	check_name = span_warning("NOSE")
 	crit_message = list(
-		"The nose is mangled beyond recognition!",
-		"The nose is destroyed!",
+		"Нос изуродован до неузнаваемости!",
+		"Нос уничтожен!",
 	)
 	mortal = TRUE
 	woundpain = 10
@@ -204,8 +204,8 @@
 	name = "testicular torsion"
 	check_name = span_userdanger("<B>NUTCRACK</B>")
 	crit_message = list(
-		"The testicles are twisted!",
-		"The testicles are torsioned!",
+		"Яички перекручены!",
+		"Яички перекручены!",
 	)
 	whp = 50
 	woundpain = 100
@@ -226,20 +226,20 @@
 	. = ..()
 	affected.emote("groin", forced = TRUE)
 	affected.Stun(20)
-	to_chat(affected, span_userdanger("Something twists inside my groin!"))
+	to_chat(affected, span_userdanger("Что-то скручивается в моей промежности!"))
 	if(affected.gender != MALE)
 		name = "ovarian torsion"
 		check_name = span_userdanger("<B>EGGCRACK</B>")
 		crit_message = list(
-			"The ovaries are twisted!",
-			"The ovaries are torsioned!",
+			"Яичники перекручены!",
+			"Яичники перекручены!",
 		)
 	else
 		name = "testicular torsion"
 		check_name = span_userdanger("<B>NUTCRACK</B>")
 		crit_message = list(
-			"The testicles are twisted!",
-			"The testicles are torsioned!",
+			"Яички перекручены!",
+			"Яички перекручены!",
 		)
 
 /datum/wound/cbt/on_life()
@@ -253,8 +253,8 @@
 /datum/wound/cbt/permanent
 	name = "testicular evisceration"
 	crit_message = list(
-		"The testicles are destroyed!",
-		"The testicles are eviscerated!",
+		"Яички уничтожены!",
+		"Яички выпотрошены!",
 	)
 	whp = null
 
@@ -264,15 +264,15 @@
 		name = "ovarian evisceration"
 		check_name = span_userdanger("<B>EGGCRACK</B>")
 		crit_message = list(
-			"The ovaries are destroyed!",
-			"The ovaries are eviscerated!",
+			"Яичники уничтожены!",
+			"Яичники выпотрошены!",
 		)
 	else
 		name = "testicular evisceration"
 		check_name = span_userdanger("<B>NUTCRACK</B>")
 		crit_message = list(
-			"The testicles are destroyed!",
-			"The testicles are eviscerated!",
+			"Яички уничтожены!",
+			"Яички выпотрошены!",
 		)
 
 /datum/wound/scarring
@@ -280,9 +280,9 @@
 	check_name = "<span class='userdanger'><B>SCARRED</B></span>"
 	severity = WOUND_SEVERITY_SEVERE
 	crit_message = list(
-		"The whiplash cuts deep!",
-		"The tissue is irreversibly rended!",
-		"The %BODYPART is thoroughly disfigured!",
+		"Глубокий разрез от удара!",
+		"Ткани безвозвратно разорваны!",
+		"%BODYPART полностью изуродована!",
 	)
 	sound_effect = 'sound/combat/crit.ogg'
 	whp = 80
@@ -309,7 +309,7 @@
 	name = "sundered"
 	check_name = "<span class='userdanger'><B>SUNDERED</B></span>"
 	crit_message = list(
-		"The %BODYPART is engulfed in blessed fire!",
+		"%BODYPART охвачена благословенным огнем!",
 	)
 	sound_effect = 'sound/combat/crit.ogg'
 	whp = 80
@@ -323,8 +323,8 @@
 	name = "sundered lux"
 	check_name = span_artery("<B>SUNDERED LUX</B>")
 	crit_message = list(
-		"Blessed flames erupt from %VICTIM's chest!",
-		"Molten lux splatters out from %VICTIM's sundered ribs!",
+		"Благословенное пламя вырывается из груди %VICTIM!",
+		"Расплавленный свет брызжет из разорванных ребер %VICTIM!",
 	)
 	severity = WOUND_SEVERITY_FATAL
 	bypass_bloody_wound_check = TRUE
@@ -341,9 +341,9 @@
 		var/mob/living/carbon/carbon_affected = affected
 		carbon_affected.vomit(blood = TRUE)
 	var/goodbye = list(\
-		"PSYDON GRABS MY WEARY... LUX?!",\
-		"MY LUX MELTS AWAY FROM THIS PIERCED HEART!",\
-		"OH, SHIT!"\
+		"ПСАЙДОН ХВАТАЕТ МОЙ... СВЕТ?!",\
+		"МОЙ СВЕТ УГАСАЕТ В ЭТОМ ПРОНЗЕННОМ СЕРДЦЕ!",\
+		"О, ЧЕРТ!"\
 	)
 	to_chat(affected, span_userdanger(pick(goodbye)))
 	affected.apply_status_effect(/datum/status_effect/debuff/devitalised)
@@ -354,8 +354,8 @@
 	name = "sundered head"
 	check_name = span_artery("<B>SUNDERED HEAD</B>")
 	crit_message = list(
-		"Blessed flames erupt from %VICTIM's head!",
-		"%VICTIM's head is set on fire by the SACRED FLAMES!",
+		"Благословенное пламя вырывается из головы %VICTIM!",
+		"Голова %VICTIM охвачена СВЯЩЕННЫМ ПЛАМЕНЕМ!",
 	)
 	severity = WOUND_SEVERITY_FATAL
 	bypass_bloody_wound_check = TRUE
@@ -372,9 +372,9 @@
 		var/mob/living/carbon/carbon_affected = affected
 		carbon_affected.vomit(blood = TRUE)
 	var/goodbye = list(\
-		"MY HEAD, MY HEAD! IT BURNS!!!",\
-		"MY HEAD IS ENGULFED IN FLAMES!!!",\
-		"OH, SHIT!"\
+		"МОЯ ГОЛОВА, МОЯ ГОЛОВА! ОНА ГОРИТ!!!",\
+		"МОЯ ГОЛОВА ОХВАЧЕНА ПЛАМЕНЕМ!!!",\
+		"О, ЧЕРТ!"\
 	)
 	to_chat(affected, span_userdanger(pick(goodbye)))
 	if(HAS_TRAIT(owner, TRAIT_SILVER_WEAK) && !owner.has_status_effect(STATUS_EFFECT_ANTIMAGIC))

@@ -3,10 +3,10 @@
 	check_name = span_bone("DISLOCATION")
 	severity = WOUND_SEVERITY_MODERATE
 	crit_message = list(
-		"The %BODYPART jolts painfully!",
-		"The %BODYPART is twisted out of place!",
-		"The %BODYPART is wrenched out of it's socket!",
-		"The %BODYPART is dislocated!",
+		"%BODYPART болезненно дергается!",
+		"%BODYPART неестественно выкручивается!",
+		"%BODYPART вылетает из сустава!",
+		"Происходит вывих %BODYPART!",
 	)
 	sound_effect = "fracturedry"
 	whp = 40
@@ -69,9 +69,9 @@
 	name = "cervical dislocation"
 	check_name = span_bone("NECK")
 	crit_message = list(
-		"The spine slips!",
-		"The spine twists!",
-		"The %BODYPART is wrenched out of it's socket!",
+		"Позвоночник соскальзывает!",
+		"Позвоночник перекручивается!",
+		"%BODYPART вылетает из сустава!",
 	)
 	whp = 80
 	woundpain = 100

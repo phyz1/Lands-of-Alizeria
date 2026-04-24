@@ -3,10 +3,10 @@
 	check_name = span_bone("<B>FRACTURE</B>")
 	severity = WOUND_SEVERITY_SEVERE
 	crit_message = list(
-		"The bone shatters!",
-		"The bone is broken!",
-		"The %BODYPART is mauled!",
-		"The bone snaps through the skin!",
+		"Кость разлетается на осколки!",
+		"Кость сломана!",
+		"%BODYPART изувечена!",
+		"Кость пробивает кожу и выходит наружу!",
 	)
 	sound_effect = "wetbreak"
 	whp = 80
@@ -60,10 +60,10 @@
 	name = "cranial fracture"
 	check_name = span_bone("<B>SKULLCRACK</B>")
 	crit_message = list(
-		"The skull shatters in a gruesome way!",
-		"The head is smashed!",
-		"The skull is broken!",
-		"The skull caves in!",
+		"Череп разлетается ужасающим образом!",
+		"Голова раздроблена!",
+		"Череп сломан!",
+		"Череп проламывается внутрь!",
 	)
 	sound_effect = "headcrush"
 	whp = 150
@@ -107,9 +107,9 @@
 	name = "depressed cranial fracture"
 	severity = WOUND_SEVERITY_FATAL
 	crit_message = list(
-		"The cranium is punctured!",
-		"The cranium is pierced!",
-		"The cranium is torn!",
+		"Череп пробит!",
+		"Череп пронзен!",
+		"Череп расколот!",
 	)
 	embed_chance = 100	// Didn't we remove embeding..?
 	bleed_rate = 10		// Aooouuugh.. my brain..
@@ -119,10 +119,10 @@
 /datum/wound/fracture/head/eyes
 	name = "orbital fracture"
 	crit_message = list(
-		"The orbital bone is punctured!",
-		"The orbital bone is pierced!",
-		"The eye socket is punctured!",
-		"The eye socket is pierced!",
+		"Глазная кость пробита!",
+		"Глазная кость пронзена!",
+		"Глазница пробита!",
+		"Глазница пронзена!",
 	)
 	embed_chance = 100
 	clotting_threshold = 0.4	//Eye-bone fucked
@@ -143,10 +143,10 @@
 	name = "temporal fracture"
 	severity = WOUND_SEVERITY_FATAL
 	crit_message = list(
-		"The orbital bone is punctured!",
-		"The temporal bone is pierced!",
-		"The ear canal is punctured!",
-		"The ear canal is pierced!",
+		"Височная кость пробита!",
+		"Височная кость пронзена!",
+		"Ушной канал пробит!",
+		"Ушной канал пронзен!",
 	)
 	embed_chance = 100
 	paralysis = FALSE
@@ -155,19 +155,19 @@
 
 /datum/wound/fracture/head/ears/on_mob_gain(mob/living/affected)
 	. = ..()
-	to_chat(affected, span_warning("My ears ring before suddenly cutting out all sound!"))
+	to_chat(affected, span_warning("В ушах звенит... Куда пропали все звуки?"))
 	ADD_TRAIT(affected, TRAIT_DEAF, "[type]")
 
 /datum/wound/fracture/head/ears/on_mob_loss(mob/living/affected)
 	. = ..()
-	to_chat(affected, span_notice("My hearing slowly comes back to me..."))
+	to_chat(affected, span_notice("Я начинаю что-то слышать..."))
 	REMOVE_TRAIT(affected, TRAIT_DEAF, "[type]")
 
 /datum/wound/fracture/head/nose
 	name = "nasal fracture"
 	crit_message = list(
-		"The nasal bone is punctured!",
-		"The nasal bone is pierced!",
+		"Носовая кость пробита!",
+		"Носовая кость пронзена!",
 	)
 	embed_chance = 100
 	mortal = FALSE
@@ -186,10 +186,10 @@
 	name = "mandibular fracture"
 	check_name = span_bone("JAW FRACTURE")
 	crit_message = list(
-		"The mandible comes apart beautifully!",
-		"The jaw is smashed!",
-		"The jaw is shattered!",
-		"The jaw caves in!",
+		"Нижняя челюсть рассыпается на части!",
+		"Челюсть раздроблена!",
+		"Челюсть разбита вдребезги!",
+		"Челюсть проваливается внутрь!",
 	)
 	mortal = FALSE
 	whp = 50
@@ -211,10 +211,10 @@
 	name = "cervical fracture"
 	check_name = span_bone("<B>NECK</B>")
 	crit_message = list(
-		"The spine shatters in a spectacular way!",
-		"The spine snaps!",
-		"The spine cracks!",
-		"The spine is broken!",
+		"Позвоночник эффектно разлетается на куски!",
+		"Позвоночник лопается!",
+		"Позвоночник трещит!",
+		"Позвоночник сломан!",
 	)
 	whp = 150
 
@@ -240,10 +240,10 @@
 	name = "rib fracture"
 	check_name = span_bone("<B>RIBS</B>")
 	crit_message = list(
-		"The ribs shatter in a splendid way!",
-		"The ribs are smashed!",
-		"The ribs are mauled!",
-		"The ribcage caves in!",
+		"Ребра разлетаются великолепным образом!",
+		"Ребра раздроблены!",
+		"Ребра изувечены!",
+		"Грудная клетка проваливается внутрь!",
 	)
 	whp = 50
 	bleed_rate = 25				//Higher than artery
@@ -266,10 +266,10 @@
 	name = "pelvic fracture"
 	check_name = span_bone("<B>PELVIS</B>")
 	crit_message = list(
-		"The pelvis shatters in a magnificent way!",
-		"The pelvis is smashed!",
-		"The pelvis is mauled!",
-		"The pelvic floor caves in!",
+		"Таз разлетается величественным образом!",
+		"Таз раздроблен!",
+		"Таз изувечен!",
+		"Тазовое дно проваливается внутрь!",
 	)
 	whp = 80
 	gain_emote = "groin"	//MY PIINTLE!!!!
