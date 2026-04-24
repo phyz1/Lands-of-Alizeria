@@ -802,7 +802,7 @@
 					if(-9 to 0)
 						msg += "[m1] нормальный."
 					if(-19 to -10)
-						msg += "[m1] пребываю в некотором спокойствии."
+						msg += "[m1] пребываю некотором спокойствии."
 						if(user != src)
 							user.add_stress(/datum/stressevent/empath_happy)
 					if(-20 to INFINITY)
