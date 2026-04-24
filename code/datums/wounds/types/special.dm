@@ -139,7 +139,7 @@
 	name = "glossectomy"
 	check_name = span_danger("TONGUE")
 	crit_message = list(
-		"Язык порезан!",
+		"Язык отрезан!",
 		"Язык отсечен!",
 		"Язык вылетает по дуге!"
 	)
@@ -324,7 +324,7 @@
 	check_name = span_artery("<B>SUNDERED LUX</B>")
 	crit_message = list(
 		"Благословенное пламя вырывается из груди %VICTIM!",
-		"Расплавленный свет брызжет из разорванных ребер %VICTIM!",
+		"Расплавленный люкс брызжет из разорванных ребер %VICTIM!",
 	)
 	severity = WOUND_SEVERITY_FATAL
 	bypass_bloody_wound_check = TRUE
@@ -341,8 +341,8 @@
 		var/mob/living/carbon/carbon_affected = affected
 		carbon_affected.vomit(blood = TRUE)
 	var/goodbye = list(\
-		"ПСАЙДОН ХВАТАЕТ МОЙ... СВЕТ?!",\
-		"МОЙ СВЕТ УГАСАЕТ В ЭТОМ ПРОНЗЕННОМ СЕРДЦЕ!",\
+		"ПСАЙДОН ХВАТАЕТ МОЙ... ЛЮКС?!",\
+		"МОЙ ЛЮКС УГАСАЕТ В ЭТОМ ПРОНЗЕННОМ СЕРДЦЕ!",\
 		"О, ЧЕРТ!"\
 	)
 	to_chat(affected, span_userdanger(pick(goodbye)))

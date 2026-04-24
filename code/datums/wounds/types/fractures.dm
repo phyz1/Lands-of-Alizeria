@@ -167,7 +167,7 @@
 	name = "nasal fracture"
 	crit_message = list(
 		"Носовая кость пробита!",
-		"Носовая кость пронзена!",
+		"Носовая кость сломана!",
 	)
 	embed_chance = 100
 	mortal = FALSE
