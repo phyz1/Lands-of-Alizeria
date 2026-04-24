@@ -166,7 +166,7 @@
 	name = "disfigurement"
 	check_name = span_warning("FACE")
 	severity = 0
-	crit_message = "Лицо изуродовано так, что родная мать не узнает!"
+	crit_message = "Лицо изуродовано до неузнаваемости!"
 	whp = null
 	woundpain = 20
 	mob_overlay = "cut"
