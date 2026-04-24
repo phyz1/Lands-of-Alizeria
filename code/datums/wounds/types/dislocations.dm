@@ -1,5 +1,5 @@
 /datum/wound/dislocation
-	name = "dislocation"
+	name = "вывих"
 	check_name = span_bone("DISLOCATION")
 	severity = WOUND_SEVERITY_MODERATE
 	crit_message = list(
@@ -66,7 +66,7 @@
 	return TRUE
 
 /datum/wound/dislocation/neck
-	name = "cervical dislocation"
+	name = "шейный вывих"
 	check_name = span_bone("NECK")
 	crit_message = list(
 		"Позвоночник соскальзывает!",

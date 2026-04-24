@@ -1,5 +1,5 @@
 /datum/wound/facial
-	name = "facial trauma"
+	name = "лицевая травма"
 	sound_effect = 'sound/combat/crit.ogg'
 	severity = WOUND_SEVERITY_SEVERE
 	whp = null
@@ -14,7 +14,7 @@
 	return TRUE
 
 /datum/wound/facial/ears
-	name = "tympanosectomy"
+	name = "разрыв барабанных перепонок"
 	check_name = span_danger("EARS")
 	crit_message = list(
 		"Барабанные перепонки разорваны!",
@@ -40,7 +40,7 @@
 		ears.forceMove(affected.drop_location())
 
 /datum/wound/facial/eyes
-	name = "eye evisceration"
+	name = "эвисцерация глаза"
 	check_name = span_warning("EYE")
 	crit_message = list(
 		"Глаз проткнут!",
@@ -66,7 +66,7 @@
 		affected.blind_eyes(5)
 
 /datum/wound/facial/eyes/right
-	name = "right eye evisceration"
+	name = "эвисцерация правого глаза"
 	check_name = span_danger("RIGHT EYE")
 	crit_message = list(
 		"Правый глаз выколот!",
@@ -101,7 +101,7 @@
 	do_blinding = FALSE
 
 /datum/wound/facial/eyes/left
-	name = "left eye evisceration"
+	name = "эвисцерация левого глаза"
 	check_name = span_danger("LEFT EYE")
 	crit_message = list(
 		"Левый глаз выколот!",
@@ -136,7 +136,7 @@
 	do_blinding = FALSE
 
 /datum/wound/facial/tongue
-	name = "glossectomy"
+	name = "глоссэктомия"
 	check_name = span_danger("TONGUE")
 	crit_message = list(
 		"Язык отрезан!",
@@ -163,7 +163,7 @@
 		tongue_up_my_asshole.forceMove(affected.drop_location())
 
 /datum/wound/facial/disfigurement
-	name = "disfigurement"
+	name = "обезображивание"
 	check_name = span_warning("FACE")
 	severity = 0
 	crit_message = "Лицо изуродовано до неузнаваемости!"
@@ -183,7 +183,7 @@
 	REMOVE_TRAIT(affected, TRAIT_DISFIGURED, "[type]")
 	
 /datum/wound/facial/disfigurement/nose
-	name = "rhinotomy"
+	name = "ринотомия"
 	check_name = span_warning("NOSE")
 	crit_message = list(
 		"Нос изуродован до неузнаваемости!",
@@ -201,7 +201,7 @@
 	REMOVE_TRAIT(affected, TRAIT_MISSING_NOSE, "[type]")
 
 /datum/wound/cbt
-	name = "testicular torsion"
+	name = "перекрут яичка"
 	check_name = span_userdanger("<B>NUTCRACK</B>")
 	crit_message = list(
 		"Яички перекручены!",
@@ -228,14 +228,14 @@
 	affected.Stun(20)
 	to_chat(affected, span_userdanger("Что-то скручивается в моей промежности!"))
 	if(affected.gender != MALE)
-		name = "ovarian torsion"
+		name = "эвисцерация яичника"
 		check_name = span_userdanger("<B>EGGCRACK</B>")
 		crit_message = list(
 			"Яичники перекручены!",
 			"Яичники перекручены!",
 		)
 	else
-		name = "testicular torsion"
+		name = "перекрут яичка"
 		check_name = span_userdanger("<B>NUTCRACK</B>")
 		crit_message = list(
 			"Яички перекручены!",
@@ -251,7 +251,7 @@
 		carbon_owner.vomit(1, stun = TRUE)
 
 /datum/wound/cbt/permanent
-	name = "testicular evisceration"
+	name = "перекрут яичка"
 	crit_message = list(
 		"Яички уничтожены!",
 		"Яички выпотрошены!",
@@ -276,7 +276,7 @@
 		)
 
 /datum/wound/scarring
-	name = "permanent scarring"
+	name = "неизлечимые шрамы"
 	check_name = "<span class='userdanger'><B>SCARRED</B></span>"
 	severity = WOUND_SEVERITY_SEVERE
 	crit_message = list(
@@ -306,7 +306,7 @@
 	return TRUE
 
 /datum/wound/sunder
-	name = "sundered"
+	name = "расколотый"
 	check_name = "<span class='userdanger'><B>SUNDERED</B></span>"
 	crit_message = list(
 		"%BODYPART охвачена благословенным огнем!",
@@ -320,7 +320,7 @@
 	bypass_bloody_wound_check = FALSE
 
 /datum/wound/sunder/chest
-	name = "sundered lux"
+	name = "расколотый люкс"
 	check_name = span_artery("<B>SUNDERED LUX</B>")
 	crit_message = list(
 		"Благословенное пламя вырывается из груди %VICTIM!",
@@ -351,7 +351,7 @@
 		affected.death()
 
 /datum/wound/sunder/head
-	name = "sundered head"
+	name = "расколотая голова"
 	check_name = span_artery("<B>SUNDERED HEAD</B>")
 	crit_message = list(
 		"Благословенное пламя вырывается из головы %VICTIM!",
@@ -383,7 +383,7 @@
 /// grievous wounds exist to provide a solution for "two-stage death" - aka where you want someone to DIE IMMEDIATELY upon dismemberment of a crucial bodypart, but not actually lose it.
 /// the spiritual intent here is to provide a little bit of protection from accidental decaps
 /datum/wound/grievous
-	name = "grievous wound"
+	name = "тяжкая рана"
 	check_name = span_danger("<B>grievous</B>")
 	severity = WOUND_SEVERITY_FATAL
 	whp = 150
@@ -420,13 +420,13 @@
 	. = ..()
 
 /datum/wound/grievous/pre_decapitation
-	name = "massacred spinal column"
+	name = "разрушенный позвоночник"
 
 /datum/wound/grievous/pre_skullshatter
-	name = "shattered skull"
+	name = "раздробленный череп"
 
 /datum/wound/scorch
-	name = "divine punishment"
+	name = "божественное наказание"
 	whp = 60  // Lasts a reasonable duration
 	woundpain = 0  // Set dynamically in upgrade()
 	can_sew = FALSE

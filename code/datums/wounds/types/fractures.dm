@@ -1,5 +1,5 @@
 /datum/wound/fracture
-	name = "fracture"
+	name = "перелом"
 	check_name = span_bone("<B>FRACTURE</B>")
 	severity = WOUND_SEVERITY_SEVERE
 	crit_message = list(
@@ -33,7 +33,7 @@
 /datum/wound/fracture/get_visible_name(mob/user)
 	. = ..()
 	if(passive_healing)
-		. += " <span class='green'>(set)</span>"
+		. += " <span class='green'>(вправлен)</span>"
 
 /datum/wound/fracture/can_stack_with(datum/wound/other)
 	if(istype(other, /datum/wound/fracture) && (type == other.type))
@@ -57,7 +57,7 @@
 	return TRUE
 
 /datum/wound/fracture/head
-	name = "cranial fracture"
+	name = "черепной перелом"
 	check_name = span_bone("<B>SKULLCRACK</B>")
 	crit_message = list(
 		"Череп разлетается ужасающим образом!",
@@ -104,7 +104,7 @@
 	owner.stuttering = max(owner.stuttering, 5)
 
 /datum/wound/fracture/head/brain
-	name = "depressed cranial fracture"
+	name = "вдавленный перелом черепа"
 	severity = WOUND_SEVERITY_FATAL
 	crit_message = list(
 		"Череп пробит!",
@@ -117,7 +117,7 @@
 	paralysis = TRUE
 
 /datum/wound/fracture/head/eyes
-	name = "orbital fracture"
+	name = "перелом глазницы"
 	crit_message = list(
 		"Глазная кость пробита!",
 		"Глазная кость пронзена!",
@@ -140,7 +140,7 @@
 	affected.cure_nearsighted("[type]")
 
 /datum/wound/fracture/head/ears
-	name = "temporal fracture"
+	name = "височный перелом"
 	severity = WOUND_SEVERITY_FATAL
 	crit_message = list(
 		"Височная кость пробита!",
@@ -164,7 +164,7 @@
 	REMOVE_TRAIT(affected, TRAIT_DEAF, "[type]")
 
 /datum/wound/fracture/head/nose
-	name = "nasal fracture"
+	name = "носовой перелом"
 	crit_message = list(
 		"Носовая кость пробита!",
 		"Носовая кость сломана!",
@@ -183,7 +183,7 @@
 	REMOVE_TRAIT(affected, TRAIT_DISFIGURED, "[type]")
 
 /datum/wound/fracture/mouth
-	name = "mandibular fracture"
+	name = "перелом челюсти"
 	check_name = span_bone("JAW FRACTURE")
 	crit_message = list(
 		"Нижняя челюсть рассыпается на части!",
@@ -208,7 +208,7 @@
 	REMOVE_TRAIT(affected, TRAIT_GARGLE_SPEECH, "[type]")
 
 /datum/wound/fracture/neck
-	name = "cervical fracture"
+	name = "шейный перелом"
 	check_name = span_bone("<B>NECK</B>")
 	crit_message = list(
 		"Позвоночник эффектно разлетается на куски!",
@@ -237,7 +237,7 @@
 		carbon_affected.update_disabled_bodyparts()
 
 /datum/wound/fracture/chest
-	name = "rib fracture"
+	name = "перелом рёбер"
 	check_name = span_bone("<B>RIBS</B>")
 	crit_message = list(
 		"Ребра разлетаются великолепным образом!",
@@ -263,7 +263,7 @@
 		carbon_owner.vomit(1, blood = TRUE, stun = TRUE)
 
 /datum/wound/fracture/groin
-	name = "pelvic fracture"
+	name = "тазовый перелом"
 	check_name = span_bone("<B>PELVIS</B>")
 	crit_message = list(
 		"Таз разлетается величественным образом!",

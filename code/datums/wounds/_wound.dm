@@ -386,9 +386,9 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 				newname = sevname
 	name = "[newname  ? "[newname] " : ""][initial(name)]"	//[adjective] [name], aka, "gnarly slash" or "slash"
 	if(oldname == initial(name) && length(severity_names)) //if we're creating the wound
-		owner.visible_message(span_red("На области [bodyzone2readablezone(bodypart_to_zone(bodypart_owner))] [owner] появляется новая рана: [initial(name)]!"))
+		owner.visible_message(span_red("На [bodyzone2readablezone(bodypart_to_zone(bodypart_owner))] [owner] появляется новая рана: [initial(name)]!"))
 	else if(name != oldname)
-		owner.visible_message(span_red("Рана ([oldname]) на области [bodyzone2readablezone(bodypart_to_zone(bodypart_owner))] [owner] становится хуже!"))
+		owner.visible_message(span_red("Рана ([oldname]) на [bodyzone2readablezone(bodypart_to_zone(bodypart_owner))] [owner] становится хуже!"))
 
 // Blank because it'll be overridden by wound code.
 /datum/wound/dynamic
@@ -407,7 +407,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 				set_bleed_rate(cap)
 				if(!is_armor_maxed)
 					playsound(owner, 'sound/combat/armored_wound.ogg', 100, TRUE)
-					owner.visible_message(span_crit("Рана на области [bodyzone2readablezone(bodypart_to_zone(bodypart_owner))] расходится, но броня сдерживает её дальнейшее расширение!"))
+					owner.visible_message(span_crit("Рана [bodyzone2readablezone(bodypart_to_zone(bodypart_owner))] расходится, но броня сдерживает её дальнейшее расширение!"))
 					is_armor_maxed = TRUE
 
 #define CLOT_THRESHOLD_INCREASE_PER_HIT 0.1	//This raises the MINIMUM bleed the wound can clot to.
