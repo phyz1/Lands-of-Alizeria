@@ -93,7 +93,7 @@
 	check_name = span_userdanger("<B>GUTS</B>")
 	severity = WOUND_SEVERITY_FATAL
 	crit_message = list(
-		"%VICTIM теряет свои органы!"",
+		"%VICTIM теряет свои органы!",
 		"%VICTIM теряет свои внутренности!",
 	)
 	sound_effect = 'sound/combat/crit2.ogg'
