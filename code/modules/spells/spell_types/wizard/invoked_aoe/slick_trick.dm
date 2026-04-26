@@ -61,8 +61,8 @@
 //smaller slick trick for arcane trickster
 
 /obj/effect/proc_holder/spell/invoked/slick_trick_small
-	name = "Calistra's Sneaky Slipsquare" //honoring DnD tradition of naming shit after some random MF. who's Calistra? who knows! make some shit up, roleplayer!
-	desc = "Sneakily create a temporary slippery square that sends victims flying to the floor."
+	name = "Каверза Калистры"
+	desc = "Скрытно создаёт временный скользкий квадрат, отправляющий жертв на пол."
 	cost = 2 
 	range = 6 //slightly bigger range for prank purposes
 	ignore_los = FALSE
