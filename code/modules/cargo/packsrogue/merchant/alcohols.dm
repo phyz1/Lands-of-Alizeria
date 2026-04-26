@@ -1,171 +1,171 @@
 /datum/supply_pack/rogue/alcohol
-	group = "Alcohols"
+	group = "Алкоголь"
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/alcohol/beer
-	name = "Beer-In-A-Bottle"
+	name = "Пиво"
 	cost = 10
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer)
 
 /datum/supply_pack/rogue/alcohol/zagul
-	name = "Zagul Lager"
+	name = "Лагер Загул"
 	cost = 15
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/zagul)
 
 /datum/supply_pack/rogue/alcohol/blackgoat
-	name = "Blackgoat Beer"
+	name = "Пиво Чёрный козёл"
 	cost = 20
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/blackgoat)
 
 /datum/supply_pack/rogue/alcohol/onin
-	name = "Ratkept Onin Cognac"
+	name = "Коньяк Крысиный Погреб"
 	cost = 20
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/ratkept)
 
 /datum/supply_pack/rogue/alcohol/grenzelbeer
-	name = "Grenzelhoftian Bitter Beer"
+	name = "Горькое пиво Грензельхофт"
 	cost = 25
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/hagwoodbitter)
 
 /datum/supply_pack/rogue/alcohol/elfbeer
-	name = "Elvish Aurorian Beer"
+	name = "Эльфийское аурорианское пиво"
 	cost = 20
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/aurorian)
 
 /datum/supply_pack/rogue/alcohol/elfcab
-	name = "Elvish Fireleaf"
+	name = "Эльфийский Огненный Лист"
 	cost = 25
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/fireleaf)
 
 /datum/supply_pack/rogue/alcohol/butterhair
-	name = "Dwarvish Butterhairs"
+	name = "Дварфийские Масляные Волосы"
 	cost = 35
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/butterhairs)
 
 /datum/supply_pack/rogue/alcohol/stonebeard
-	name = "Stonebeards Reserve"
+	name = "Запас Каменной Бороды"
 	cost = 60
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/stonebeardreserve)
 
 /datum/supply_pack/rogue/alcohol/voddena
-	name = "Hammerhold Voddena"
+	name = "Воддена Молотоборцев"
 	cost = 25
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/voddena)
 
 /datum/supply_pack/rogue/alcohol/sazdistal
-	name = "Saz Distal Chili Liqueur"
+	name = "Ликёр Чили Сац Дисталь"
 	cost = 30
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/sazdistal)
 
 /datum/supply_pack/rogue/alcohol/wineraneshen
-	name = "Shalvistine Wine"
+	name = "Шальвистийское вино"
 	cost = 15
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/wine)
 
 /datum/supply_pack/rogue/alcohol/winegrenzel
-	name = "Grenzelhoftian Sour Wine"
+	name = "Кислое вино Грензельхофт"
 	cost = 25
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine)
 
 /datum/supply_pack/rogue/alcohol/winevalorred
-	name = "Otavan Red Wine"
+	name = "Красное вино Отава"
 	cost = 30
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/redwine)
 
 /datum/supply_pack/rogue/alcohol/winevalorwhite
-	name = "Otavan White Wine"
+	name = "Белое вино Отава"
 	cost = 35
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/whitewine)
 
 /datum/supply_pack/rogue/alcohol/elfred
-	name = "Elvish Red Wine"
+	name = "Эльфийское красное вино"
 	cost = 150
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/elfred)
 
 /datum/supply_pack/rogue/alcohol/elfblue
-	name = "Valmora Blue Wine"
+	name = "Синее вино Вальмора"
 	cost = 400
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/elfblue)
 
 //AZURE DRINKS
 /datum/supply_pack/rogue/alcohol/jagdtrunk
-	name = "Jagdtrunk Herbal Schnapps"
+	name = "Травяной шнапс Ягдтрунк"
 	cost = 80
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/jagdtrunk)
 
 /datum/supply_pack/rogue/alcohol/apfelweinheim
-	name = "Apfelweinheim Cider"
+	name = "Сидр Апфельвайнхайм"
 	cost = 30
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/apfelweinheim)
 
 /datum/supply_pack/rogue/alcohol/rtoper
-	name = "Rockhill Toper (Lirvas Beer)"
+	name = "Пиво Рокхилл Тоупер (Лирвас)"
 	cost = 20
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/rtoper)
 
 /datum/supply_pack/rogue/alcohol/nred
-	name = "Norwandine Red Ale"
+	name = "Красный эль Норвандин"
 	cost = 20
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/nred)
 
 /datum/supply_pack/rogue/alcohol/gronnmead
-	name = "Ragnars Mead"
+	name = "Мёд Рагнара"
 	cost = 25
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/gronnmead)
 
 /datum/supply_pack/rogue/alcohol/avarmead
-	name = "Zögiin Bal (Avar Mead)"
+	name = "Зёгийн Бал (Аварский мёд)"
 	cost = 20
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/avarmead)
 
 /datum/supply_pack/rogue/alcohol/avarrice
-	name = "Makkolir (Avar Rice Wine)"
+	name = "Макколир (Аварское рисовое вино)"
 	cost = 30
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/avarrice)
 
 /datum/supply_pack/rogue/alcohol/saigamilk
-	name = "Bökhiin Arkhi (Saiga Milk Drink)"
+	name = "Бёхийн Архи (Напиток из сайги)"
 	cost = 100
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/saigamilk)
 
 /datum/supply_pack/rogue/alcohol/kgunlager
-	name = "Yamaguchi Pale (Kazengun Pale Lager)"
+	name = "Ямагучи Пэйл (Кадзенгунский светлый лагер)"
 	cost = 20
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/kgunlager)
 
 /datum/supply_pack/rogue/alcohol/kgunplum
-	name = "Umeshu (Kazengun Plum Wine)"
+	name = "Умешу (Кадзенгунское сливовое вино)"
 	cost = 40
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/kgunplum)
 
 /datum/supply_pack/rogue/alcohol/kgunsake
-	name = "Junmai-ginjo"
+	name = "Джунмай-гиндзё"
 	cost = 150
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/kgunsake)
 
 /datum/supply_pack/rogue/alcohol/kgunshochu
-	name = "Shochu"
+	name = "Сётю"
 	cost = 150
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/kgunshochu)
 
 // Zhongese
 /datum/supply_pack/rogue/alcohol/zhonghuangjiu
-	name = "Huangjiu (Zhongese Yellow Rice Wine)"
+	name = "Хуанцзю (Чжунское жёлтое рисовое вино)"
 	cost = 20
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/huangjiu)
 
 /datum/supply_pack/rogue/alcohol/baijiu
-	name = "Baijiu (Zhongese Sorghum Liquor)"
+	name = "Байцзю (Чжунский сорговый ликёр)"
 	cost = 50
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/baijiu)
 
 /datum/supply_pack/rogue/alcohol/yaojiu
-	name = "Yaojiu (Zhongese Herbal Rice Wine)"
+	name = "Яоцзю (Чжунское травяное рисовое вино)"
 	cost = 150
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/yaojiu)
 
 /datum/supply_pack/rogue/alcohol/shejiu
-	name = "Shejiu (Zhongese Snake Wine)"
+	name = "Шэцзю (Чжунское змеиное вино)"
 	cost = 150
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/shejiu)
