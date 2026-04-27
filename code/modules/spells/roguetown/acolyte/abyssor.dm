@@ -1,6 +1,6 @@
 //t1, the bends
 /obj/effect/proc_holder/spell/invoked/abyssor_bends
-	name = "Глубинные колики"
+	name = "Глубинная болезнь"
 	desc = "Вызывает тошноту у цели, истощая её выносливость."
 	overlay_state = "thebends"
 	releasedrain = 15
