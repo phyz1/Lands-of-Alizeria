@@ -5,7 +5,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 	var/observer_privilege = isobserver(usr)
 
 	if(href_list["task"] == "bloodpoolinfo")
-		to_chat(usr, span_notice("Годная для витаэ кровь и общий объём крови — не одно и то же. Нужно время, чтобы кровь стала для нас питательной."))
+		to_chat(usr, span_notice("Годная для витэ кровь и общий объём крови — не одно и то же. Нужно время, чтобы кровь стала для нас питательной."))
 		return
 
 	if(href_list["task"] == "view_headshot")
