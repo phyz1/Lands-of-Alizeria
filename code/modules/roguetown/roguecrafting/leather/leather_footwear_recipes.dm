@@ -47,7 +47,7 @@
 	reqs = list(/obj/item/natural/hide/cured = 1)
 
 /datum/crafting_recipe/roguetown/leather/footwear/boots/noble
-	name = "благодарные сапоги"
+	name = "благородные сапоги"
 	result = /obj/item/clothing/shoes/roguetown/boots/nobleboot
 	reqs = list(/obj/item/natural/hide/cured = 3,
 				/obj/item/natural/fur = 1)

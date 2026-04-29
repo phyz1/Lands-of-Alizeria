@@ -809,7 +809,7 @@ datum/crafting_recipe/roguetown/sewing/Purdress
 	sellprice = 25
 
 /datum/crafting_recipe/roguetown/sewing/winterdress_light
-	name = "холодное платье"
+	name = "зимнее лёгкое платье"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/winterdress_light)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 2,

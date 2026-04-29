@@ -68,14 +68,14 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/alchemy/salt
-	name = "соляная кучка (жир)"
+	name = "соль (жир)"
 	category = "Стол"
 	result = list(/obj/item/reagent_containers/powder/salt)
 	reqs = list(/obj/item/ash = 1, /datum/reagent/water = 10, /obj/item/reagent_containers/food/snacks/fat = 1)
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/alchemy/salt_2
-	name = "соляная кучка (фарш)"
+	name = "соль (фарш)"
 	category = "Стол"
 	result = list(/obj/item/reagent_containers/powder/salt)
 	reqs = list(/obj/item/ash = 1, /datum/reagent/water = 10, /obj/item/reagent_containers/food/snacks/rogue/meat/mince = 1)

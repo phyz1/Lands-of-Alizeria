@@ -173,7 +173,7 @@
 	sellprice = 10
 
 /datum/crafting_recipe/roguetown/leather/armor/carapacecap
-	name = "хитиновый шлем"
+	name = "хитиновая шапка"
 	result = list(/obj/item/clothing/head/roguetown/helmet/carapacecap)
 	reqs = list(/obj/item/natural/carapace = 1,
 				/obj/item/natural/fibers = 2)

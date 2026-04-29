@@ -6,7 +6,7 @@
 	category = "Инструменты"
 
 /datum/crafting_recipe/roguetown/survival/peasantry/thresher
-	name = "молотило — железный слиток"
+	name = "молотило (из железного слитка)"
 	reqs = list(
 		/obj/item/grown/log/tree/stick = 1,
 		/obj/item/ingot/iron = 1,
@@ -25,7 +25,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/survival/peasantry/shovel
-	name = "лопата — железный слиток"
+	name = "лопата (из железного слитка)"
 	reqs = list(
 		/obj/item/grown/log/tree/stick = 2,
 		/obj/item/ingot/iron = 1,
@@ -44,7 +44,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/survival/peasantry/hoe
-	name = "мотыга — железный слиток"
+	name = "мотыга (из железного слитка)"
 	reqs = list(
 		/obj/item/grown/log/tree/stick = 2,
 		/obj/item/ingot/iron = 1,
@@ -63,7 +63,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/survival/peasantry/pitchfork
-	name = "вилы — железный слиток"
+	name = "вилы (из железного слитка)"
 	reqs = list(
 		/obj/item/grown/log/tree/stick = 2,
 		/obj/item/ingot/iron = 1,
